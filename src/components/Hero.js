@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
-import { FaFileInvoiceDollar, FaPhone, FaUsers, FaTools } from 'react-icons/fa';
+import { FaFileInvoiceDollar, FaPhone, FaUsers, FaTools, FaStar } from 'react-icons/fa';
 import './Hero.css';
 
 // Animated Counter Component with rolling effect
@@ -108,23 +108,15 @@ const Hero = () => {
               <span className="subtitle-text">Premium Construction</span>
             </motion.h1>
             
-            <motion.p className="hero-subtitle" variants={itemVariants}>
-              Professional construction and design solutions for commercial and residential projects. 
-              Quality craftsmanship with reliable project management.
-            </motion.p>
-
             <motion.div className="hero-highlights" variants={itemVariants}>
               <div className="highlight-item">
                 <FaUsers className="highlight-icon" />
-                <span>Expert Team</span>
               </div>
               <div className="highlight-item">
                 <FaTools className="highlight-icon" />
-                <span>Quality Materials</span>
               </div>
               <div className="highlight-item">
                 <FaFileInvoiceDollar className="highlight-icon" />
-                <span>Fair Pricing</span>
               </div>
             </motion.div>
             
@@ -155,30 +147,14 @@ const Hero = () => {
               variants={itemVariants}
               ref={ref}
             >
-              <motion.div 
-                className="stat-item"
-                whileHover={{ scale: 1.05, y: -3 }}
-                transition={{ duration: 0.2 }}
-              >
-                <AnimatedCounter target={23} suffix="+" duration={2500} inView={inView} />
-                <span className="stat-label">Projects</span>
-              </motion.div>
-              <motion.div 
-                className="stat-item"
-                whileHover={{ scale: 1.05, y: -3 }}
-                transition={{ duration: 0.2 }}
-              >
-                <AnimatedCounter target={16} suffix="+" duration={2000} inView={inView} />
-                <span className="stat-label">Years</span>
-              </motion.div>
-              <motion.div 
-                className="stat-item"
-                whileHover={{ scale: 1.05, y: -3 }}
-                transition={{ duration: 0.2 }}
-              >
-                <AnimatedCounter target={100} suffix="%" duration={2200} inView={inView} />
-                <span className="stat-label">Satisfaction</span>
-              </motion.div>
+              <div className="stars-container">
+                <FaStar className="star-icon" />
+                <FaStar className="star-icon" />
+                <FaStar className="star-icon" />
+                <FaStar className="star-icon" />
+                <FaStar className="star-icon" />
+              </div>
+              <div className="rating-text">5.0/5.0</div>
             </motion.div>
           </motion.div>
         </div>
