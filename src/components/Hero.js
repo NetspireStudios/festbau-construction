@@ -160,7 +160,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, y: -3 }}
                 transition={{ duration: 0.2 }}
               >
-                <AnimatedCounter target={500} suffix="+" duration={2500} inView={inView} />
+                <AnimatedCounter target={23} suffix="+" duration={2500} inView={inView} />
                 <span className="stat-label">Projects</span>
               </motion.div>
               <motion.div 
@@ -168,7 +168,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05, y: -3 }}
                 transition={{ duration: 0.2 }}
               >
-                <AnimatedCounter target={15} suffix="+" duration={2000} inView={inView} />
+                <AnimatedCounter target={16} suffix="+" duration={2000} inView={inView} />
                 <span className="stat-label">Years</span>
               </motion.div>
               <motion.div 
