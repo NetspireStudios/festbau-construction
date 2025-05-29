@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaBars, FaTimes, FaFileInvoiceDollar } from 'react-icons/fa';
+import { FaBars, FaTimes, FaFileInvoiceDollar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    setActiveDropdown(null); // Close any open dropdowns when toggling menu
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    setActiveDropdown(null);
+  };
+
+  const toggleDropdown = (index) => {
+    setActiveDropdown(activeDropdown === index ? null : index);
   };
 
   const navLinks = [
@@ -37,6 +44,10 @@ const Navbar = () => {
     if (footer) {
       footer.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleLinkClick = () => {
+    closeMenu();
   };
 
   return (
@@ -67,27 +78,34 @@ const Navbar = () => {
             <div key={index} className="navbar-item">
               {item.submenu ? (
                 <div className="dropdown">
-                  <span className="navbar-link dropdown-trigger">
+                  <button
+                    className={`navbar-link dropdown-trigger ${activeDropdown === index ? 'active' : ''}`}
+                    onClick={() => toggleDropdown(index)}
+                    type="button"
+                  >
                     {item.label}
-                  </span>
-                  <div className="dropdown-content">
-                    {item.submenu.map((subItem, subIndex) => (
-                      <Link
-                        key={subIndex}
-                        to={subItem.path}
-                        className={`dropdown-link ${location.pathname === subItem.path ? 'active' : ''}`}
-                        onClick={closeMenu}
-                      >
-                        {subItem.label}
-                      </Link>
-                    ))}
-                  </div>
+                    {activeDropdown === index ? <FaChevronUp /> : <FaChevronDown />}
+                  </button>
+                  {activeDropdown === index && (
+                    <div className="dropdown-content active">
+                      {item.submenu.map((subItem, subIndex) => (
+                        <Link
+                          key={subIndex}
+                          to={subItem.path}
+                          className={`dropdown-link ${location.pathname === subItem.path ? 'active' : ''}`}
+                          onClick={handleLinkClick}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ) : (
                 <Link
                   to={item.path}
                   className={`navbar-link ${location.pathname === item.path ? 'active' : ''}`}
-                  onClick={closeMenu}
+                  onClick={handleLinkClick}
                 >
                   {item.label}
                 </Link>
@@ -100,6 +118,7 @@ const Navbar = () => {
             <button
               onClick={handleContactClick}
               className="navbar-link contact-scroll-btn"
+              type="button"
             >
               CONTACT
             </button>
@@ -110,7 +129,7 @@ const Navbar = () => {
             <Link
               to="/quote"
               className="btn btn-quote"
-              onClick={closeMenu}
+              onClick={handleLinkClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -120,7 +139,12 @@ const Navbar = () => {
           </motion.div>
         </div>
 
-        <button className="navbar-toggle" onClick={toggleMenu} aria-label="Toggle navigation">
+        <button 
+          className="navbar-toggle" 
+          onClick={toggleMenu} 
+          aria-label="Toggle navigation"
+          type="button"
+        >
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
