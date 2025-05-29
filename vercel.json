@@ -5,10 +5,16 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build"
+        "distDir": "build",
+        "zeroConfig": true
       }
     }
   ],
+  "functions": {
+    "app/api/**/*": {
+      "runtime": "nodejs18.x"
+    }
+  },
   "routes": [
     {
       "src": "/static/(.*)",
