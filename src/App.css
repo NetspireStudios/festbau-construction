@@ -59,6 +59,7 @@ input, textarea, .selectable-text {
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  scroll-padding-top: 80px; /* Account for fixed navbar */
   /* Prevent horizontal scroll on mobile */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -75,6 +76,8 @@ body {
   -webkit-overflow-scrolling: touch;
   /* Prevent zoom on double tap */
   touch-action: manipulation;
+  /* Ensure proper scroll restoration */
+  scroll-behavior: smooth;
 }
 
 .App {
@@ -82,6 +85,8 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
+  /* Ensure proper stacking context */
+  isolation: isolate;
 }
 
 /* ===== UTILITY CLASSES ===== */

@@ -199,6 +199,47 @@
   text-shadow: none;
 }
 
+/* ===== CONTACT SCROLL BUTTON ===== */
+.contact-scroll-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-primary);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.contact-scroll-btn::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  transition: width var(--transition-fast);
+}
+
+.contact-scroll-btn:hover,
+.contact-scroll-btn:focus {
+  color: var(--gold);
+  outline: none;
+}
+
+.contact-scroll-btn:hover::before,
+.contact-scroll-btn:focus::before {
+  width: 80%;
+}
+
 /* ===== MOBILE HAMBURGER TOGGLE ===== */
 .navbar-toggle {
   display: none;
@@ -271,11 +312,12 @@
     padding: 1rem 1.5rem;
     width: 100%;
     display: block;
-    border-radius: 12px;
-    background: rgba(42, 42, 42, 0.5);
-    border: 1px solid rgba(221, 171, 77, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     margin: 0.5rem 0;
     transition: all var(--transition-medium);
+    text-align: center;
   }
 
   .navbar-link::before {
@@ -284,10 +326,11 @@
 
   .navbar-link:hover,
   .navbar-link.active {
-    background: rgba(221, 171, 77, 0.2);
+    background: rgba(221, 171, 77, 0.15);
     border-color: var(--gold);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(221, 171, 77, 0.3);
+    color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(221, 171, 77, 0.2);
   }
 
   /* Mobile Dropdown */
@@ -330,6 +373,33 @@
     padding: 1rem 2rem;
     font-size: 1.1rem;
     border-radius: 12px;
+  }
+
+  /* Mobile Contact Button */
+  .contact-scroll-btn {
+    font-size: 1.2rem !important;
+    padding: 1rem 1.5rem !important;
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 0.5rem 0;
+    transition: all var(--transition-medium);
+    text-align: center;
+  }
+
+  .contact-scroll-btn:hover,
+  .contact-scroll-btn:focus {
+    background: rgba(221, 171, 77, 0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(221, 171, 77, 0.2);
+  }
+
+  .contact-scroll-btn::before {
+    display: none;
   }
 }
 

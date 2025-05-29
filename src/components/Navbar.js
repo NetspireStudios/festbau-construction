@@ -27,9 +27,17 @@ const Navbar = () => {
         { path: '/project-management', label: 'Project Management' }
       ]
     },
-    { path: '/portfolio', label: 'PORTFOLIO' },
-    { path: '/contact', label: 'CONTACT' }
+    { path: '/portfolio', label: 'PORTFOLIO' }
   ];
+
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    closeMenu();
+    const footer = document.getElementById('contact');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <motion.nav 
@@ -87,6 +95,16 @@ const Navbar = () => {
             </div>
           ))}
           
+          {/* Contact Button */}
+          <div className="navbar-item">
+            <button
+              onClick={handleContactClick}
+              className="navbar-link contact-scroll-btn"
+            >
+              CONTACT
+            </button>
+          </div>
+          
           {/* Get Quote Button */}
           <motion.div className="navbar-item quote-button-container">
             <Link
@@ -102,9 +120,9 @@ const Navbar = () => {
           </motion.div>
         </div>
 
-        <div className="navbar-toggle" onClick={toggleMenu}>
+        <button className="navbar-toggle" onClick={toggleMenu} aria-label="Toggle navigation">
           {isMenuOpen ? <FaTimes /> : <FaBars />}
-        </div>
+        </button>
       </div>
     </motion.nav>
   );

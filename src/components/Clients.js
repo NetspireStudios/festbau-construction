@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import './Clients.css';
 
 const Clients = () => {
   const [ref, inView] = useInView({
@@ -11,32 +12,32 @@ const Clients = () => {
   const clients = [
     {
       name: 'Dairy Queen',
-      logo: '/images/partners/DQ.avif',
+      logo: '/images/DQ.png',
       alt: 'Dairy Queen Logo'
     },
     {
       name: 'BarBurrito',
-      logo: '/images/partners/Barburrito.avif',
+      logo: '/images/Barburrito.png',
       alt: 'BarBurrito Logo'
     },
     {
       name: 'Quesada Burritos & Tacos',
-      logo: '/images/partners/Quesada.avif',
+      logo: '/images/Quesada.png',
       alt: 'Quesada Burritos & Tacos Logo'
     },
     {
       name: 'DoughBox Wood Fired Pizza',
-      logo: '/images/partners/Doughbox.avif',
+      logo: '/images/Doughbox.png',
       alt: 'DoughBox Wood Fired Pizza Logo'
     },
     {
       name: 'eggmaniac',
-      logo: '/images/partners/Eggmania.avif',
+      logo: '/images/Eggmania.png',
       alt: 'eggmaniac Logo'
     },
     {
       name: 'Tokyo Smoke',
-      logo: '/images/partners/Tokyosmoke.avif',
+      logo: '/images/Tokyosmoke.png',
       alt: 'Tokyo Smoke Logo'
     }
   ];
@@ -109,10 +110,11 @@ const Clients = () => {
             animate={inView ? "visible" : "hidden"}
             style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-              gap: '2rem',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+              gap: 'clamp(1rem, 3vw, 2rem)',
               marginTop: '3rem'
             }}
+            className="clients-grid"
           >
             {clients.map((client, index) => (
               <motion.div
