@@ -120,38 +120,42 @@
 
 .hero-title {
   font-family: var(--font-accent);
-  font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+  font-size: clamp(3.5rem, 6vw, 6.5rem);
   font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 1.2rem;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   color: var(--white);
   position: relative;
-  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.7), 2px 2px 8px rgba(0, 0, 0, 1);
+  text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.8), 3px 3px 12px rgba(0, 0, 0, 1);
 }
 
 .hero-title .gold-text {
   color: #DDAB4D;
   font-weight: 900;
-  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-size: clamp(4rem, 7vw, 7.5rem);
   position: relative;
-  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(221, 171, 77, 0.8), 2px 2px 8px rgba(0, 0, 0, 1);
+  text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.9), 0 0 50px rgba(221, 171, 77, 0.9), 3px 3px 12px rgba(0, 0, 0, 1);
   animation: textShine 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(221, 171, 77, 0.8));
 }
 
 @keyframes textShine {
   0% {
     color: #C4965A;
-    text-shadow: 0 0 20px rgba(196, 150, 90, 0.6);
+    text-shadow: 0 0 25px rgba(196, 150, 90, 0.7), 4px 4px 20px rgba(0, 0, 0, 0.9);
+    filter: drop-shadow(0 0 25px rgba(196, 150, 90, 0.6));
   }
   50% {
     color: #F2E991;
-    text-shadow: 0 0 30px rgba(242, 233, 145, 0.8);
+    text-shadow: 0 0 40px rgba(242, 233, 145, 0.9), 4px 4px 20px rgba(0, 0, 0, 0.9);
+    filter: drop-shadow(0 0 35px rgba(242, 233, 145, 0.8));
   }
   100% {
     color: #C4965A;
-    text-shadow: 0 0 20px rgba(196, 150, 90, 0.6);
+    text-shadow: 0 0 25px rgba(196, 150, 90, 0.7), 4px 4px 20px rgba(0, 0, 0, 0.9);
+    filter: drop-shadow(0 0 25px rgba(196, 150, 90, 0.6));
   }
 }
 
@@ -167,10 +171,11 @@
 }
 
 .hero-title .subtitle-text {
-  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 700;
   color: var(--gray-light);
-  letter-spacing: 0.3px;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9);
 }
 
 .hero-subtitle {
@@ -366,29 +371,32 @@
   }
 
   .hero-title {
-    font-size: 3rem; /* Much bigger header */
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
+    font-size: 4rem; /* Much bigger header for mobile */
+    margin-bottom: 1.8rem;
+    line-height: 1.05;
+    text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
     color: var(--white);
     font-weight: 900;
+    letter-spacing: 1.5px;
   }
 
   .hero-title .gold-text {
     color: var(--gold);
-    font-size: 3.5rem; /* Even bigger for "FESTBAU" */
+    font-size: 4.5rem; /* Even bigger for "FESTBAU" on mobile */
     display: block;
     text-shadow: 
-      3px 3px 10px rgba(0, 0, 0, 0.9),
-      0 0 25px rgba(221, 171, 77, 0.8);
+      4px 4px 12px rgba(0, 0, 0, 0.9),
+      0 0 30px rgba(221, 171, 77, 0.9);
+    filter: drop-shadow(0 0 20px rgba(221, 171, 77, 0.8));
   }
 
   .hero-title .subtitle-text {
-    font-size: 1.8rem; /* Bigger subtitle */
+    font-size: 2.2rem; /* Bigger subtitle for mobile */
     display: block;
-    margin-top: 0.8rem;
-    font-weight: 600;
+    margin-top: 1rem;
+    font-weight: 700;
     color: var(--gray-light);
+    letter-spacing: 0.8px;
   }
 
   /* REMOVE THE PARAGRAPH TEXT COMPLETELY */
@@ -514,16 +522,17 @@
   }
 
   .hero-title {
-    font-size: 2.5rem; /* Smaller but still big */
-    margin-bottom: 1.2rem;
+    font-size: 3.2rem; /* Still big but slightly smaller for tiny screens */
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
   }
 
   .hero-title .gold-text {
-    font-size: 2.8rem;
+    font-size: 3.6rem; /* Proportionally bigger */
   }
 
   .hero-title .subtitle-text {
-    font-size: 1.4rem;
+    font-size: 1.8rem; /* Proportional sizing */
   }
 
   /* Smaller mini icons for very small screens */
