@@ -6,14 +6,14 @@
 
 /* ===== PAGE HERO SECTION ===== */
 .page-hero {
-  height: 70vh;
+  height: 85vh; /* Increased from 70vh to 85vh for better content fit */
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--primary-black) 0%, var(--secondary-black) 100%);
   overflow: hidden;
-  padding: 2rem 0;
+  padding: 1rem 0; /* Reduced padding for more space */
 }
 
 .hero-background {
@@ -26,43 +26,43 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.7; /* Increased from 0.12 to 0.7 for much better visibility */
+  opacity: 0.5; /* Reduced from 0.7 to 0.5 for slightly dimmer background */
 }
 
 /* ===== SPECIFIC PAGE BACKGROUNDS ===== */
 .commercial-hero .hero-background {
   background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop&q=80');
-  opacity: 0.8; /* Even more visible for commercial page */
+  opacity: 0.6; /* Reduced from 0.8 to 0.6 for slightly dimmer but still visible */
 }
 
 .residential-hero .hero-background {
   background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1920&h=1080&fit=crop&q=80');
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .additional-services-hero .hero-background {
   background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1920&h=1080&fit=crop&q=80');
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .project-management-hero .hero-background {
   background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&h=1080&fit=crop&q=80');
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .portfolio-hero .hero-background {
   background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&h=1080&fit=crop&q=80');
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .contact-hero .hero-background {
   background-image: url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&h=1080&fit=crop&q=80');
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .quote-hero .hero-background {
   background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1920&h=1080&fit=crop&q=80');
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .hero-overlay {
@@ -73,9 +73,9 @@
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(10, 10, 10, 0.4) 0%,  /* Reduced from 0.85 to 0.4 for less dimming */
-    rgba(26, 26, 26, 0.3) 50%, /* Reduced from 0.75 to 0.3 */
-    rgba(42, 42, 42, 0.4) 100% /* Reduced from 0.85 to 0.4 */
+    rgba(10, 10, 10, 0.5) 0%,  /* Increased from 0.4 to 0.5 for slightly more dimming */
+    rgba(26, 26, 26, 0.4) 50%, /* Increased from 0.3 to 0.4 */
+    rgba(42, 42, 42, 0.5) 100% /* Increased from 0.4 to 0.5 */
   );
   z-index: 2;
 }
@@ -84,64 +84,66 @@
   position: relative;
   z-index: 3;
   text-align: center;
-  max-width: 900px; /* Increased for better layout */
+  max-width: 1000px; /* Increased from 900px for better layout */
   margin: 0 auto;
-  padding: 3rem 2rem; /* Enhanced padding for better spacing */
-  background: rgba(0, 0, 0, 0.6); /* Added background for better text readability */
+  padding: 2rem 1.5rem; /* Optimized padding for better fit */
+  background: rgba(0, 0, 0, 0.65); /* Slightly more opaque for better text readability */
   border-radius: 20px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(221, 171, 77, 0.2);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(221, 171, 77, 0.25);
+  transform: scale(0.95); /* Slightly scale down content to ensure it fits at 90% zoom */
 }
 
 .page-icon {
-  font-size: 4.5rem; /* Slightly larger for better presence */
+  font-size: clamp(3.5rem, 5vw, 4.5rem); /* Responsive sizing to ensure it fits */
   color: var(--gold);
-  margin-bottom: 2rem; /* Increased spacing */
+  margin-bottom: 1.5rem; /* Optimized spacing */
   filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7));
   text-shadow: 0 0 30px rgba(221, 171, 77, 0.8);
 }
 
 .page-title {
   font-family: var(--font-accent);
-  font-size: clamp(3rem, 6vw, 5.5rem); /* Slightly larger max size */
+  font-size: clamp(2.5rem, 5vw, 5rem); /* Better responsive sizing */
   font-weight: 800;
-  margin-bottom: 2rem; /* Increased spacing */
+  margin-bottom: 1.5rem; /* Optimized spacing */
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--white);
   text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(221, 171, 77, 0.5);
   line-height: 1.1;
+  word-wrap: break-word;
 }
 
 .page-subtitle {
   font-family: var(--font-primary);
-  font-size: clamp(1.1rem, 2vw, 1.4rem); /* Slightly larger */
-  line-height: 1.7; /* Better line height */
+  font-size: clamp(1rem, 2vw, 1.3rem); /* Better responsive sizing */
+  line-height: 1.6; /* Improved line height for readability */
   color: var(--gray-light);
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem; /* Optimized spacing */
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
-  max-width: 700px;
+  max-width: 800px; /* Slightly reduced for better fit */
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 /* ===== HERO STATS ===== */
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: 2.5rem; /* Adjusted gap */
+  gap: 2rem; /* Reduced gap for better fit */
   flex-wrap: wrap;
-  margin-top: 2rem;
+  margin-top: 1.5rem; /* Reduced margin */
 }
 
 .stat {
   text-align: center;
-  padding: 2rem 1.5rem; /* Increased padding */
+  padding: 1.5rem 1.2rem; /* Optimized padding */
   background: rgba(221, 171, 77, 0.15); /* Enhanced background */
   border-radius: 15px; /* Increased border radius */
   border: 1px solid rgba(221, 171, 77, 0.3);
-  min-width: 140px; /* Increased min width */
+  min-width: 120px; /* Optimized min width */
   transition: all var(--transition-medium);
   backdrop-filter: blur(5px);
 }
@@ -156,7 +158,7 @@
 .stat-number {
   display: block;
   font-family: var(--font-accent);
-  font-size: 3rem; /* Increased size */
+  font-size: clamp(2rem, 4vw, 2.8rem); /* Responsive sizing */
   font-weight: 800;
   color: var(--gold);
   line-height: 1;
@@ -166,9 +168,9 @@
 .stat-label {
   display: block;
   font-family: var(--font-primary);
-  font-size: 0.95rem; /* Slightly larger */
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem); /* Responsive sizing */
   color: var(--white); /* Changed to white for better visibility */
-  margin-top: 0.7rem; /* Increased margin */
+  margin-top: 0.5rem; /* Optimized margin */
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 600;
@@ -413,22 +415,77 @@
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .page-hero {
+    height: 80vh; /* Slightly reduced for tablets */
+  }
+  
+  .page-hero-content {
+    transform: scale(1); /* Remove scaling on tablets */
+    padding: 2.5rem 2rem; /* Better padding for tablets */
+  }
+  
+  .page-icon {
+    font-size: clamp(3rem, 4vw, 4rem);
+  }
+  
+  .page-title {
+    font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+  }
+}
+
 @media (max-width: 768px) {
   .page-hero {
-    height: 60vh;
+    height: 75vh; /* Optimized height for mobile */
+    padding: 0.5rem 0; /* Minimal padding */
+  }
+  
+  .page-hero-content {
+    transform: scale(1); /* Remove scaling on mobile */
+    padding: 2rem 1.5rem; /* Mobile-optimized padding */
+    max-width: 95%; /* Use most of screen width */
+    margin: 0 auto;
+  }
+  
+  .page-icon {
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* Mobile-optimized sizing */
+    margin-bottom: 1rem;
+  }
+  
+  .page-title {
+    font-size: clamp(2rem, 6vw, 3.5rem); /* Mobile-optimized sizing */
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  
+  .page-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.2rem); /* Mobile-optimized sizing */
+    margin-bottom: 2rem;
+    max-width: 100%;
+    padding: 0 1rem;
   }
   
   .hero-stats {
-    gap: 1.5rem;
+    gap: 1rem; /* Reduced gap on mobile */
+    margin-top: 1rem;
+    flex-direction: row; /* Keep horizontal layout */
+    justify-content: space-around; /* Distribute evenly */
   }
   
   .stat {
-    min-width: 100px;
-    padding: 1rem;
+    min-width: 90px; /* Smaller min width for mobile */
+    padding: 1rem 0.8rem; /* Compact padding */
+    flex: 1; /* Equal distribution */
+    max-width: 110px; /* Prevent too wide */
   }
   
   .stat-number {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 5vw, 2rem); /* Mobile-optimized sizing */
+  }
+  
+  .stat-label {
+    font-size: clamp(0.7rem, 2vw, 0.85rem); /* Mobile-optimized sizing */
+    margin-top: 0.3rem;
   }
   
   .services-grid,
@@ -452,22 +509,73 @@
   }
   
   .page-hero {
-    height: 50vh;
+    height: 70vh; /* Compact height for small screens */
+    padding: 0.5rem 0;
+  }
+  
+  .page-hero-content {
+    padding: 1.5rem 1rem; /* Compact padding */
+    max-width: 98%; /* Use almost full width */
   }
   
   .page-icon {
-    font-size: 3rem;
+    font-size: clamp(2rem, 8vw, 3rem); /* Very responsive sizing */
+    margin-bottom: 0.8rem;
+  }
+  
+  .page-title {
+    font-size: clamp(1.8rem, 8vw, 3rem); /* Very responsive sizing */
+    margin-bottom: 0.8rem;
+  }
+  
+  .page-subtitle {
+    font-size: clamp(0.85rem, 4vw, 1.1rem); /* Very responsive sizing */
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
   }
   
   .hero-stats {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    gap: 0.5rem; /* Minimal gap */
+    margin-top: 0.8rem;
+  }
+  
+  .stat {
+    min-width: 70px; /* Very compact */
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: clamp(1.2rem, 6vw, 1.8rem); /* Compact sizing */
+  }
+  
+  .stat-label {
+    font-size: clamp(0.65rem, 2.5vw, 0.8rem); /* Compact sizing */
+    margin-top: 0.2rem;
   }
   
   .service-card,
   .project-card {
     padding: 2rem 1.5rem;
+  }
+}
+
+/* ===== LANDSCAPE MOBILE OPTIMIZATION ===== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .page-hero {
+    height: 90vh; /* Use more height in landscape */
+  }
+  
+  .page-hero-content {
+    padding: 1rem;
+    transform: scale(0.9); /* Slightly scale down in landscape */
+  }
+  
+  .hero-stats {
+    margin-top: 0.5rem;
+  }
+  
+  .stat {
+    padding: 0.5rem;
   }
 }
 
