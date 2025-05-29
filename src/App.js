@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import CommercialPage from './pages/CommercialPage';
@@ -26,25 +25,6 @@ function ScrollToTop() {
 }
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  const handlePreloaderComplete = () => {
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    // Prevent scrolling during loading
-    if (loading) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [loading]);
-
-  if (loading) {
-    return <Preloader onComplete={handlePreloaderComplete} />;
-  }
-
   return (
     <Router>
       <div className="App">
