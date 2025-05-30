@@ -12,32 +12,32 @@ const Clients = () => {
   const clients = [
     {
       name: 'Dairy Queen',
-      logo: '/images/DQ.png',
+      logo: '/images/dq.png',
       alt: 'Dairy Queen Logo'
     },
     {
       name: 'BarBurrito',
-      logo: '/images/Barburrito.png',
+      logo: '/images/barburrito.png',
       alt: 'BarBurrito Logo'
     },
     {
       name: 'Quesada Burritos & Tacos',
-      logo: '/images/Quesada.png',
+      logo: '/images/quesada.png',
       alt: 'Quesada Burritos & Tacos Logo'
     },
     {
       name: 'DoughBox Wood Fired Pizza',
-      logo: '/images/Doughbox.png',
+      logo: '/images/doughbox.png',
       alt: 'DoughBox Wood Fired Pizza Logo'
     },
     {
       name: 'eggmaniac',
-      logo: '/images/Eggmania.png',
+      logo: '/images/eggmania.png',
       alt: 'eggmaniac Logo'
     },
     {
       name: 'Tokyo Smoke',
-      logo: '/images/Tokyosmoke.png',
+      logo: '/images/tokyosmoke.png',
       alt: 'Tokyo Smoke Logo'
     }
   ];
