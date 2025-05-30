@@ -3,6 +3,14 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './Clients.css';
 
+// Import images directly (more reliable for deployment)
+import dqLogo from '../assets/images/dq.png';
+import barburritoLogo from '../assets/images/barburrito.png';
+import quesadaLogo from '../assets/images/quesada.png';
+import doughboxLogo from '../assets/images/doughbox.png';
+import eggmaniaLogo from '../assets/images/eggmania.png';
+import tokyosmokeLogo from '../assets/images/tokyosmoke.png';
+
 const Clients = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -12,32 +20,32 @@ const Clients = () => {
   const clients = [
     {
       name: 'Dairy Queen',
-      logo: '/images/dq.png',
+      logo: dqLogo,
       alt: 'Dairy Queen Logo'
     },
     {
       name: 'BarBurrito',
-      logo: '/images/barburrito.png',
+      logo: barburritoLogo,
       alt: 'BarBurrito Logo'
     },
     {
       name: 'Quesada Burritos & Tacos',
-      logo: '/images/quesada.png',
+      logo: quesadaLogo,
       alt: 'Quesada Burritos & Tacos Logo'
     },
     {
       name: 'DoughBox Wood Fired Pizza',
-      logo: '/images/doughbox.png',
+      logo: doughboxLogo,
       alt: 'DoughBox Wood Fired Pizza Logo'
     },
     {
       name: 'eggmaniac',
-      logo: '/images/eggmania.png',
+      logo: eggmaniaLogo,
       alt: 'eggmaniac Logo'
     },
     {
       name: 'Tokyo Smoke',
-      logo: '/images/tokyosmoke.png',
+      logo: tokyosmokeLogo,
       alt: 'Tokyo Smoke Logo'
     }
   ];
@@ -174,7 +182,12 @@ const Clients = () => {
                       transition: 'all 0.3s ease'
                     }}
                     className="client-logo"
+                    onLoad={() => {
+                      console.log(`✅ Successfully loaded: ${client.logo}`);
+                    }}
                     onError={(e) => {
+                      console.error(`❌ Failed to load image: ${client.logo}`);
+                      console.error(`Full URL attempted: ${e.target.src}`);
                       e.target.style.display = 'none';
                       e.target.nextSibling.style.display = 'block';
                     }}
