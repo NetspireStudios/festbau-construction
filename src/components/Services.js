@@ -43,24 +43,6 @@ const servicesData = [
     specialties: ['Home Renovations', 'Interior Services', 'Project Management & Estimating']
   },
   {
-    id: 'additional',
-    title: 'Additional Services',
-    icon: <FaTools />,
-    subtitle: 'Comprehensive outdoor and specialty construction solutions',
-    route: '/additional-services',
-    services: [
-      'Custom Fences & Gates',
-      'Decks & Patios',
-      'Outdoor Living Spaces',
-      'Sheds & Outdoor Structures',
-      'Landscaping & Hardscaping',
-      'Maintenance & Repairs'
-    ],
-    description: 'Extend your living space outdoors with our comprehensive additional services. We create functional and beautiful outdoor environments that enhance your property value and lifestyle. From custom fencing and gates to elaborate outdoor living spaces, our team combines functionality with aesthetic appeal to deliver outstanding results.',
-    highlights: ['Outdoor Expertise', 'Weather Resistant', 'Custom Solutions'],
-    outdoorSpecialties: ['Fences & Gates', 'Decks & Patios', 'Outdoor Living Spaces', 'Sheds & Outdoor Structures']
-  },
-  {
     id: 'project',
     title: 'Project Management',
     icon: <FaProjectDiagram />,
@@ -77,6 +59,24 @@ const servicesData = [
     description: 'Our project management expertise, honed through experience as an Engineering Project Manager at Ferrero Canada, ensures every project runs smoothly, on time, and within budget. We provide comprehensive oversight from initial planning through final completion, ensuring clear communication and meticulous attention to detail throughout the entire construction process.',
     highlights: ['Engineering Background', 'Proven Track Record', 'Clear Communication'],
     expertise: ['Ferrero Canada Experience', 'Engineering Project Management', 'Turnkey Solutions']
+  },
+  {
+    id: 'additional',
+    title: 'Additional Services',
+    icon: <FaTools />,
+    subtitle: 'Comprehensive outdoor and specialty construction solutions',
+    route: '/additional-services',
+    services: [
+      'Custom Fences & Gates',
+      'Decks & Patios',
+      'Outdoor Living Spaces',
+      'Sheds & Outdoor Structures',
+      'Landscaping & Hardscaping',
+      'Maintenance & Repairs'
+    ],
+    description: 'Extend your living space outdoors with our comprehensive additional services. We create functional and beautiful outdoor environments that enhance your property value and lifestyle. From custom fencing and gates to elaborate outdoor living spaces, our team combines functionality with aesthetic appeal to deliver outstanding results.',
+    highlights: ['Outdoor Expertise', 'Weather Resistant', 'Custom Solutions'],
+    outdoorSpecialties: ['Fences & Gates', 'Decks & Patios', 'Outdoor Living Spaces', 'Sheds & Outdoor Structures']
   }
 ];
 
