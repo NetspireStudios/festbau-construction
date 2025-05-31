@@ -1,83 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaProjectDiagram, FaChartLine, FaShieldAlt, FaDollarSign, FaUsers, FaClipboardCheck, FaCalendarAlt, FaLightbulb, FaCogs } from 'react-icons/fa';
+import { FaProjectDiagram, FaChartLine, FaShieldAlt, FaDollarSign, FaUsers, FaCalendarAlt, FaLightbulb, FaCogs } from 'react-icons/fa';
 import './PageStyles.css';
 
 const ProjectManagementPage = () => {
-  const services = [
-    {
-      icon: FaCalendarAlt,
-      title: "Timeline Development & Schedule Management",
-      description: "Creating detailed timelines that outline each phase, from planning and design to construction and inspection. We establish realistic deadlines and coordinate with subcontractors to keep projects on track.",
-      features: [
-        "Detailed project phase planning",
-        "Realistic deadline establishment",
-        "Subcontractor coordination",
-        "Progress tracking and monitoring",
-        "Swift challenge resolution"
-      ]
-    },
-    {
-      icon: FaShieldAlt,
-      title: "Quality Assurance & Compliance Oversight",
-      description: "Implementing rigorous quality control measures throughout the construction process, ensuring all materials and workmanship meet industry standards and building codes.",
-      features: [
-        "Regular inspections and monitoring",
-        "Building code compliance verification", 
-        "Material quality control",
-        "Safety regulation adherence",
-        "Comprehensive documentation"
-      ]
-    },
-    {
-      icon: FaDollarSign,
-      title: "Budget Management & Cost Control",
-      description: "Closely monitoring expenses throughout the project lifecycle, conducting financial analyses to identify potential overruns early and implementing cost mitigation strategies.",
-      features: [
-        "Real-time expense monitoring",
-        "Financial analysis and reporting",
-        "Early overrun identification",
-        "Cost mitigation strategies",
-        "Transparent budget updates"
-      ]
-    },
-    {
-      icon: FaLightbulb,
-      title: "Risk Assessment & Mitigation",
-      description: "Conducting thorough evaluations to identify potential risks at every stage, developing proactive strategies to minimize impact and ensure project success.",
-      features: [
-        "Comprehensive risk evaluation",
-        "Financial risk analysis",
-        "Safety protocol development",
-        "Contingency planning",
-        "Insurance coordination"
-      ]
-    },
-    {
-      icon: FaUsers,
-      title: "Communication & Stakeholder Engagement",
-      description: "Maintaining open communication among all project participants, providing regular updates and facilitating feedback to ensure collaborative project execution.",
-      features: [
-        "Regular progress updates",
-        "Stakeholder coordination",
-        "Feedback session facilitation",
-        "Issue resolution",
-        "Transparent communication"
-      ]
-    },
-    {
-      icon: FaCogs,
-      title: "Comprehensive Project Planning",
-      description: "Meticulous planning and coordination that integrates all project aspects, establishing clear objectives and streamlining processes for enhanced efficiency.",
-      features: [
-        "Detailed project roadmaps",
-        "Resource allocation planning",
-        "Team coordination",
-        "Process optimization",
-        "Goal establishment"
-      ]
-    }
-  ];
 
   const serviceIcons = [
     { icon: FaCalendarAlt, title: "Timeline Management", mobileTitle: "Timeline" },

@@ -73,6 +73,10 @@
   text-align: center;
   padding: 0 20px;
   transform: scale(0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .hero-text {
@@ -91,6 +95,9 @@
   color: var(--white);
   position: relative;
   text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.8), 3px 3px 12px rgba(0, 0, 0, 1);
+  z-index: 10;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .hero-title .gold-text {
@@ -305,25 +312,27 @@
     height: 100vh; /* Full viewport height */
     min-height: 100vh; /* Ensure full height */
     margin-top: 0; /* Remove margin that was causing issues */
-    padding-top: 70px; /* Add padding instead for navbar clearance */
+    padding-top: 20px; /* Reduced padding to show title higher */
     padding-bottom: 20px;
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Align to top to ensure title is visible immediately */
     justify-content: center;
   }
 
   .hero-content {
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
     max-width: 100%;
     width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Start from top */
     align-items: center;
     text-align: center;
     transform: none; /* Remove any scaling */
+    margin-top: 60px; /* Add top margin to position below navbar but visible */
+    min-height: auto;
   }
 
   .hero-text {
@@ -423,12 +432,14 @@
   .hero {
     height: 100vh;
     min-height: 100vh;
-    padding-top: 65px; /* Account for smaller navbar */
+    padding-top: 15px; /* Even less padding for smaller screens */
     padding-bottom: 15px;
+    align-items: flex-start; /* Keep aligned to top */
   }
 
   .hero-content {
-    padding: 1.5rem 0.8rem;
+    padding: 0.8rem 0.8rem;
+    margin-top: 50px; /* Smaller top margin for tiny screens */
   }
 
   .hero-title {

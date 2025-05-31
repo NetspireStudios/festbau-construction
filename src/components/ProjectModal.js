@@ -8,13 +8,7 @@ import {
   FaChevronRight, 
   FaExternalLinkAlt, 
   FaCheckCircle,
-  FaMapPin,
-  FaEye,
-  FaImages,
-  FaBuilding,
-  FaTools,
-  FaStopwatch,
-  FaCog
+  FaMapPin
 } from 'react-icons/fa';
 import './ProjectModal.css';
 

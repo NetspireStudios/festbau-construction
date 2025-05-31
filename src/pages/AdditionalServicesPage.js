@@ -18,60 +18,7 @@ const AdditionalServicesPage = () => {
     setSelectedProject(null);
   };
 
-  const services = [
-    {
-      icon: FaHammer,
-      title: "Porch & Deck Construction",
-      description: "Transform your outdoor living space into a stunning retreat. We create beautiful outdoor oases for relaxing evenings, entertaining guests, and family gatherings.",
-      features: [
-        "Custom porch construction",
-        "Deck design and building",
-        "Pergola and gazebo construction", 
-        "Fence construction and installation",
-        "Premium material selection",
-        "Weather-resistant finishes"
-      ]
-    },
-    {
-      icon: FaLeaf,
-      title: "Landscaping Services",
-      description: "Complete outdoor transformation with professional landscaping that enhances your property's curb appeal and creates beautiful, functional outdoor spaces.",
-      features: [
-        "Garden design and installation",
-        "Lawn care and maintenance",
-        "Plant selection and placement",
-        "Irrigation system installation",
-        "Hardscape integration",
-        "Seasonal maintenance programs"
-      ]
-    },
-    {
-      icon: FaPalette,
-      title: "Custom Outdoor Design",
-      description: "Personalized outdoor spaces designed to reflect your style and meet your specific needs, from cozy patios to expansive entertainment areas.",
-      features: [
-        "Outdoor kitchen design",
-        "Fire pit and fireplace installation",
-        "Lighting design and installation",
-        "Water feature integration",
-        "Outdoor furniture placement",
-        "Seasonal decoration planning"
-      ]
-    },
-    {
-      icon: FaWater,
-      title: "Specialty Construction",
-      description: "Unique construction projects that go beyond traditional building, including water features, retaining walls, and custom installations.",
-      features: [
-        "Retaining wall construction",
-        "Drainage system installation",
-        "Walkway and pathway design",
-        "Outdoor storage solutions",
-        "Custom built-in features",
-        "Accessibility modifications"
-      ]
-    }
-  ];
+
 
   const featuredProjects = [
     {
