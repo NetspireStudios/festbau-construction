@@ -117,10 +117,14 @@ const Clients = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-              gap: 'clamp(1rem, 3vw, 2rem)',
-              marginTop: '3rem'
+              display: 'flex', 
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 'clamp(2rem, 4vw, 3rem)',
+              marginTop: '4rem',
+              maxWidth: '1000px',
+              margin: '4rem auto 0 auto'
             }}
             className="clients-grid"
           >
@@ -131,14 +135,19 @@ const Clients = () => {
                 className="client-card"
                 style={{
                   background: 'linear-gradient(135deg, var(--secondary-black), var(--accent-black))',
-                  padding: '3rem 2rem',
-                  borderRadius: '20px',
+                  padding: '2rem',
+                  borderRadius: '15px',
                   border: '1px solid var(--accent-black)',
                   textAlign: 'center',
                   transition: 'all 0.4s ease',
                   position: 'relative',
                   overflow: 'hidden',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  width: '160px',
+                  height: '120px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
                 whileHover={{ 
                   scale: 1.03, 
@@ -162,21 +171,12 @@ const Clients = () => {
                 }} className="client-card-border" />
                 
                 {/* Logo Container */}
-                <div style={{
-                  width: '100%',
-                  height: '120px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '1.5rem',
-                  position: 'relative'
-                }}>
                   <img
                     src={client.logo}
                     alt={client.alt}
                     style={{
                       maxWidth: '100%',
-                      maxHeight: '100%',
+                    maxHeight: '80px',
                       objectFit: 'contain',
                       filter: 'brightness(0.9) contrast(1.1)',
                       transition: 'all 0.3s ease'
@@ -196,24 +196,11 @@ const Clients = () => {
                   <div style={{
                     display: 'none',
                     color: 'var(--gold)',
-                    fontSize: '1.2rem',
+                  fontSize: '1rem',
                     fontWeight: '600'
                   }}>
                     {client.name}
-                  </div>
                 </div>
-                
-                {/* Client Name */}
-                <h3 style={{
-                  color: 'var(--white)',
-                  fontSize: '1.1rem',
-                  fontWeight: '600',
-                  margin: 0,
-                  opacity: 0.9,
-                  transition: 'all 0.3s ease'
-                }} className="client-name">
-                  {client.name}
-                </h3>
               </motion.div>
             ))}
           </motion.div>

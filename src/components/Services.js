@@ -232,17 +232,12 @@ const Services = () => {
                           <motion.div
                             key={index}
                             className="highlight-item"
-                            initial={{ opacity: 0, scale: 0.6, rotateZ: -10 }}
-                            animate={{ opacity: 1, scale: 1, rotateZ: 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ 
-                              delay: index * 0.1 + 0.4,
-                              duration: 0.5,
-                              ease: [0.25, 0.46, 0.45, 0.94]
-                            }}
-                            whileHover={{
-                              scale: 1.1,
-                              rotateZ: 5,
-                              transition: { duration: 0.2 }
+                              delay: index * 0.15 + 0.4,
+                              duration: 0.6,
+                              ease: "easeOut"
                             }}
                           >
                             <FaCog className="highlight-icon" />
@@ -263,17 +258,12 @@ const Services = () => {
                         {activeService.services.map((service, index) => (
                           <motion.li
                             key={index}
-                            initial={{ opacity: 0, x: -30, rotateY: -15 }}
-                            animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ 
-                              delay: index * 0.08 + 0.5,
+                              delay: index * 0.1 + 0.5,
                               duration: 0.5,
-                              ease: [0.25, 0.46, 0.45, 0.94]
-                            }}
-                            whileHover={{
-                              x: 10,
-                              color: 'var(--gold)',
-                              transition: { duration: 0.2 }
+                              ease: 'easeOut'
                             }}
                           >
                             {service}
@@ -293,20 +283,22 @@ const Services = () => {
                       ease: [0.25, 0.46, 0.45, 0.94]
                     }}
                   >
-                    <motion.component
-                      as={Link}
+                    <Link
                       to={activeService.route}
                       className="btn btn-learn-more"
+                    >
+                      <motion.div
                       whileHover={{ 
                         scale: 1.08, 
                         y: -3,
-                        boxShadow: "0 15px 35px rgba(221, 171, 77, 0.4)"
                       }}
                       whileTap={{ scale: 0.95 }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
                     >
                       <FaArrowRight />
                       Learn More About {activeService.title}
-                    </motion.component>
+                      </motion.div>
+                    </Link>
                   </motion.div>
                 </motion.div>
               </AnimatePresence>

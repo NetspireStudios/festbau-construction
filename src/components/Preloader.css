@@ -1,0 +1,50 @@
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.preloader-logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.preloader-logo .gold-text {
+  color: #DDAB4D;
+}
+
+.preloader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(221, 171, 77, 0.3);
+  border-top: 3px solid #DDAB4D;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .preloader-logo {
+    font-size: 2rem;
+  }
+  
+  .preloader-spinner {
+    width: 40px;
+    height: 40px;
+  }
+} 

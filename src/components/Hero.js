@@ -2,52 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
-import { FaFileInvoiceDollar, FaPhone, FaUsers, FaTools, FaStar } from 'react-icons/fa';
+import { FaFileInvoiceDollar, FaPhone, FaBuilding, FaAward, FaClock, FaUsers } from 'react-icons/fa';
 import './Hero.css';
 
-// Animated Counter Component with rolling effect
+// Animated Counter Component
 const AnimatedCounter = ({ target, suffix = "", duration = 2000, inView }) => {
   const [count, setCount] = useState(0);
-  
+
   useEffect(() => {
     if (!inView) return;
     
-    let startTime;
-    let animationFrame;
+    let start = 0;
+    const increment = target / (duration / 16); // 60fps
     
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      
-      // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      const currentCount = Math.floor(target * easeOutQuart);
-      
-      setCount(currentCount);
-      
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
       }
-    };
-    
-    animationFrame = requestAnimationFrame(animate);
-    
-    return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
-      }
-    };
+    }, 16);
+
+    return () => clearInterval(timer);
   }, [target, duration, inView]);
-  
+
   return (
-    <motion.span 
-      className="stat-number animated-counter"
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={inView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-    >
+    <span className="animated-counter">
       {count}{suffix}
-    </motion.span>
+    </span>
   );
 };
 
@@ -80,16 +64,41 @@ const Hero = () => {
     }
   };
 
+  const stats = [
+    {
+      icon: FaBuilding,
+      number: 16,
+      suffix: "",
+      label: "Projects Completed",
+      description: "Successful builds"
+    },
+    {
+      icon: FaUsers,
+      number: 100,
+      suffix: "%",
+      label: "Client Satisfaction",
+      description: "Happy customers"
+    },
+    {
+      icon: FaAward,
+      number: 4,
+      suffix: "+",
+      label: "Years Experience",
+      description: "Industry expertise"
+    },
+    {
+      icon: FaClock,
+      number: 24,
+      suffix: "/7",
+      label: "Support Available",
+      description: "Always here for you"
+    }
+  ];
+
   return (
     <section id="home" className="hero">
       <div className="hero-background">
-        <div className="hero-background-slider">
-          <div className="hero-background-slide"></div>
-          <div className="hero-background-slide"></div>
-          <div className="hero-background-slide"></div>
-          <div className="hero-background-slide"></div>
-          <div className="hero-background-slide"></div>
-        </div>
+        <div className="hero-background-slider"></div>
         <div className="hero-overlay"></div>
         <div className="hero-particles"></div>
       </div>
@@ -107,18 +116,6 @@ const Hero = () => {
               <br />
               <span className="subtitle-text">Premium Construction</span>
             </motion.h1>
-            
-            <motion.div className="hero-highlights" variants={itemVariants}>
-              <div className="highlight-item">
-                <FaUsers className="highlight-icon" />
-              </div>
-              <div className="highlight-item">
-                <FaTools className="highlight-icon" />
-              </div>
-              <div className="highlight-item">
-                <FaFileInvoiceDollar className="highlight-icon" />
-              </div>
-            </motion.div>
             
             <motion.div className="hero-buttons" variants={itemVariants}>
               <motion.a
@@ -147,14 +144,37 @@ const Hero = () => {
               variants={itemVariants}
               ref={ref}
             >
-              <div className="stars-container">
-                <FaStar className="star-icon" />
-                <FaStar className="star-icon" />
-                <FaStar className="star-icon" />
-                <FaStar className="star-icon" />
-                <FaStar className="star-icon" />
-              </div>
-              <div className="rating-text">5.0/5.0</div>
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="stat-item"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                  transition={{ duration: 0.6, delay: 0.8 + (index * 0.15) }}
+                  whileHover={{ y: -5, scale: 1.05 }}
+                >
+                  <div className="stat-icon-wrapper">
+                    <stat.icon className="stat-icon" />
+                  </div>
+                  <div className="stat-content">
+                    <motion.div 
+                      className="stat-number"
+                      initial={{ scale: 0 }}
+                      animate={inView ? { scale: 1 } : { scale: 0 }}
+                      transition={{ duration: 0.5, delay: 1.2 + (index * 0.1) }}
+                    >
+                      <AnimatedCounter 
+                        target={stat.number} 
+                        suffix={stat.suffix}
+                        duration={1500 + (index * 200)}
+                        inView={inView}
+                      />
+                    </motion.div>
+                    <div className="stat-label">{stat.label}</div>
+                    <div className="stat-description">{stat.description}</div>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
           </motion.div>
         </div>

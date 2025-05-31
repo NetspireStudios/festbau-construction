@@ -1,104 +1,58 @@
 import React from 'react';
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer style={{ 
-      background: 'var(--primary-black)', 
-      padding: '3rem 0 2rem', 
-      borderTop: '1px solid var(--accent-black)' 
-    }}>
+    <footer className="footer">
       <div className="container">
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-          gap: '2rem',
-          marginBottom: '2rem'
-        }}>
-          <div style={{ 
-            flex: '1', 
-            minWidth: '300px', 
-            marginBottom: '2rem' 
-          }}>
-            <div className="footer-logo" style={{
-              marginBottom: '1rem'
-            }}>
-              <h3 style={{ 
-                color: 'var(--gold)', 
-                marginBottom: '1rem', 
-                fontSize: '1.5rem',
-                fontWeight: '700'
-              }}>FESTBAU</h3>
-              <p style={{ 
-                color: 'var(--gray-light)', 
-                lineHeight: '1.6' 
-              }}>Excellence in Construction & Renovation. From commercial builds to residential renovations, 
-              we deliver turnkey solutions with precision and quality.</p>
+        <div className="footer-content">
+          {/* Company Info */}
+          <div className="footer-section company-info">
+            <h3 className="footer-logo">FESTBAU</h3>
+            <p className="footer-description">
+              Excellence in Construction & Renovation. From commercial builds to residential renovations, 
+              we deliver turnkey solutions with precision and quality.
+            </p>
+          </div>
+          
+          {/* Contact Info */}
+          <div className="footer-section contact-info">
+            <h4 className="footer-title">Contact Info</h4>
+            <div className="contact-item">
+              <FaPhone className="contact-icon" />
+              <span className="contact-text">(548) 333-1419</span>
+            </div>
+            <div className="contact-item">
+              <FaEnvelope className="contact-icon" />
+              <span className="contact-text">info@festbau.com</span>
+            </div>
+            <div className="contact-item">
+              <FaMapMarkerAlt className="contact-icon" />
+              <span className="contact-text">Cambridge, ON</span>
             </div>
           </div>
           
-          <div>
-            <h4 style={{ color: 'var(--white)', marginBottom: '1rem' }}>Contact Info</h4>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              <FaPhone style={{ color: 'var(--gold)', fontSize: '0.9rem' }} />
-              <p style={{ color: 'var(--gray-light)', margin: 0 }}>
-                (548) 333-1419
-              </p>
+          {/* Services */}
+          <div className="footer-section services-info">
+            <h4 className="footer-title">Services</h4>
+            <div className="service-links">
+              <span className="service-link">Commercial Construction</span>
+              <span className="service-link">Residential Services</span>
+              <span className="service-link">Project Management</span>
+              <span className="service-link">Additional Services</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              <FaEnvelope style={{ color: 'var(--gold)', fontSize: '0.9rem' }} />
-              <p style={{ color: 'var(--gray-light)', margin: 0 }}>
-                info@festbau.com
-              </p>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <FaMapMarkerAlt style={{ color: 'var(--gold)', fontSize: '0.9rem' }} />
-              <p style={{ color: 'var(--gray-light)', margin: 0 }}>
-                Cambridge, ON
-              </p>
-            </div>
-          </div>
-          
-          <div>
-            <h4 style={{ color: 'var(--white)', marginBottom: '1rem' }}>Services</h4>
-            <p style={{ color: 'var(--gray-light)', marginBottom: '0.5rem' }}>Commercial Construction</p>
-            <p style={{ color: 'var(--gray-light)', marginBottom: '0.5rem' }}>Residential Services</p>
-            <p style={{ color: 'var(--gray-light)', marginBottom: '0.5rem' }}>Project Management</p>
-            <p style={{ color: 'var(--gray-light)' }}>Additional Services</p>
           </div>
 
-          <div>
-            <h4 style={{ color: 'var(--white)', marginBottom: '1rem' }}>Follow Us</h4>
-            <div style={{ display: 'flex', gap: '1rem' }}>
+          {/* Social Media */}
+          <div className="footer-section social-media">
+            <h4 className="footer-title">Follow Us</h4>
+            <div className="social-links">
               <a 
                 href="https://www.facebook.com/profile.php?id=100085899534543" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  background: 'var(--accent-black)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--gray-light)',
-                  textDecoration: 'none',
-                  transition: 'all 0.3s ease',
-                  border: '1px solid transparent'
-                }}
-                onMouseOver={(e) => {
-                  e.target.style.background = 'var(--gold)';
-                  e.target.style.color = 'var(--primary-black)';
-                  e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = '0 8px 20px rgba(221, 171, 77, 0.3)';
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.background = 'var(--accent-black)';
-                  e.target.style.color = 'var(--gray-light)';
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = 'none';
-                }}
+                className="social-link"
               >
                 <FaFacebookF />
               </a>
@@ -106,31 +60,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/vugar-construction-inc/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  background: 'var(--accent-black)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--gray-light)',
-                  textDecoration: 'none',
-                  transition: 'all 0.3s ease',
-                  border: '1px solid transparent'
-                }}
-                onMouseOver={(e) => {
-                  e.target.style.background = 'var(--gold)';
-                  e.target.style.color = 'var(--primary-black)';
-                  e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = '0 8px 20px rgba(221, 171, 77, 0.3)';
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.background = 'var(--accent-black)';
-                  e.target.style.color = 'var(--gray-light)';
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = 'none';
-                }}
+                className="social-link"
               >
                 <FaLinkedinIn />
               </a>
@@ -138,31 +68,7 @@ const Footer = () => {
                 href="https://www.instagram.com/vugarconstruction/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '50%',
-                  background: 'var(--accent-black)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--gray-light)',
-                  textDecoration: 'none',
-                  transition: 'all 0.3s ease',
-                  border: '1px solid transparent'
-                }}
-                onMouseOver={(e) => {
-                  e.target.style.background = 'var(--gold)';
-                  e.target.style.color = 'var(--primary-black)';
-                  e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = '0 8px 20px rgba(221, 171, 77, 0.3)';
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.background = 'var(--accent-black)';
-                  e.target.style.color = 'var(--gray-light)';
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = 'none';
-                }}
+                className="social-link"
               >
                 <FaInstagram />
               </a>
@@ -170,15 +76,8 @@ const Footer = () => {
           </div>
         </div>
         
-        <div style={{ 
-          borderTop: '1px solid var(--accent-black)', 
-          paddingTop: '2rem', 
-          marginTop: '3rem', 
-          textAlign: 'center' 
-        }}>
-          <p className="footer-copyright" style={{ 
-            color: 'var(--gray-medium)' 
-          }}>
+        <div className="footer-bottom">
+          <p className="footer-copyright">
             © 2025 FESTBAU. All Rights Reserved.
           </p>
         </div>

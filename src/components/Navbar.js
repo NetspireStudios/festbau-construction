@@ -1,40 +1,28 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaBars, FaTimes, FaFileInvoiceDollar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setActiveDropdown(null); // Close any open dropdowns when toggling menu
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-    setActiveDropdown(null);
-  };
-
-  const toggleDropdown = (index) => {
-    setActiveDropdown(activeDropdown === index ? null : index);
   };
 
   const navLinks = [
     { path: '/', label: 'HOME' },
-    { 
-      label: 'SERVICES',
-      submenu: [
-        { path: '/commercial', label: 'Commercial Construction' },
-        { path: '/residential', label: 'Residential Services' },
-        { path: '/additional-services', label: 'Additional Services' },
-        { path: '/project-management', label: 'Project Management' }
-      ]
-    },
-    { path: '/portfolio', label: 'PORTFOLIO' }
+    { path: '/commercial', label: 'COMMERCIAL' },
+    { path: '/residential', label: 'RESIDENTIAL' },
+    { path: '/project-management', label: 'PROJECT MANAGEMENT' },
+    { path: '/additional-services', label: 'ADDITIONAL SERVICES' },
+    { path: '/blog', label: 'BLOG' }
   ];
 
   const handleContactClick = (e) => {
@@ -76,40 +64,13 @@ const Navbar = () => {
         <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
           {navLinks.map((item, index) => (
             <div key={index} className="navbar-item">
-              {item.submenu ? (
-                <div className="dropdown">
-                  <button
-                    className={`navbar-link dropdown-trigger ${activeDropdown === index ? 'active' : ''}`}
-                    onClick={() => toggleDropdown(index)}
-                    type="button"
-                  >
-                    {item.label}
-                    {activeDropdown === index ? <FaChevronUp /> : <FaChevronDown />}
-                  </button>
-                  {activeDropdown === index && (
-                    <div className="dropdown-content active">
-                      {item.submenu.map((subItem, subIndex) => (
-                        <Link
-                          key={subIndex}
-                          to={subItem.path}
-                          className={`dropdown-link ${location.pathname === subItem.path ? 'active' : ''}`}
-                          onClick={handleLinkClick}
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  to={item.path}
-                  className={`navbar-link ${location.pathname === item.path ? 'active' : ''}`}
-                  onClick={handleLinkClick}
-                >
-                  {item.label}
-                </Link>
-              )}
+              <Link
+                to={item.path}
+                className={`navbar-link ${location.pathname === item.path ? 'active' : ''}`}
+                onClick={handleLinkClick}
+              >
+                {item.label}
+              </Link>
             </div>
           ))}
           
@@ -120,7 +81,7 @@ const Navbar = () => {
               className="navbar-link contact-scroll-btn"
               type="button"
             >
-              CONTACT
+              CONTACT US
             </button>
           </div>
           
@@ -133,8 +94,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <FaFileInvoiceDollar />
-              Get Quote
+              GET QUOTE
             </Link>
           </motion.div>
         </div>

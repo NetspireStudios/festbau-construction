@@ -1,121 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaHome, FaCheckCircle, FaPhone, FaEnvelope } from 'react-icons/fa';
-import ImageSection from '../components/ImageSection';
+import { FaHome, FaHammer, FaPaintBrush, FaCouch, FaMapMarkerAlt, FaEye } from 'react-icons/fa';
+import { residentialProjects, getProjectWithImage } from '../utils/imageHelper';
+import ProjectModal from '../components/ProjectModal';
 import './PageStyles.css';
 
 const ResidentialPage = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut'
-      }
-    }
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
   };
 
-  const services = [
-    "Complete Home Renovations",
-    "Kitchen & Bathroom Remodeling", 
-    "Interior Design & Build",
-    "Custom Carpentry",
-    "Flooring Installation",
-    "Electrical & Plumbing"
+  const serviceIcons = [
+    { icon: FaHome, title: "Home Renovations", mobileTitle: "Homes" },
+    { icon: FaHammer, title: "Kitchen Remodeling", mobileTitle: "Kitchens" },
+    { icon: FaPaintBrush, title: "Bathroom Renovation", mobileTitle: "Bathrooms" },
+    { icon: FaCouch, title: "Basement Finishing", mobileTitle: "Basements" },
+    { icon: FaHome, title: "Interior Design", mobileTitle: "Interiors" }
   ];
 
-  const residentialProjects = [
-    {
-      src: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop&q=80',
-      title: 'Modern Family Home',
-      description: 'Complete home renovation with contemporary design and luxury finishes',
-      category: 'Full Renovation',
-      alt: 'Modern Family Home Renovation'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop&q=80',
-      title: 'Luxury Kitchen Remodel',
-      description: 'High-end kitchen renovation with custom cabinetry and premium appliances',
-      category: 'Kitchen',
-      alt: 'Luxury Kitchen Remodel'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=600&h=400&fit=crop&q=80',
-      title: 'Master Bathroom Suite',
-      description: 'Spa-like bathroom transformation with modern fixtures and elegant design',
-      category: 'Bathroom',
-      alt: 'Master Bathroom Suite'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=400&fit=crop&q=80',
-      title: 'Open Concept Living',
-      description: 'Living room and dining area renovation with open-concept design',
-      category: 'Living Space',
-      alt: 'Open Concept Living Room'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=600&h=400&fit=crop&q=80',
-      title: 'Basement Conversion',
-      description: 'Basement transformation into functional living and entertainment space',
-      category: 'Basement',
-      alt: 'Basement Conversion'
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=600&h=400&fit=crop&q=80',
-      title: 'Custom Home Office',
-      description: 'Dedicated home office space with built-in storage and modern design',
-      category: 'Home Office',
-      alt: 'Custom Home Office'
-    }
-  ];
+  // Get projects with images from the helper
+  const featuredProjects = residentialProjects.map(project => 
+    getProjectWithImage(project, "Residential Projects")
+  );
 
-  const projects = [
-    {
-      name: "Condo Renovation in North York",
-      type: "Turnkey Project",
-      description: "Complete condo transformation with modern finishes",
-      features: ["Open Concept Design", "Premium Materials", "Smart Home Integration"]
-    },
-    {
-      name: "Elements Design & Renovation, Cambridge",
-      type: "Turnkey Project",
-      description: "Full home renovation with custom design elements",
-      features: ["Custom Millwork", "Designer Finishes", "Energy Efficient"]
-    },
-    {
-      name: "Basement Renovation in London",
-      type: "Turnkey Project",
-      description: "Basement transformation into functional living space",
-      features: ["Moisture Control", "Proper Insulation", "Modern Lighting"]
-    }
-  ];
+
+
+  const pageVariants = {
+    initial: { opacity: 0, y: 20 },
+    in: { opacity: 1, y: 0 },
+    out: { opacity: 0, y: -20 }
+  };
+
+  const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 0.5
+  };
 
   return (
     <motion.div
-      className="page-container"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.6 }}
+      className="page-container residential-page"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
     >
       {/* Hero Section */}
       <section className="page-hero residential-hero">
@@ -130,123 +68,247 @@ const ResidentialPage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <FaHome className="page-icon" />
-            <h1 className="page-title">Residential <span className="gold-text">Services</span></h1>
+            <h1 className="page-title">Residential <span className="gold-text">Construction</span></h1>
             <p className="page-subtitle">
-              Transform your home with expert craftsmanship and meticulous attention to detail.
+              Creating dream homes and transforming living spaces across Ontario with personalized design and exceptional craftsmanship.
             </p>
-            <div className="hero-stats">
-              <div className="stat">
-                <span className="stat-number">200+</span>
-                <span className="stat-label">Homes Renovated</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">100%</span>
-                <span className="stat-label">Client Satisfaction</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">5★</span>
-                <span className="stat-label">Average Rating</span>
-              </div>
+            
+            {/* Service Icons */}
+            <div className="service-icons-grid">
+              {serviceIcons.map((service, index) => (
+                <motion.div
+                  key={index}
+                  className="service-icon-item"
+                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
+                  whileHover={{ y: -5, scale: 1.05 }}
+                >
+                  <service.icon className="service-icon" />
+                  <span className="service-title desktop-title">{service.title}</span>
+                  <span className="service-title mobile-title">{service.mobileTitle}</span>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="services-detail-section">
+      {/* Introduction Section */}
+      <section className="section-padding">
         <div className="container">
           <motion.div
-            ref={ref}
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            className="section-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <motion.div variants={itemVariants} className="section-header">
-              <h2 className="section-title">Our Residential <span className="gold-text">Services</span></h2>
-              <div className="section-divider"></div>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="services-grid">
-              {services.map((service, index) => (
-                <motion.div 
-                  key={index}
-                  className="service-card"
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <FaCheckCircle className="service-icon" />
-                  <h3>{service}</h3>
-                </motion.div>
-              ))}
-            </motion.div>
+            <h2 className="section-title">
+              Expert Residential <span className="gold-text">Construction Services</span>
+            </h2>
+            <p className="section-description">
+              From custom home building to comprehensive renovations, we specialize in creating beautiful, 
+              functional living spaces that reflect your unique style and meet your family's needs. 
+              Our experienced team brings your vision to life with quality craftsmanship and attention to detail.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Projects Gallery */}
-      <ImageSection
-        title="Residential <span class='gold-text'>Portfolio</span>"
-        subtitle="Explore our recent residential projects showcasing our expertise in home renovations, kitchen remodels, and custom interior design solutions."
-        images={residentialProjects}
-        columns={3}
-        className="residential-projects-section"
-      />
+
 
       {/* Featured Projects */}
-      <section className="projects-section">
+      <section className="section-padding">
         <div className="container">
-          <div className="section-header">
-            <h2 className="section-title">Featured <span className="gold-text">Projects</span></h2>
-            <div className="section-divider"></div>
-          </div>
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <motion.div 
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="section-title">
+              Featured Residential <span className="gold-text">Projects</span>
+            </h2>
+            <p className="section-description">
+              Explore our portfolio of residential construction and renovation projects, 
+              showcasing our commitment to quality and innovation in home building.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="projects-grid"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            {featuredProjects.map((project, index) => (
+              <motion.div
                 key={index}
-                className="project-card"
+                className="project-card featured-project"
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
-                whileHover={{ y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                onClick={() => handleProjectClick(project)}
+                style={{ cursor: 'pointer' }}
               >
-                <div className="project-header">
-                  <h3 className="project-name">{project.name}</h3>
-                  <span className="project-type">{project.type}</span>
+                <div className="project-image">
+                  <img src={project.image} alt={project.title} />
+                  <div className="project-overlay">
+                    <motion.button
+                      className="view-project-btn"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => handleProjectClick(project)}
+                    >
+                      <FaEye />
+                      <span className="btn-text">View Project</span>
+                    </motion.button>
+                  </div>
                 </div>
-                <p className="project-description">{project.description}</p>
-                <div className="project-features">
-                  {project.features.map((feature, idx) => (
-                    <span key={idx} className="feature-tag">{feature}</span>
-                  ))}
+                <div className="project-content">
+                  <div className="project-header">
+                    <h3 className="project-title">{project.title}</h3>
+                    <div className="project-location">
+                      <FaMapMarkerAlt />
+                      <span>{project.location}</span>
+                    </div>
+                  </div>
+                  <div className="project-category">
+                    <span className="category-badge">{project.category}</span>
+                  </div>
+                  <p className="project-description">{project.description}</p>
+                  <div className="project-features">
+                    {project.features.map((feature, featureIndex) => (
+                      <span key={featureIndex} className="feature-tag">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="cta-section">
+      {/* Process Section */}
+      <section className="section-padding bg-gradient">
         <div className="container">
           <motion.div
-            className="cta-content"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
+            className="section-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <h2>Ready to Transform Your Home?</h2>
-            <p>Get a free consultation and quote for your residential renovation project.</p>
-            <div className="cta-buttons">
-              <a href="tel:548-333-1419" className="btn btn-primary">
-                <FaPhone /> Call (548) 333-1419
-              </a>
-              <a href="mailto:info@festbau.com" className="btn btn-secondary">
-                <FaEnvelope /> Email Us
-              </a>
+            <h2 className="section-title">
+              Our Construction <span className="gold-text">Process</span>
+            </h2>
+            <p className="section-description">
+              From initial consultation to final walkthrough, we ensure a smooth and transparent construction experience.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="process-timeline"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <div className="timeline-item">
+              <div className="timeline-icon">
+                <FaHome />
+              </div>
+              <div className="timeline-content">
+                <h3>Design & Planning</h3>
+                <p>Collaborative design process to bring your vision to life</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-icon">
+                <FaHammer />
+              </div>
+              <div className="timeline-content">
+                <h3>Construction Phase</h3>
+                <p>Expert craftsmanship with regular progress updates</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-icon">
+                <FaPaintBrush />
+              </div>
+              <div className="timeline-content">
+                <h3>Finishing Touches</h3>
+                <p>Attention to detail in every finishing element</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-icon">
+                <FaCouch />
+              </div>
+              <div className="timeline-content">
+                <h3>Final Walkthrough</h3>
+                <p>Quality inspection and handover of your dream space</p>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* CTA Section */}
+      <section className="section-padding">
+        <div className="container">
+          <motion.div
+            className="cta-content text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="cta-title">
+              Ready to Build Your <span className="gold-text">Dream Home</span>?
+            </h2>
+            <p className="cta-description">
+              Contact us today to discuss your residential construction or renovation project and take the first step toward your dream home.
+            </p>
+            <div className="cta-buttons">
+              <motion.a
+                href="/quote"
+                className="btn btn-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Get Free Quote
+              </motion.a>
+              <motion.button
+                className="btn btn-secondary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const footer = document.getElementById('contact');
+                  if (footer) footer.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Schedule Consultation
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        category="Residential Projects"
+      />
     </motion.div>
   );
 };

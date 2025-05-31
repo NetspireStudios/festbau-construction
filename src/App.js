@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
+import Preloader from './components/Preloader';
 import HomePage from './pages/HomePage';
 import CommercialPage from './pages/CommercialPage';
 import ResidentialPage from './pages/ResidentialPage';
@@ -10,6 +10,7 @@ import ProjectManagementPage from './pages/ProjectManagementPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
 import QuotePage from './pages/QuotePage';
+import BlogPage from './pages/BlogPage';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -26,11 +27,11 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <ScrollToTop />
-        <Navbar />
-        <AnimatePresence mode="wait">
+    <Preloader>
+      <Router>
+        <div className="App">
+          <ScrollToTop />
+          <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/commercial" element={<CommercialPage />} />
@@ -40,11 +41,12 @@ function App() {
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/quote" element={<QuotePage />} />
+            <Route path="/blog" element={<BlogPage />} />
           </Routes>
-        </AnimatePresence>
-        <Footer />
-      </div>
-    </Router>
+          <Footer />
+        </div>
+      </Router>
+    </Preloader>
   );
 }
 
