@@ -230,6 +230,70 @@ const ContactPage = () => {
           </form>
         </motion.div>
       </div>
+
+      {/* Google Map Section */}
+      <motion.section
+        className="contact-map-section"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="container">
+          <motion.div
+            className="map-header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="map-title">Find Us Here</h2>
+            <p className="map-description">
+              Visit our office in Cambridge, Ontario for consultations and project discussions.
+            </p>
+          </motion.div>
+          
+          <motion.div
+            className="map-container"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="map-wrapper">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d186425.94313600284!2d-80.6424327820078!3d43.39915820701758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882bf48c03ee5105%3A0x9525e7ee87ea7c52!2sCambridge%2C%20ON%2C%20Canada!5e0!3m2!1sen!2s!4v1697715023456!5m2!1sen!2s"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="FESTBAU Construction Office Location"
+              ></iframe>
+              <div className="map-overlay">
+                <div className="map-info">
+                  <div className="map-info-icon">
+                    <FaMapMarkerAlt />
+                  </div>
+                  <div className="map-info-details">
+                    <h3>FESTBAU Construction</h3>
+                    <p>Cambridge, ON</p>
+                    <a 
+                      href="https://maps.google.com/?q=Cambridge,ON,Canada" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="directions-link"
+                    >
+                      Get Directions
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
     </motion.div>
   );
 };

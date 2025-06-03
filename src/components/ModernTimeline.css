@@ -1,4 +1,4 @@
-/* Modern Timeline Component Styles - COLLISION FIX */
+/* Modern Timeline Component Styles - ANIMATED CURVES */
 .modern-timeline-section {
   background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
   position: relative;
@@ -26,25 +26,20 @@
   padding: 3rem 2rem;
 }
 
-/* Desktop Timeline Line */
-.timeline-line {
+/* Animated SVG Timeline */
+.timeline-svg {
   position: absolute;
   left: 50%;
   top: 3rem;
   bottom: 3rem;
-  width: 4px;
-  background: linear-gradient(180deg, 
-    rgba(221, 171, 77, 0.8) 0%, 
-    rgba(221, 171, 77, 0.6) 50%, 
-    rgba(221, 171, 77, 0.8) 100%
-  );
+  width: 100px;
+  height: calc(100% - 6rem);
   transform: translateX(-50%);
-  border-radius: 3px;
   z-index: 1;
-  box-shadow: 0 0 10px rgba(221, 171, 77, 0.3);
+  pointer-events: none;
 }
 
-/* Timeline Steps - ANTI-COLLISION LAYOUT */
+/* Timeline Steps - ANIMATED LAYOUT */
 .timeline-step {
   position: relative;
   display: flex;
@@ -80,7 +75,7 @@
   text-align: left;
 }
 
-/* Step Icon - SAFE POSITIONING */
+/* Step Icon - ENHANCED POSITIONING */
 .step-icon {
   position: absolute;
   left: 50%;
@@ -145,12 +140,12 @@
   position: relative;
 }
 
-/* Content Arrows */
+/* Content Arrows - Simplified for SVG curves */
 .step-content::before {
   content: '';
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   background: rgba(25, 25, 25, 0.9);
   border: 1px solid rgba(221, 171, 77, 0.25);
   transform: rotate(45deg);
@@ -159,22 +154,17 @@
 }
 
 .timeline-step.left .step-content::before {
-  right: -12px;
+  right: -10px;
   transform: translateY(-50%) rotate(45deg);
   border-left: none;
   border-bottom: none;
 }
 
 .timeline-step.right .step-content::before {
-  left: -12px;
+  left: -10px;
   transform: translateY(-50%) rotate(45deg);
   border-right: none;
   border-top: none;
-}
-
-/* Remove step connector */
-.step-connector {
-  display: none !important;
 }
 
 /* Hover Effects */
@@ -228,20 +218,22 @@
     padding: 2rem 1.5rem;
   }
 
-  /* Mobile Timeline Line */
-  .timeline-line {
-    left: 3rem;
+  /* Mobile SVG Timeline */
+  .timeline-svg {
+    left: 2.5rem;
     top: 2rem;
     bottom: 2rem;
-    width: 3px;
-    transform: none;
+    width: 60px;
+    height: calc(100% - 4rem);
+    transform: translateX(-50%);
   }
 
-  /* Mobile Steps - Left Aligned with Safe Spacing */
+  /* Mobile Steps - Left Aligned with SVG curves */
   .timeline-step {
     justify-content: flex-start;
     margin-bottom: 4rem;
     min-height: auto;
+    align-items: flex-start;
   }
 
   .timeline-step:last-child {
@@ -250,17 +242,17 @@
 
   .timeline-step.left .step-content,
   .timeline-step.right .step-content {
-    width: calc(100% - 8rem);
-    margin-left: 7rem;
+    width: calc(100% - 6.5rem);
+    margin-left: 6rem;
     margin-right: 1rem;
     text-align: left;
   }
 
-  /* Mobile Icons */
+  /* Mobile Icons - Better Positioning */
   .step-icon {
-    left: 3rem;
-    top: 2rem;
-    transform: none;
+    left: 2.5rem;
+    top: 1rem;
+    transform: translateX(-50%);
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
@@ -272,7 +264,7 @@
   }
 
   .step-icon:hover {
-    transform: scale(1.1);
+    transform: translateX(-50%) scale(1.1);
   }
 
   .step-number {
@@ -283,28 +275,30 @@
     right: -10px;
   }
 
-  /* Mobile Content with Extra Padding */
+  /* Mobile Content with Better Spacing */
   .step-content {
     padding: 2rem 1.5rem;
-    margin-top: 1rem;
+    margin-top: 0;
+    position: relative;
   }
 
   .step-content::before {
-    left: -12px !important;
-    top: 2rem !important;
+    left: -10px !important;
+    top: 1rem !important;
     transform: rotate(45deg) !important;
     border-right: none !important;
     border-top: none !important;
     border-left: 1px solid rgba(221, 171, 77, 0.25) !important;
     border-bottom: 1px solid rgba(221, 171, 77, 0.25) !important;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
   }
 
   /* Mobile Typography */
   .step-title {
     font-size: 1.3rem;
     margin-bottom: 1rem;
+    line-height: 1.2;
   }
 
   .step-description {
@@ -333,22 +327,26 @@
     padding: 1rem 1rem;
   }
 
-  .timeline-line {
-    left: 2.5rem;
+  .timeline-svg {
+    left: 2rem;
+    width: 50px;
+    transform: translateX(-50%);
   }
 
   .timeline-step.left .step-content,
   .timeline-step.right .step-content {
-    width: calc(100% - 6.5rem);
-    margin-left: 5.5rem;
+    width: calc(100% - 5.5rem);
+    margin-left: 5rem;
     margin-right: 1rem;
   }
 
   .step-icon {
-    left: 2.5rem;
+    left: 2rem;
     width: 45px;
     height: 45px;
     font-size: 1.1rem;
+    top: 0.8rem;
+    transform: translateX(-50%);
   }
 
   .step-number {
@@ -366,6 +364,7 @@
   .step-title {
     font-size: 1.2rem;
     margin-bottom: 0.8rem;
+    line-height: 1.2;
   }
 
   .step-description {
@@ -374,10 +373,10 @@
   }
 
   .step-content::before {
-    width: 18px;
-    height: 18px;
-    left: -10px !important;
-    top: 1.5rem !important;
+    width: 14px;
+    height: 14px;
+    left: -8px !important;
+    top: 0.8rem !important;
   }
 }
 
@@ -388,4 +387,9 @@
 
 .step-content {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* SVG Animation Performance */
+.timeline-svg path {
+  will-change: stroke-dashoffset;
 } 

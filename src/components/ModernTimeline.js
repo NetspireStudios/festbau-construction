@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import './ModernTimeline.css';
 
 const ModernTimeline = ({ steps, title, subtitle }) => {
+  const timelineRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineRef.current) return;
+
+      const element = timelineRef.current;
+      const rect = element.getBoundingClientRect();
+      const elementTop = rect.top;
+      const elementHeight = rect.height;
+      const windowHeight = window.innerHeight;
+
+      // Calculate scroll progress through the timeline
+      const startOffset = windowHeight * 0.8; // Start animation when element is 80% visible
+      const endOffset = -elementHeight + windowHeight * 0.2; // End when element is mostly past
+
+      const scrolled = startOffset - elementTop;
+      const totalDistance = startOffset - endOffset;
+      const progress = Math.max(0, Math.min(1, scrolled / totalDistance));
+
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -27,18 +57,6 @@ const ModernTimeline = ({ steps, title, subtitle }) => {
       transition: {
         duration: 0.8,
         ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    }
-  };
-
-  const lineVariants = {
-    hidden: { scaleY: 0 },
-    visible: {
-      scaleY: 1,
-      transition: {
-        duration: 1.5,
-        ease: "easeInOut",
-        delay: 0.5
       }
     }
   };
@@ -80,16 +98,52 @@ const ModernTimeline = ({ steps, title, subtitle }) => {
         </motion.div>
 
         <motion.div
+          ref={timelineRef}
           className="modern-timeline"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <motion.div 
-            className="timeline-line"
-            variants={lineVariants}
-          />
+          {/* Animated Timeline SVG */}
+          <svg className="timeline-svg" viewBox="0 0 100 800" preserveAspectRatio="none">
+            {steps.map((step, index) => {
+              if (index === steps.length - 1) return null; // No line after last step
+              
+              const stepProgress = Math.max(0, Math.min(1, (scrollProgress * steps.length) - index));
+              const yStart = (index / (steps.length - 1)) * 700 + 50;
+              const yEnd = ((index + 1) / (steps.length - 1)) * 700 + 50;
+              
+              // Create curved path
+              const pathData = `M 50 ${yStart} 
+                              Q 75 ${yStart + (yEnd - yStart) * 0.3} 50 ${yStart + (yEnd - yStart) * 0.6}
+                              Q 25 ${yStart + (yEnd - yStart) * 0.8} 50 ${yEnd}`;
+              
+              return (
+                <motion.path
+                  key={`path-${index}`}
+                  d={pathData}
+                  stroke="url(#gradient)"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeDasharray="1000"
+                  strokeDashoffset={1000 * (1 - stepProgress)}
+                  style={{
+                    filter: 'drop-shadow(0 0 8px rgba(221, 171, 77, 0.5))'
+                  }}
+                />
+              );
+            })}
+            
+            {/* Gradient definition */}
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="rgba(221, 171, 77, 0.9)" />
+                <stop offset="50%" stopColor="rgba(221, 171, 77, 0.7)" />
+                <stop offset="100%" stopColor="rgba(221, 171, 77, 0.9)" />
+              </linearGradient>
+            </defs>
+          </svg>
           
           {steps.map((step, index) => (
             <motion.div
@@ -107,6 +161,10 @@ const ModernTimeline = ({ steps, title, subtitle }) => {
                 whileHover={{ 
                   scale: 1.1,
                   transition: { duration: 0.3 }
+                }}
+                style={{
+                  opacity: scrollProgress * steps.length > index ? 1 : 0.3,
+                  transition: 'opacity 0.5s ease'
                 }}
               >
                 <step.icon />
@@ -135,8 +193,6 @@ const ModernTimeline = ({ steps, title, subtitle }) => {
                   <span className="mobile-description">{step.mobileDescription || step.description}</span>
                 </motion.p>
               </div>
-              
-              <div className="step-connector"></div>
             </motion.div>
           ))}
         </motion.div>
