@@ -3,6 +3,7 @@
   background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
   position: relative;
   overflow: hidden;
+  padding: 4rem 0;
 }
 
 .modern-timeline-section::before {
@@ -20,9 +21,9 @@
 
 .modern-timeline {
   position: relative;
-  max-width: 1000px;
-  margin: 4rem auto;
-  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
 
 .timeline-line {
@@ -33,34 +34,36 @@
   width: 3px;
   background: rgba(221, 171, 77, 0.6);
   transform: translateX(-50%);
-  transform-origin: top;
   border-radius: 2px;
+  z-index: 1;
 }
 
 .timeline-step {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 6rem;
+  margin-bottom: 8rem;
   opacity: 0;
+  min-height: 120px;
 }
 
 .timeline-step.left {
   flex-direction: row;
   justify-content: flex-end;
-  padding-right: 6rem;
+  padding-right: 7rem;
 }
 
 .timeline-step.right {
   flex-direction: row-reverse;
   justify-content: flex-end;
-  padding-left: 6rem;
+  padding-left: 7rem;
 }
 
 .step-icon {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 50px;
   height: 50px;
   background: linear-gradient(135deg, rgba(221, 171, 77, 0.9) 0%, rgba(221, 171, 77, 1) 100%);
@@ -80,7 +83,7 @@
 }
 
 .step-icon:hover {
-  transform: translateX(-50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.1);
   box-shadow: 
     0 0 0 4px rgba(10, 10, 10, 1),
     0 0 0 8px rgba(221, 171, 77, 0.4),
@@ -127,17 +130,20 @@
   border: 1px solid rgba(221, 171, 77, 0.2);
   transform: rotate(45deg);
   top: 50%;
+  transform-origin: center;
   z-index: -1;
 }
 
 .timeline-step.left .step-content::before {
   right: -11px;
+  transform: translateY(-50%) rotate(45deg);
   border-left: none;
   border-bottom: none;
 }
 
 .timeline-step.right .step-content::before {
   left: -11px;
+  transform: translateY(-50%) rotate(45deg);
   border-right: none;
   border-top: none;
 }
@@ -184,31 +190,39 @@
   display: none;
 }
 
-/* Responsive Design */
+/* Mobile Responsive Design - Complete Rebuild */
 @media (max-width: 768px) {
+  .modern-timeline-section {
+    padding: 3rem 0;
+  }
+
   .modern-timeline {
-    margin: 2rem auto;
-    padding: 1rem 0;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
   }
 
   .timeline-line {
-    left: 30px;
+    left: 2rem;
     transform: none;
   }
 
   .timeline-step {
     flex-direction: row !important;
     justify-content: flex-start !important;
-    padding: 0 0 0 5rem !important;
+    padding: 0 0 0 4.5rem !important;
     margin-bottom: 4rem;
+    min-height: auto;
   }
 
   .step-icon {
-    left: 30px;
+    left: 2rem;
+    top: 1rem;
     transform: none;
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    position: absolute;
   }
 
   .step-icon:hover {
@@ -219,20 +233,25 @@
     width: 20px;
     height: 20px;
     font-size: 0.7rem;
-    top: -10px;
-    right: -10px;
+    top: -8px;
+    right: -8px;
   }
 
   .step-content {
     max-width: none;
-    padding: 2rem;
-    margin-left: 1rem;
+    padding: 1.5rem;
+    margin: 0;
+    width: 100%;
   }
 
   .step-content::before {
     left: -11px !important;
+    top: 1.5rem !important;
+    transform: rotate(45deg) !important;
     border-right: none !important;
     border-top: none !important;
+    border-left: 1px solid rgba(221, 171, 77, 0.2) !important;
+    border-bottom: 1px solid rgba(221, 171, 77, 0.2) !important;
   }
 
   .step-title {
@@ -244,45 +263,64 @@
   }
 
   .step-connector {
-    left: 30px;
+    left: 2rem;
     transform: none;
+    height: 40px;
+    bottom: -40px;
   }
 }
 
 @media (max-width: 480px) {
+  .modern-timeline-section {
+    padding: 2rem 0;
+  }
+
+  .modern-timeline {
+    padding: 0.5rem;
+  }
+
+  .timeline-line {
+    left: 1.5rem;
+  }
+
   .timeline-step {
-    padding-left: 4rem !important;
+    padding-left: 3.5rem !important;
+    margin-bottom: 3rem;
   }
 
   .step-icon {
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
+    left: 1.5rem;
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
   }
 
   .step-number {
     width: 18px;
     height: 18px;
     font-size: 0.6rem;
-    top: -8px;
-    right: -8px;
+    top: -6px;
+    right: -6px;
   }
 
   .step-content {
-    padding: 1.5rem;
+    padding: 1.2rem;
   }
 
   .step-title {
     font-size: 1.2rem;
+    margin-bottom: 0.8rem;
   }
 
   .step-description {
     font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   .step-connector {
-    left: 20px;
+    left: 1.5rem;
+    height: 30px;
+    bottom: -30px;
   }
 }
 
