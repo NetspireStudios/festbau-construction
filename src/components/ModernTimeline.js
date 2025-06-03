@@ -97,7 +97,7 @@ const ModernTimeline = ({ steps, title, subtitle }) => {
               className={`timeline-step ${index % 2 === 0 ? 'left' : 'right'}`}
               variants={itemVariants}
               whileHover={{ 
-                scale: 1.05,
+                scale: 1.02,
                 transition: { duration: 0.3 }
               }}
             >
@@ -121,7 +121,8 @@ const ModernTimeline = ({ steps, title, subtitle }) => {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   viewport={{ once: true }}
                 >
-                  {step.title}
+                  <span className="desktop-title">{step.title}</span>
+                  <span className="mobile-title">{step.mobileTitle || step.title}</span>
                 </motion.h3>
                 <motion.p 
                   className="step-description"
@@ -130,7 +131,8 @@ const ModernTimeline = ({ steps, title, subtitle }) => {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  {step.description}
+                  <span className="desktop-description">{step.description}</span>
+                  <span className="mobile-description">{step.mobileDescription || step.description}</span>
                 </motion.p>
               </div>
               

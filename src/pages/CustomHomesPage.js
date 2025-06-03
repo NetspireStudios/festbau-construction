@@ -138,31 +138,41 @@ const CustomHomesPage = () => {
           {
             step: "01",
             title: "Initial Consultation",
+            mobileTitle: "Consultation",
             description: "Understanding your vision, lifestyle needs, and design preferences to create the foundation of your dream home.",
+            mobileDescription: "Understanding your vision and design preferences for your dream home.",
             icon: FaLightbulb
           },
           {
             step: "02",
             title: "Design & Planning",
+            mobileTitle: "Planning",
             description: "Collaborative design process with architects and engineers to develop detailed plans and specifications.",
+            mobileDescription: "Collaborative design process to develop detailed plans and specifications.",
             icon: FaDraftingCompass
           },
           {
             step: "03",
             title: "Permits & Approvals",
+            mobileTitle: "Permits",
             description: "Handling all municipal permits, inspections, and regulatory approvals for a seamless process.",
+            mobileDescription: "Handling permits, inspections, and regulatory approvals.",
             icon: FaClipboardCheck
           },
           {
             step: "04",
             title: "Construction",
+            mobileTitle: "Building",
             description: "Expert craftsmanship and quality materials brought together with meticulous attention to detail.",
+            mobileDescription: "Expert craftsmanship with meticulous attention to detail.",
             icon: FaHammer
           },
           {
             step: "05",
             title: "Final Walkthrough",
+            mobileTitle: "Completion",
             description: "Comprehensive inspection and handover of your completed custom home, ready for move-in.",
+            mobileDescription: "Inspection and handover of your completed custom home.",
             icon: FaKey
           }
         ]}

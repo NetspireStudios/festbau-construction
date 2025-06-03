@@ -97,25 +97,33 @@ const ResidentialPage = () => {
           {
             step: "01",
             title: "Design & Planning",
+            mobileTitle: "Design",
             description: "Collaborative design process to bring your vision to life with detailed planning and 3D visualizations.",
+            mobileDescription: "Collaborative design process with detailed planning and 3D visualizations.",
             icon: FaHome
           },
           {
             step: "02", 
             title: "Construction Phase",
+            mobileTitle: "Construction",
             description: "Expert craftsmanship with regular progress updates and quality control throughout the build.",
+            mobileDescription: "Expert craftsmanship with quality control throughout the build.",
             icon: FaHammer
           },
           {
             step: "03",
             title: "Finishing Touches",
+            mobileTitle: "Finishing",
             description: "Attention to detail in every finishing element, from paint to fixtures to final installations.",
+            mobileDescription: "Detailed finishing from paint to fixtures and final installations.",
             icon: FaPaintBrush
           },
           {
             step: "04",
             title: "Final Walkthrough",
+            mobileTitle: "Walkthrough",
             description: "Comprehensive quality inspection and handover of your completed dream space.",
+            mobileDescription: "Quality inspection and handover of your completed space.",
             icon: FaCouch
           }
         ]}

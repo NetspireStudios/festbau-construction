@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
-import { FaFileInvoiceDollar, FaPhone, FaBuilding, FaAward, FaClock, FaUsers, FaEnvelope } from 'react-icons/fa';
+import { FaPhone, FaBuilding, FaAward, FaClock, FaUsers, FaEnvelope } from 'react-icons/fa';
 import './Hero.css';
 
 // Animated Counter Component

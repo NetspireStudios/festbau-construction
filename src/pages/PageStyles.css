@@ -616,6 +616,28 @@
   padding: 1rem 2rem;
 }
 
+/* ===== CTA TITLE AND DESCRIPTION CLASSES ===== */
+.cta-title {
+  font-family: var(--font-accent);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.cta-description {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  color: var(--gray-light);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  line-height: 1.6;
+}
+
 /* ===== MOBILE RESPONSIVE DESIGN - COMPLETE REBUILD ===== */
 @media (max-width: 1024px) {
   .page-container {
@@ -853,11 +875,37 @@
     padding: 0.4rem 0.8rem;
   }
   
+  /* ===== CTA SECTION MOBILE FIXES ===== */
+  .cta-section {
+    padding: 60px 0;
+  }
+
+  .cta-content {
+    max-width: 100%;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .cta-description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    max-width: 90%;
+    line-height: 1.5;
+  }
+
   .cta-buttons {
     flex-direction: column;
     gap: 1rem;
     align-items: center;
+    justify-content: center;
     margin-top: 2rem;
+    width: 100%;
   }
 
   .cta-buttons .btn {
@@ -865,6 +913,10 @@
     max-width: 300px;
     padding: 1rem 2rem;
     font-size: 0.9rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .features-grid {
@@ -1009,7 +1061,22 @@
   }
 
   .cta-section {
-    padding: 60px 0;
+    padding: 50px 0;
+  }
+
+  .cta-content {
+    padding: 0 1rem;
+  }
+
+  .cta-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    margin-bottom: 0.8rem;
+  }
+
+  .cta-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    max-width: 95%;
   }
 
   .container {
@@ -1019,6 +1086,7 @@
   .cta-buttons .btn {
     padding: 0.8rem 1.2rem;
     font-size: 0.85rem;
+    max-width: 280px;
   }
 }
 

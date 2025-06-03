@@ -11,7 +11,6 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    // Close services dropdown when closing menu
     if (isMenuOpen) {
       setIsServicesOpen(false);
     }
@@ -22,11 +21,11 @@ const Navbar = () => {
     setIsServicesOpen(false);
   };
 
-  const toggleServices = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleServicesClick = () => {
     setIsServicesOpen(!isServicesOpen);
   };
+
+
 
   const serviceLinks = [
     { path: '/commercial', label: 'Commercial Construction' },
@@ -40,9 +39,6 @@ const Navbar = () => {
   };
 
   const isServiceActive = serviceLinks.some(service => service.path === location.pathname);
-
-  // Check if we're on mobile
-  const isMobile = window.innerWidth <= 920;
 
   return (
     <motion.nav 
@@ -84,31 +80,29 @@ const Navbar = () => {
           </div>
 
           {/* Services Dropdown */}
-          <div 
-            className="navbar-item dropdown" 
-            onMouseLeave={() => !isMobile && setIsServicesOpen(false)}
-          >
+          <div className="navbar-item dropdown">
             <button
               className={`dropdown-trigger ${isServiceActive ? 'active' : ''}`}
-              onMouseEnter={() => !isMobile && setIsServicesOpen(true)}
-              onClick={toggleServices}
+              onClick={handleServicesClick}
               type="button"
             >
               SERVICES
               <FaChevronDown className={`dropdown-arrow ${isServicesOpen ? 'open' : ''}`} />
             </button>
-            <div className={`dropdown-content ${isServicesOpen ? 'show' : ''}`}>
-              {serviceLinks.map((service, index) => (
-                <Link
-                  key={index}
-                  to={service.path}
-                  className={`dropdown-link ${location.pathname === service.path ? 'active' : ''}`}
-                  onClick={handleLinkClick}
-                >
-                  <span className="dropdown-link-title">{service.label}</span>
-                </Link>
-              ))}
-            </div>
+            {isServicesOpen && (
+              <div className="dropdown-content show">
+                {serviceLinks.map((service, index) => (
+                  <Link
+                    key={index}
+                    to={service.path}
+                    className={`dropdown-link ${location.pathname === service.path ? 'active' : ''}`}
+                    onClick={handleLinkClick}
+                  >
+                    <span className="dropdown-link-title">{service.label}</span>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Blog Link */}

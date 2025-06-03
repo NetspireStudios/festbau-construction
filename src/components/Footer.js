@@ -39,16 +39,7 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Services */}
-          <div className="footer-section services-info">
-            <h4 className="footer-title">Services</h4>
-            <div className="service-links">
-              <span className="service-link">Commercial Construction</span>
-              <span className="service-link">Residential Services</span>
-              <span className="service-link">Project Management</span>
-              <span className="service-link">Additional Services</span>
-            </div>
-          </div>
+
 
           {/* Social Media */}
           <div className="footer-section social-media">

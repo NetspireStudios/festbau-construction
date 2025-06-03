@@ -83,42 +83,52 @@ const CommercialPage = () => {
     {
       step: "01",
       title: "Initial Consultation",
+      mobileTitle: "Consultation",
       description: "We begin with an in-depth consultation to understand your business needs, timeline, and budget requirements.",
+      mobileDescription: "In-depth consultation to understand your business needs and requirements.",
       icon: FaUsers
     },
     {
       step: "02", 
       title: "Design & Planning",
+      mobileTitle: "Planning",
       description: "Our team creates detailed plans and 3D visualizations, ensuring every aspect meets your specifications and local codes.",
+      mobileDescription: "Detailed plans and 3D visualizations meeting your specifications.",
       icon: FaClipboardCheck
     },
     {
       step: "03",
       title: "Permits & Approvals",
+      mobileTitle: "Permits",
       description: "We handle all necessary permits, inspections, and regulatory approvals to ensure smooth project progression.",
+      mobileDescription: "All permits, inspections, and regulatory approvals handled.",
       icon: FaShieldAlt
     },
     {
       step: "04",
       title: "Construction Phase",
+      mobileTitle: "Construction",
       description: "Professional construction with regular updates, quality control, and adherence to timeline and budget.",
+      mobileDescription: "Professional construction with quality control and timeline adherence.",
       icon: FaTools
     },
     {
       step: "05",
       title: "Final Inspection",
+      mobileTitle: "Inspection",
       description: "Comprehensive final inspection and walkthrough to ensure everything meets our high standards and your expectations.",
+      mobileDescription: "Final inspection and walkthrough ensuring high standards.",
       icon: FaBullseye
     },
     {
       step: "06",
       title: "Project Completion",
+      mobileTitle: "Completion",
       description: "Handover of completed project with all documentation, warranties, and ongoing support as needed.",
+      mobileDescription: "Project handover with documentation and warranties.",
       icon: FaAward
     }
   ];
-
-
 
   // Get projects with images from the helper
   const featuredProjects = commercialProjects.map(project => 
@@ -201,8 +211,6 @@ const CommercialPage = () => {
         </div>
       </section>
 
-
-
       {/* Services Section */}
       <section className="section-padding services-detail-section">
         <div className="container">
@@ -261,8 +269,6 @@ const CommercialPage = () => {
         }
         subtitle="Our proven 6-step process ensures your commercial construction project is completed on time, within budget, and to the highest quality standards."
       />
-
-
 
       {/* Featured Projects */}
       <section className="section-padding projects-section">
