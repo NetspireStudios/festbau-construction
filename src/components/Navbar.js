@@ -11,6 +11,10 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    // Close services dropdown when closing menu
+    if (isMenuOpen) {
+      setIsServicesOpen(false);
+    }
   };
 
   const closeMenu = () => {
@@ -18,11 +22,11 @@ const Navbar = () => {
     setIsServicesOpen(false);
   };
 
-  const toggleServices = () => {
+  const toggleServices = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsServicesOpen(!isServicesOpen);
   };
-
-
 
   const serviceLinks = [
     { path: '/commercial', label: 'Commercial Construction' },
@@ -31,13 +35,14 @@ const Navbar = () => {
     { path: '/project-management', label: 'Project Management' }
   ];
 
-
-
   const handleLinkClick = () => {
     closeMenu();
   };
 
   const isServiceActive = serviceLinks.some(service => service.path === location.pathname);
+
+  // Check if we're on mobile
+  const isMobile = window.innerWidth <= 920;
 
   return (
     <motion.nav 
@@ -79,10 +84,13 @@ const Navbar = () => {
           </div>
 
           {/* Services Dropdown */}
-          <div className="navbar-item dropdown" onMouseLeave={() => setIsServicesOpen(false)}>
+          <div 
+            className="navbar-item dropdown" 
+            onMouseLeave={() => !isMobile && setIsServicesOpen(false)}
+          >
             <button
               className={`dropdown-trigger ${isServiceActive ? 'active' : ''}`}
-              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseEnter={() => !isMobile && setIsServicesOpen(true)}
               onClick={toggleServices}
               type="button"
             >

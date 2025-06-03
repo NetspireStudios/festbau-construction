@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
-import { FaFileInvoiceDollar, FaPhone, FaBuilding, FaAward, FaClock, FaUsers } from 'react-icons/fa';
+import { FaFileInvoiceDollar, FaPhone, FaBuilding, FaAward, FaClock, FaUsers, FaEnvelope } from 'react-icons/fa';
 import './Hero.css';
 
 // Animated Counter Component
@@ -129,13 +129,13 @@ const Hero = () => {
               </motion.a>
               <motion.component
                 as={Link}
-                to="/quote"
+                to="/contact"
                 className="btn btn-quote"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FaFileInvoiceDollar />
-                Get Free Quote
+                <FaEnvelope />
+                Contact Us
               </motion.component>
             </motion.div>
 
