@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -8,7 +8,22 @@ import {
   FaChevronRight, 
   FaExternalLinkAlt, 
   FaCheckCircle,
-  FaMapPin
+  FaMapPin,
+  FaUtensils,
+  FaShieldAlt,
+  FaTools,
+  FaBuilding,
+  FaStore,
+  FaCog,
+  FaHome,
+  FaBolt,
+  FaBed,
+  FaPaintBrush,
+  FaWifi,
+  FaLeaf,
+  FaIndustry,
+  FaThermometerHalf,
+  FaTruck
 } from 'react-icons/fa';
 import './ProjectModal.css';
 
@@ -16,8 +31,86 @@ const ProjectModal = ({ project, isOpen, onClose, category }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [projectImages, setProjectImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const scrollPosition = useRef(0);
 
   console.log('ProjectModal render - isOpen:', isOpen, 'project:', project, 'category:', category);
+
+  // Function to get appropriate icon based on feature content
+  const getFeatureIcon = (feature) => {
+    const featureLower = feature.toLowerCase();
+    
+    // Restaurant & Kitchen features
+    if (featureLower.includes('kitchen') || featureLower.includes('dining')) return FaUtensils;
+    if (featureLower.includes('restaurant') || featureLower.includes('food')) return FaUtensils;
+    if (featureLower.includes('drive') || featureLower.includes('thru')) return FaTruck;
+    
+    // Security & Compliance
+    if (featureLower.includes('security') || featureLower.includes('compliance') || featureLower.includes('health code')) return FaShieldAlt;
+    if (featureLower.includes('storage') || featureLower.includes('secure')) return FaShieldAlt;
+    
+    // Design & Construction
+    if (featureLower.includes('design') || featureLower.includes('modern') || featureLower.includes('contemporary')) return FaPaintBrush;
+    if (featureLower.includes('construction') || featureLower.includes('building')) return FaBuilding;
+    if (featureLower.includes('renovation') || featureLower.includes('upgrade')) return FaTools;
+    
+    // Retail & Commercial
+    if (featureLower.includes('retail') || featureLower.includes('store')) return FaStore;
+    if (featureLower.includes('brand') || featureLower.includes('standard')) return FaBuilding;
+    
+    // Home & Residential features
+    if (featureLower.includes('home') || featureLower.includes('bedroom') || featureLower.includes('suite')) return FaBed;
+    if (featureLower.includes('office') || featureLower.includes('entertainment')) return FaHome;
+    if (featureLower.includes('smart') || featureLower.includes('tech') || featureLower.includes('wifi')) return FaWifi;
+    if (featureLower.includes('sustainable') || featureLower.includes('eco') || featureLower.includes('green')) return FaLeaf;
+    
+    // Industrial & Equipment
+    if (featureLower.includes('industrial') || featureLower.includes('equipment')) return FaIndustry;
+    if (featureLower.includes('temperature') || featureLower.includes('control')) return FaThermometerHalf;
+    if (featureLower.includes('system') || featureLower.includes('operation')) return FaCog;
+    if (featureLower.includes('electric') || featureLower.includes('lighting')) return FaBolt;
+    
+    // Default icon for anything else
+    return FaCheckCircle;
+  };
+
+  const getFeatureDescription = (feature) => {
+    const featureLower = feature.toLowerCase();
+    
+    // Restaurant & Kitchen features
+    if (featureLower.includes('kitchen')) return 'Professional-grade kitchen with modern appliances and design';
+    if (featureLower.includes('dining')) return 'Spacious dining area designed for customer comfort';
+    if (featureLower.includes('restaurant')) return 'Complete restaurant construction and design';
+    if (featureLower.includes('drive')) return 'Convenient drive-through service capability';
+    
+    // Security & Compliance
+    if (featureLower.includes('security')) return 'Advanced security systems and access controls';
+    if (featureLower.includes('compliance')) return 'Full compliance with industry regulations and standards';
+    if (featureLower.includes('health code')) return 'Meeting all health and safety requirements';
+    if (featureLower.includes('storage')) return 'Optimized storage solutions for efficiency';
+    
+    // Design & Construction
+    if (featureLower.includes('design')) return 'Custom design tailored to your specific needs';
+    if (featureLower.includes('modern')) return 'Contemporary styling with clean lines and functionality';
+    if (featureLower.includes('contemporary')) return 'Current design trends with timeless appeal';
+    if (featureLower.includes('construction')) return 'Expert construction with quality materials';
+    if (featureLower.includes('renovation')) return 'Complete renovation bringing new life to existing spaces';
+    
+    // Retail & Commercial
+    if (featureLower.includes('retail')) return 'Optimized retail space for customer experience';
+    if (featureLower.includes('store')) return 'Functional store layout maximizing sales potential';
+    if (featureLower.includes('brand')) return 'Brand-consistent design and implementation';
+    
+    // Home & Residential features
+    if (featureLower.includes('bedroom')) return 'Comfortable bedroom space with quality finishes';
+    if (featureLower.includes('suite')) return 'Luxury suite with premium amenities';
+    if (featureLower.includes('office')) return 'Dedicated workspace designed for productivity';
+    if (featureLower.includes('entertainment')) return 'Entertainment space for family gatherings';
+    if (featureLower.includes('smart')) return 'Smart home technology integration';
+    if (featureLower.includes('sustainable')) return 'Eco-friendly design reducing environmental impact';
+    
+    // Default description
+    return 'Premium feature enhancing project value and functionality';
+  };
 
   useEffect(() => {
     if (project && isOpen) {
@@ -92,20 +185,32 @@ const ProjectModal = ({ project, isOpen, onClose, category }) => {
 
   useEffect(() => {
     if (isOpen) {
+      // Store current scroll position BEFORE any body style changes
+      scrollPosition.current = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Add event listener
       document.addEventListener('keydown', handleKeyPress);
-      // Prevent background scroll
+      
+      // Prevent background scroll - simpler approach
       document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      document.body.style.top = '0';
+      document.body.style.paddingRight = '15px'; // Prevent layout shift from scrollbar
       
       return () => {
+        // Remove event listener
         document.removeEventListener('keydown', handleKeyPress);
-        // Restore background scroll
+        
+        // Restore body styles
         document.body.style.overflow = '';
-        document.body.style.position = '';
-        document.body.style.width = '';
-        document.body.style.top = '';
+        document.body.style.paddingRight = '';
+        
+        // Force scroll restoration after a brief delay to ensure DOM is ready
+        setTimeout(() => {
+          window.scrollTo({
+            top: scrollPosition.current,
+            left: 0,
+            behavior: 'instant'
+          });
+        }, 0);
       };
     }
   }, [isOpen, handleKeyPress]);
@@ -246,9 +351,6 @@ const ProjectModal = ({ project, isOpen, onClose, category }) => {
                   transition={{ delay: 0.4, duration: 0.5 }}
                 >
                   <h2 className="project-title">{project.title}</h2>
-                  <div className="project-category-badge">
-                    {project.category}
-                  </div>
                   
                   <div className="project-location">
                     <FaMapMarkerAlt className="location-icon" />
@@ -281,21 +383,28 @@ const ProjectModal = ({ project, isOpen, onClose, category }) => {
                     <div className="project-features">
                       <h3>Key Features</h3>
                       <ul className="features-list">
-                        {project.features.map((feature, index) => (
-                          <motion.li 
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ 
-                              delay: 0.7 + (index * 0.1), 
-                              duration: 0.3
-                            }}
-                            whileHover={{ x: 10 }}
-                          >
-                            <FaCheckCircle className="feature-icon" />
-                            <span>{feature}</span>
-                          </motion.li>
-                        ))}
+                        {project.features.map((feature, index) => {
+                          const IconComponent = getFeatureIcon(feature);
+                          const description = getFeatureDescription(feature);
+                          return (
+                            <motion.li 
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ 
+                                delay: 0.7 + (index * 0.1), 
+                                duration: 0.3
+                              }}
+                              whileHover={{ x: 10 }}
+                            >
+                              <IconComponent className="feature-icon" />
+                              <div className="feature-content">
+                                <span className="feature-title">{feature}</span>
+                                <p className="feature-description">{description}</p>
+                              </div>
+                            </motion.li>
+                          );
+                        })}
                       </ul>
                     </div>
                   )}

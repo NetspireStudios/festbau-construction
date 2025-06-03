@@ -121,9 +121,9 @@ const Clients = () => {
               flexWrap: 'wrap',
               justifyContent: 'center',
               alignItems: 'center',
-              gap: 'clamp(2rem, 4vw, 3rem)',
+              gap: 'clamp(3rem, 5vw, 4rem)',
               marginTop: '4rem',
-              maxWidth: '1000px',
+              maxWidth: '1200px',
               margin: '4rem auto 0 auto'
             }}
             className="clients-grid"
@@ -134,72 +134,59 @@ const Clients = () => {
                 variants={itemVariants}
                 className="client-card"
                 style={{
-                  background: 'linear-gradient(135deg, var(--secondary-black), var(--accent-black))',
-                  padding: '2rem',
+                  background: 'transparent',
+                  padding: '1.5rem',
                   borderRadius: '15px',
-                  border: '1px solid var(--accent-black)',
                   textAlign: 'center',
                   transition: 'all 0.4s ease',
                   position: 'relative',
                   overflow: 'hidden',
                   cursor: 'pointer',
-                  width: '160px',
-                  height: '120px',
+                  width: '200px',
+                  height: '140px',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center'
+                  justifyContent: 'center',
+                  border: '2px solid transparent'
                 }}
                 whileHover={{ 
-                  scale: 1.03, 
+                  scale: 1.05, 
                   y: -8,
                   transition: { duration: 0.3 }
                 }}
                 onHoverStart={() => {}}
                 onHoverEnd={() => {}}
               >
-                {/* Golden border on hover */}
-                <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '3px',
-                  background: 'linear-gradient(90deg, var(--gold), var(--gold-light))',
-                  transform: 'scaleX(0)',
-                  transformOrigin: 'left',
-                  transition: 'transform 0.4s ease'
-                }} className="client-card-border" />
-                
                 {/* Logo Container */}
-                  <img
-                    src={client.logo}
-                    alt={client.alt}
-                    style={{
-                      maxWidth: '100%',
-                    maxHeight: '80px',
-                      objectFit: 'contain',
-                      filter: 'brightness(0.9) contrast(1.1)',
-                      transition: 'all 0.3s ease'
-                    }}
-                    className="client-logo"
-                    onLoad={() => {
-                      console.log(`✅ Successfully loaded: ${client.logo}`);
-                    }}
-                    onError={(e) => {
-                      console.error(`❌ Failed to load image: ${client.logo}`);
-                      console.error(`Full URL attempted: ${e.target.src}`);
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'block';
-                    }}
-                  />
-                  {/* Fallback text */}
-                  <div style={{
-                    display: 'none',
-                    color: 'var(--gold)',
-                  fontSize: '1rem',
-                    fontWeight: '600'
-                  }}>
-                    {client.name}
+                <img
+                  src={client.logo}
+                  alt={client.alt}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '120px',
+                    objectFit: 'contain',
+                    filter: 'brightness(1.0) contrast(1.1)',
+                    transition: 'all 0.3s ease'
+                  }}
+                  className="client-logo"
+                  onLoad={() => {
+                    console.log(`✅ Successfully loaded: ${client.logo}`);
+                  }}
+                  onError={(e) => {
+                    console.error(`❌ Failed to load image: ${client.logo}`);
+                    console.error(`Full URL attempted: ${e.target.src}`);
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'block';
+                  }}
+                />
+                {/* Fallback text */}
+                <div style={{
+                  display: 'none',
+                  color: 'var(--gold)',
+                  fontSize: '1.1rem',
+                  fontWeight: '600'
+                }}>
+                  {client.name}
                 </div>
               </motion.div>
             ))}
@@ -208,25 +195,17 @@ const Clients = () => {
       </div>
       
       <style jsx>{`
-        .client-card:hover .client-card-border {
-          transform: scaleX(1);
+        .client-card:hover {
+          border-color: var(--gold);
+          background: rgba(221, 171, 77, 0.05);
+          box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.2),
+            0 0 30px rgba(221, 171, 77, 0.15);
         }
         
         .client-card:hover .client-logo {
-          filter: brightness(1.1) contrast(1.2);
-          transform: scale(1.05);
-        }
-        
-        .client-card:hover .client-name {
-          color: var(--gold);
-          opacity: 1;
-        }
-        
-        .client-card:hover {
-          border-color: var(--gold);
-          box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.3),
-            0 0 30px rgba(221, 171, 77, 0.2);
+          filter: brightness(1.2) contrast(1.2);
+          transform: scale(1.02);
         }
       `}</style>
     </section>

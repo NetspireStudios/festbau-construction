@@ -217,6 +217,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  min-height: 50px;
+  overflow: hidden;
+  align-items: flex-start;
 }
 
 .project-tag {
@@ -228,6 +231,8 @@
   font-size: 0.8rem;
   font-weight: 500;
   transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .project-tag:hover {

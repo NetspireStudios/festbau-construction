@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -14,29 +15,29 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    setIsServicesOpen(false);
   };
 
-  const navLinks = [
-    { path: '/', label: 'HOME' },
-    { path: '/commercial', label: 'COMMERCIAL' },
-    { path: '/residential', label: 'RESIDENTIAL' },
-    { path: '/project-management', label: 'PROJECT MANAGEMENT' },
-    { path: '/additional-services', label: 'ADDITIONAL SERVICES' },
-    { path: '/blog', label: 'BLOG' }
+  const toggleServices = () => {
+    setIsServicesOpen(!isServicesOpen);
+  };
+
+
+
+  const serviceLinks = [
+    { path: '/commercial', label: 'Commercial Construction' },
+    { path: '/residential', label: 'Residential Projects' },
+    { path: '/custom-homes', label: 'Custom Homes' },
+    { path: '/project-management', label: 'Project Management' }
   ];
 
-  const handleContactClick = (e) => {
-    e.preventDefault();
-    closeMenu();
-    const footer = document.getElementById('contact');
-    if (footer) {
-      footer.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+
 
   const handleLinkClick = () => {
     closeMenu();
   };
+
+  const isServiceActive = serviceLinks.some(service => service.path === location.pathname);
 
   return (
     <motion.nav 
@@ -58,43 +59,82 @@ const Navbar = () => {
     >
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" onClick={closeMenu}>
-          FEST<span className="gold-text">BAU</span>
+          <img 
+            src="/images/festbau.png" 
+            alt="FESTBAU Construction" 
+            className="navbar-logo-img"
+          />
         </Link>
 
         <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
-          {navLinks.map((item, index) => (
-            <div key={index} className="navbar-item">
-              <Link
-                to={item.path}
-                className={`navbar-link ${location.pathname === item.path ? 'active' : ''}`}
-                onClick={handleLinkClick}
-              >
-                {item.label}
-              </Link>
-            </div>
-          ))}
-          
-          {/* Contact Button */}
+          {/* Home Link */}
           <div className="navbar-item">
+            <Link
+              to="/"
+              className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`}
+              onClick={handleLinkClick}
+            >
+              HOME
+            </Link>
+          </div>
+
+          {/* Services Dropdown */}
+          <div className="navbar-item dropdown" onMouseLeave={() => setIsServicesOpen(false)}>
             <button
-              onClick={handleContactClick}
-              className="navbar-link contact-scroll-btn"
+              className={`dropdown-trigger ${isServiceActive ? 'active' : ''}`}
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onClick={toggleServices}
               type="button"
             >
-              CONTACT US
+              SERVICES
+              <FaChevronDown className={`dropdown-arrow ${isServicesOpen ? 'open' : ''}`} />
             </button>
+            <div className={`dropdown-content ${isServicesOpen ? 'show' : ''}`}>
+              {serviceLinks.map((service, index) => (
+                <Link
+                  key={index}
+                  to={service.path}
+                  className={`dropdown-link ${location.pathname === service.path ? 'active' : ''}`}
+                  onClick={handleLinkClick}
+                >
+                  <span className="dropdown-link-title">{service.label}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Blog Link */}
+          <div className="navbar-item">
+            <Link
+              to="/blog"
+              className={`navbar-link ${location.pathname === '/blog' ? 'active' : ''}`}
+              onClick={handleLinkClick}
+            >
+              BLOG
+            </Link>
           </div>
           
-          {/* Get Quote Button */}
-          <motion.div className="navbar-item quote-button-container">
+          {/* Get Quote Link */}
+          <div className="navbar-item">
             <Link
               to="/quote"
+              className={`navbar-link ${location.pathname === '/quote' ? 'active' : ''}`}
+              onClick={handleLinkClick}
+            >
+              GET QUOTE
+            </Link>
+          </div>
+          
+          {/* Contact Button */}
+          <motion.div className="navbar-item quote-button-container">
+            <Link
+              to="/contact"
               className="btn btn-quote"
               onClick={handleLinkClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              GET QUOTE
+              CONTACT US
             </Link>
           </motion.div>
         </div>

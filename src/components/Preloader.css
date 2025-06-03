@@ -19,11 +19,15 @@
 }
 
 .preloader-logo {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 3rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-logo-img {
+  height: 80px;
+  width: auto;
+  filter: brightness(1.2);
 }
 
 .preloader-logo .gold-text {
@@ -39,8 +43,8 @@
 }
 
 @media (max-width: 768px) {
-  .preloader-logo {
-    font-size: 2rem;
+  .preloader-logo-img {
+    height: 60px;
   }
   
   .preloader-spinner {

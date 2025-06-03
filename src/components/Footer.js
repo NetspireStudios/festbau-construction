@@ -9,7 +9,13 @@ const Footer = () => {
         <div className="footer-content">
           {/* Company Info */}
           <div className="footer-section company-info">
-            <h3 className="footer-logo">FESTBAU</h3>
+            <div className="footer-logo">
+              <img 
+                src="/images/festbau.png" 
+                alt="FESTBAU Construction" 
+                className="footer-logo-img"
+              />
+            </div>
             <p className="footer-description">
               Excellence in Construction & Renovation. From commercial builds to residential renovations, 
               we deliver turnkey solutions with precision and quality.

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
-import { FaBuilding, FaHome, FaTools, FaCog, FaProjectDiagram, FaArrowRight } from 'react-icons/fa';
+import { FaBuilding, FaHome, FaCog, FaProjectDiagram, FaArrowRight } from 'react-icons/fa';
 import './Services.css';
 
 const servicesData = [
@@ -43,6 +43,24 @@ const servicesData = [
     specialties: ['Home Renovations', 'Interior Services', 'Project Management & Estimating']
   },
   {
+    id: 'custom-homes',
+    title: 'Custom Homes',
+    icon: <FaHome />,
+    subtitle: 'Luxury custom homes designed to reflect your vision and lifestyle',
+    route: '/custom-homes',
+    services: [
+      'Custom Home Design',
+      'Luxury Home Construction',
+      'Architectural Planning',
+      'Interior Design Coordination',
+      'Premium Materials Selection',
+      'Smart Home Integration'
+    ],
+    description: 'From concept to completion, we create luxury custom homes that reflect your unique vision and exceed your expectations. Our comprehensive approach combines architectural excellence, superior craftsmanship, and personalized service to deliver homes that stand the test of time. Every detail is carefully planned and executed to create your dream home.',
+    highlights: ['Custom Architecture', 'Luxury Finishes', 'Turnkey Solution'],
+    homeFeatures: ['Custom Design', 'Premium Materials', 'Smart Technology', 'Energy Efficient']
+  },
+  {
     id: 'project',
     title: 'Project Management',
     icon: <FaProjectDiagram />,
@@ -59,24 +77,6 @@ const servicesData = [
     description: 'Our project management expertise, honed through experience as an Engineering Project Manager at Ferrero Canada, ensures every project runs smoothly, on time, and within budget. We provide comprehensive oversight from initial planning through final completion, ensuring clear communication and meticulous attention to detail throughout the entire construction process.',
     highlights: ['Engineering Background', 'Proven Track Record', 'Clear Communication'],
     expertise: ['Ferrero Canada Experience', 'Engineering Project Management', 'Turnkey Solutions']
-  },
-  {
-    id: 'additional',
-    title: 'Additional Services',
-    icon: <FaTools />,
-    subtitle: 'Comprehensive outdoor and specialty construction solutions',
-    route: '/additional-services',
-    services: [
-      'Custom Fences & Gates',
-      'Decks & Patios',
-      'Outdoor Living Spaces',
-      'Sheds & Outdoor Structures',
-      'Landscaping & Hardscaping',
-      'Maintenance & Repairs'
-    ],
-    description: 'Extend your living space outdoors with our comprehensive additional services. We create functional and beautiful outdoor environments that enhance your property value and lifestyle. From custom fencing and gates to elaborate outdoor living spaces, our team combines functionality with aesthetic appeal to deliver outstanding results.',
-    highlights: ['Outdoor Expertise', 'Weather Resistant', 'Custom Solutions'],
-    outdoorSpecialties: ['Fences & Gates', 'Decks & Patios', 'Outdoor Living Spaces', 'Sheds & Outdoor Structures']
   }
 ];
 

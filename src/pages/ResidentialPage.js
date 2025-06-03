@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaHome, FaHammer, FaPaintBrush, FaCouch, FaMapMarkerAlt, FaEye } from 'react-icons/fa';
+import { FaHome, FaMapMarkerAlt, FaEye, FaHammer, FaPaintBrush, FaCouch } from 'react-icons/fa';
 import { residentialProjects, getProjectWithImage } from '../utils/imageHelper';
 import ProjectModal from '../components/ProjectModal';
+import ModernTimeline from '../components/ModernTimeline';
 import './PageStyles.css';
 
 const ResidentialPage = () => {
@@ -18,14 +19,6 @@ const ResidentialPage = () => {
     setIsModalOpen(false);
     setSelectedProject(null);
   };
-
-  const serviceIcons = [
-    { icon: FaHome, title: "Home Renovations", mobileTitle: "Homes" },
-    { icon: FaHammer, title: "Kitchen Remodeling", mobileTitle: "Kitchens" },
-    { icon: FaPaintBrush, title: "Bathroom Renovation", mobileTitle: "Bathrooms" },
-    { icon: FaCouch, title: "Basement Finishing", mobileTitle: "Basements" },
-    { icon: FaHome, title: "Interior Design", mobileTitle: "Interiors" }
-  ];
 
   // Get projects with images from the helper
   const featuredProjects = residentialProjects.map(project => 
@@ -72,24 +65,6 @@ const ResidentialPage = () => {
             <p className="page-subtitle">
               Creating dream homes and transforming living spaces across Ontario with personalized design and exceptional craftsmanship.
             </p>
-            
-            {/* Service Icons */}
-            <div className="service-icons-grid">
-              {serviceIcons.map((service, index) => (
-                <motion.div
-                  key={index}
-                  className="service-icon-item"
-                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                >
-                  <service.icon className="service-icon" />
-                  <span className="service-title desktop-title">{service.title}</span>
-                  <span className="service-title mobile-title">{service.mobileTitle}</span>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
@@ -116,7 +91,41 @@ const ResidentialPage = () => {
         </div>
       </section>
 
-
+      {/* Process Section */}
+      <ModernTimeline 
+        steps={[
+          {
+            step: "01",
+            title: "Design & Planning",
+            description: "Collaborative design process to bring your vision to life with detailed planning and 3D visualizations.",
+            icon: FaHome
+          },
+          {
+            step: "02", 
+            title: "Construction Phase",
+            description: "Expert craftsmanship with regular progress updates and quality control throughout the build.",
+            icon: FaHammer
+          },
+          {
+            step: "03",
+            title: "Finishing Touches",
+            description: "Attention to detail in every finishing element, from paint to fixtures to final installations.",
+            icon: FaPaintBrush
+          },
+          {
+            step: "04",
+            title: "Final Walkthrough",
+            description: "Comprehensive quality inspection and handover of your completed dream space.",
+            icon: FaCouch
+          }
+        ]}
+        title={
+          <>
+            Our Construction <span className="gold-text">Process</span>
+          </>
+        }
+        subtitle="From initial consultation to final walkthrough, we ensure a smooth and transparent construction experience."
+      />
 
       {/* Featured Projects */}
       <section className="section-padding">
@@ -196,71 +205,6 @@ const ResidentialPage = () => {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="section-padding bg-gradient">
-        <div className="container">
-          <motion.div
-            className="section-header"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">
-              Our Construction <span className="gold-text">Process</span>
-            </h2>
-            <p className="section-description">
-              From initial consultation to final walkthrough, we ensure a smooth and transparent construction experience.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="process-timeline"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <div className="timeline-item">
-              <div className="timeline-icon">
-                <FaHome />
-              </div>
-              <div className="timeline-content">
-                <h3>Design & Planning</h3>
-                <p>Collaborative design process to bring your vision to life</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-icon">
-                <FaHammer />
-              </div>
-              <div className="timeline-content">
-                <h3>Construction Phase</h3>
-                <p>Expert craftsmanship with regular progress updates</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-icon">
-                <FaPaintBrush />
-              </div>
-              <div className="timeline-content">
-                <h3>Finishing Touches</h3>
-                <p>Attention to detail in every finishing element</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-icon">
-                <FaCouch />
-              </div>
-              <div className="timeline-content">
-                <h3>Final Walkthrough</h3>
-                <p>Quality inspection and handover of your dream space</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="section-padding">
         <div className="container">
@@ -304,11 +248,11 @@ const ResidentialPage = () => {
 
       {/* Project Modal */}
       <ProjectModal
-        project={selectedProject}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        category="Residential Projects"
-      />
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          category="Residential Projects"
+        />
     </motion.div>
   );
 };

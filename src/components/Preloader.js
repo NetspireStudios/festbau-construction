@@ -30,7 +30,11 @@ const Preloader = ({ children }) => {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                FEST<span className="gold-text">BAU</span>
+                <img 
+                  src="/images/festbau.png" 
+                  alt="FESTBAU Construction" 
+                  className="preloader-logo-img"
+                />
               </motion.div>
               <motion.div
                 className="preloader-spinner"

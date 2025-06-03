@@ -8,7 +8,7 @@ import './Hero.css';
 // Animated Counter Component
 const AnimatedCounter = ({ target, suffix = "", duration = 2000, inView }) => {
   const [count, setCount] = useState(0);
-
+  
   useEffect(() => {
     if (!inView) return;
     
@@ -24,10 +24,10 @@ const AnimatedCounter = ({ target, suffix = "", duration = 2000, inView }) => {
         setCount(Math.floor(start));
       }
     }, 16);
-
+    
     return () => clearInterval(timer);
   }, [target, duration, inView]);
-
+  
   return (
     <span className="animated-counter">
       {count}{suffix}
@@ -172,7 +172,7 @@ const Hero = () => {
                     </motion.div>
                     <div className="stat-label">{stat.label}</div>
                     <div className="stat-description">{stat.description}</div>
-                  </div>
+              </div>
                 </motion.div>
               ))}
             </motion.div>

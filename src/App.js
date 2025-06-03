@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Preloader from './components/Preloader';
 import HomePage from './pages/HomePage';
 import CommercialPage from './pages/CommercialPage';
 import ResidentialPage from './pages/ResidentialPage';
 import AdditionalServicesPage from './pages/AdditionalServicesPage';
+import CustomHomesPage from './pages/CustomHomesPage';
 import ProjectManagementPage from './pages/ProjectManagementPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
@@ -27,26 +27,25 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <Preloader>
-      <Router>
-        <div className="App">
-          <ScrollToTop />
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/commercial" element={<CommercialPage />} />
-            <Route path="/residential" element={<ResidentialPage />} />
-            <Route path="/additional-services" element={<AdditionalServicesPage />} />
-            <Route path="/project-management" element={<ProjectManagementPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/quote" element={<QuotePage />} />
-            <Route path="/blog" element={<BlogPage />} />
-          </Routes>
-          <Footer />
-        </div>
-      </Router>
-    </Preloader>
+    <Router>
+      <div className="App">
+        <ScrollToTop />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/commercial" element={<CommercialPage />} />
+          <Route path="/residential" element={<ResidentialPage />} />
+          <Route path="/additional-services" element={<AdditionalServicesPage />} />
+          <Route path="/custom-homes" element={<CustomHomesPage />} />
+          <Route path="/project-management" element={<ProjectManagementPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/quote" element={<QuotePage />} />
+          <Route path="/blog" element={<BlogPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

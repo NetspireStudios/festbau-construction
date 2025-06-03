@@ -303,11 +303,11 @@ const AdditionalServicesPage = () => {
 
       {/* Project Modal */}
       <ProjectModal
-        project={selectedProject}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        category="Additional Services"
-      />
+          project={selectedProject}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          category="Additional Services"
+        />
     </motion.div>
   );
 };
