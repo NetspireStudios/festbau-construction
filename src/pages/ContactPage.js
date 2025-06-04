@@ -229,7 +229,7 @@ const ContactPage = () => {
             </motion.button>
           </form>
         </motion.div>
-      </div>
+        </div>
 
       {/* Google Map Section */}
       <motion.section

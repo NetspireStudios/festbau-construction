@@ -158,35 +158,35 @@ const Clients = () => {
                 onHoverEnd={() => {}}
               >
                 {/* Logo Container */}
-                <img
-                  src={client.logo}
-                  alt={client.alt}
-                  style={{
-                    maxWidth: '100%',
+                  <img
+                    src={client.logo}
+                    alt={client.alt}
+                    style={{
+                      maxWidth: '100%',
                     maxHeight: '120px',
-                    objectFit: 'contain',
+                      objectFit: 'contain',
                     filter: 'brightness(1.0) contrast(1.1)',
-                    transition: 'all 0.3s ease'
-                  }}
-                  className="client-logo"
-                  onLoad={() => {
-                    console.log(`✅ Successfully loaded: ${client.logo}`);
-                  }}
-                  onError={(e) => {
-                    console.error(`❌ Failed to load image: ${client.logo}`);
-                    console.error(`Full URL attempted: ${e.target.src}`);
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'block';
-                  }}
-                />
-                {/* Fallback text */}
-                <div style={{
-                  display: 'none',
-                  color: 'var(--gold)',
+                      transition: 'all 0.3s ease'
+                    }}
+                    className="client-logo"
+                    onLoad={() => {
+                      console.log(`✅ Successfully loaded: ${client.logo}`);
+                    }}
+                    onError={(e) => {
+                      console.error(`❌ Failed to load image: ${client.logo}`);
+                      console.error(`Full URL attempted: ${e.target.src}`);
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'block';
+                    }}
+                  />
+                  {/* Fallback text */}
+                  <div style={{
+                    display: 'none',
+                    color: 'var(--gold)',
                   fontSize: '1.1rem',
-                  fontWeight: '600'
-                }}>
-                  {client.name}
+                    fontWeight: '600'
+                  }}>
+                    {client.name}
                 </div>
               </motion.div>
             ))}

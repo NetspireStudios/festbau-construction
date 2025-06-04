@@ -105,26 +105,26 @@ const ModernTimeline = ({ steps, title, subtitle }) => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {/* Animated Timeline SVG */}
+          {/* Straight Timeline SVG connecting through icons */}
           <svg className="timeline-svg" viewBox="0 0 100 800" preserveAspectRatio="none">
             {steps.map((step, index) => {
               if (index === steps.length - 1) return null; // No line after last step
               
               const stepProgress = Math.max(0, Math.min(1, (scrollProgress * steps.length) - index));
+              
+              // Calculate positions - icons are at the center, lines connect through them
               const yStart = (index / (steps.length - 1)) * 700 + 50;
               const yEnd = ((index + 1) / (steps.length - 1)) * 700 + 50;
               
-              // Create curved path
-              const pathData = `M 50 ${yStart} 
-                              Q 75 ${yStart + (yEnd - yStart) * 0.3} 50 ${yStart + (yEnd - yStart) * 0.6}
-                              Q 25 ${yStart + (yEnd - yStart) * 0.8} 50 ${yEnd}`;
+              // Create straight line that goes directly through the icon centers
+              const pathData = `M 50 ${yStart} L 50 ${yEnd}`;
               
               return (
                 <motion.path
                   key={`path-${index}`}
                   d={pathData}
                   stroke="url(#gradient)"
-                  strokeWidth="3"
+                  strokeWidth="4"
                   fill="none"
                   strokeDasharray="1000"
                   strokeDashoffset={1000 * (1 - stepProgress)}
@@ -155,6 +155,7 @@ const ModernTimeline = ({ steps, title, subtitle }) => {
                 transition: { duration: 0.3 }
               }}
             >
+              {/* Icon positioned ABOVE the content bubble */}
               <motion.div 
                 className="step-icon"
                 variants={iconVariants}

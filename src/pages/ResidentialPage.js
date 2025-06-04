@@ -238,17 +238,14 @@ const ResidentialPage = () => {
               >
                 Get Free Quote
               </motion.a>
-              <motion.button
+              <motion.a
+                href="tel:+15483331419"
                 className="btn btn-secondary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const footer = document.getElementById('contact');
-                  if (footer) footer.scrollIntoView({ behavior: 'smooth' });
-                }}
               >
-                Schedule Consultation
-              </motion.button>
+                (548) 333-1419
+              </motion.a>
             </div>
           </motion.div>
         </div>

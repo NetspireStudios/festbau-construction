@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaProjectDiagram, FaChartLine, FaShieldAlt, FaDollarSign, FaUsers, FaCalendarAlt, FaLightbulb, FaCogs, FaClipboardList, FaHandshake, FaTools, FaCheckCircle } from 'react-icons/fa';
+import { FaProjectDiagram, FaChartLine, FaShieldAlt, FaDollarSign, FaUsers, FaCalendarAlt, FaLightbulb, FaCogs, FaClipboardList, FaHandshake, FaTools } from 'react-icons/fa';
+import ModernTimeline from '../components/ModernTimeline';
 import './PageStyles.css';
 
 const ProjectManagementPage = () => {
@@ -36,36 +37,7 @@ const ProjectManagementPage = () => {
     }
   ];
 
-  const processPhases = [
-    {
-      phase: "Phase 1",
-      title: "Project Initiation",
-      description: "Define project scope, objectives, and deliverables. Establish project charter and preliminary timeline.",
-      duration: "1-2 weeks",
-      activities: ["Stakeholder analysis", "Scope definition", "Resource planning", "Risk identification"]
-    },
-    {
-      phase: "Phase 2", 
-      title: "Planning & Design",
-      description: "Develop detailed project plans, schedules, and budgets. Coordinate with architects and engineers.",
-      duration: "3-6 weeks",
-      activities: ["Detailed planning", "Design coordination", "Budget finalization", "Permit applications"]
-    },
-    {
-      phase: "Phase 3",
-      title: "Execution & Monitoring",
-      description: "Active construction phase with continuous monitoring, quality control, and progress reporting.",
-      duration: "Variable",
-      activities: ["Construction oversight", "Quality inspections", "Progress tracking", "Issue resolution"]
-    },
-    {
-      phase: "Phase 4",
-      title: "Completion & Handover", 
-      description: "Final inspections, documentation completion, and project handover to client.",
-      duration: "1-2 weeks",
-      activities: ["Final inspections", "Documentation", "Client walkthrough", "Project closure"]
-    }
-  ];
+
 
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
@@ -138,7 +110,7 @@ const ProjectManagementPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="section-title">
-              Professional Project Management Services in <span className="gold-text">Construction</span>
+              Expert Project Management <span className="gold-text">Services</span>
             </h2>
             <p className="section-description">
               Comprehensive project planning and coordination are vital for successful construction execution. 
@@ -169,60 +141,49 @@ const ProjectManagementPage = () => {
         </div>
       </section>
 
-      {/* Our Project Management Process Timeline */}
-      <section className="section-padding bg-gradient">
-        <div className="container">
-          <motion.div
-            className="section-header"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">
-              Our Project Management <span className="gold-text">Timeline</span>
-            </h2>
-            <p className="section-description">
-              Our systematic approach ensures every project is delivered on time, within budget, and to the highest quality standards. 
-              Each phase is carefully planned and executed with precision.
-            </p>
-          </motion.div>
-
-          <div className="timeline-phases">
-            {processPhases.map((phase, index) => (
-              <motion.div
-                key={index}
-                className="phase-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="phase-header">
-                  <span className="phase-number">{phase.phase}</span>
-                  <div className="phase-info">
-                    <h3 className="phase-title">{phase.title}</h3>
-                    <span className="phase-duration">{phase.duration}</span>
-                  </div>
-                </div>
-                <p className="phase-description">{phase.description}</p>
-                <div className="phase-activities">
-                  <h4>Key Activities:</h4>
-                  <ul>
-                    {phase.activities.map((activity, actIndex) => (
-                      <li key={actIndex}>
-                        <FaCheckCircle className="activity-icon" />
-                        {activity}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Project Management Timeline */}
+      <ModernTimeline 
+        steps={[
+          {
+            step: "01",
+            title: "Project Initiation",
+            mobileTitle: "Initiation",
+            description: "Define project scope, objectives, and deliverables. Establish project charter and preliminary timeline with stakeholder analysis.",
+            mobileDescription: "Define scope, objectives, and preliminary timeline with stakeholder analysis.",
+            icon: FaLightbulb
+          },
+          {
+            step: "02",
+            title: "Planning & Design",
+            mobileTitle: "Planning",
+            description: "Develop detailed project plans, schedules, and budgets. Coordinate with architects and engineers for seamless execution.",
+            mobileDescription: "Develop detailed plans, schedules, and coordinate with architects and engineers.",
+            icon: FaCalendarAlt
+          },
+          {
+            step: "03",
+            title: "Execution & Monitoring",
+            mobileTitle: "Execution",
+            description: "Active construction phase with continuous monitoring, quality control, and progress reporting to ensure standards.",
+            mobileDescription: "Active construction with monitoring, quality control, and progress reporting.",
+            icon: FaShieldAlt
+          },
+          {
+            step: "04",
+            title: "Completion & Handover",
+            mobileTitle: "Completion",
+            description: "Final inspections, documentation completion, and project handover to client with comprehensive walkthrough.",
+            mobileDescription: "Final inspections, documentation, and project handover with walkthrough.",
+            icon: FaChartLine
+          }
+        ]}
+        title={
+          <>
+            Our Project Management <span className="gold-text">Timeline</span>
+          </>
+        }
+        subtitle="Our systematic approach ensures every project is delivered on time, within budget, and to the highest quality standards."
+      />
 
       {/* Why Choose Our Project Management */}
       <section className="section-padding">
@@ -302,71 +263,7 @@ const ProjectManagementPage = () => {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="section-padding bg-gradient">
-        <div className="container">
-          <motion.div
-            className="section-header"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">
-              Our Project Management <span className="gold-text">Process</span>
-            </h2>
-            <p className="section-description">
-              This proactive approach ensures a seamless construction experience that aligns with your vision and goals, 
-              protecting your investment and fostering a safer, more efficient work environment.
-            </p>
-          </motion.div>
 
-          <motion.div
-            className="process-timeline"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <div className="timeline-item">
-              <div className="timeline-icon">
-                <FaLightbulb />
-              </div>
-              <div className="timeline-content">
-                <h3>Planning & Coordination</h3>
-                <p>Comprehensive project planning with clear objectives and detailed roadmaps, including resource allocation and timeline development.</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-icon">
-                <FaCalendarAlt />
-              </div>
-              <div className="timeline-content">
-                <h3>Timeline Development</h3>
-                <p>Creating realistic schedules with proper coordination of all stakeholders, including buffer time for unforeseen circumstances.</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-icon">
-                <FaShieldAlt />
-              </div>
-              <div className="timeline-content">
-                <h3>Quality Assurance</h3>
-                <p>Rigorous quality control and compliance oversight throughout construction with regular inspections and documentation.</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-icon">
-                <FaChartLine />
-              </div>
-              <div className="timeline-content">
-                <h3>Monitoring & Control</h3>
-                <p>Continuous monitoring of progress, budget, and quality standards with proactive issue resolution and stakeholder communication.</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="section-padding">
@@ -382,25 +279,25 @@ const ProjectManagementPage = () => {
               Ready to Start Your <span className="gold-text">Next Project</span>?
             </h2>
             <p className="cta-description">
-              Let our experienced project management team guide your construction project from concept to completion. 
+              Let our experienced project management team guide your construction project from concept to completion.
               Contact us today to discuss how we can help make your project a success.
             </p>
             <div className="cta-buttons">
               <motion.a
-                href="/quote"
+                href="/contact"
                 className="btn btn-primary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get Project Quote
+                Contact Us
               </motion.a>
               <motion.a
-                href="/contact"
+                href="tel:+15483331419"
                 className="btn btn-secondary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Contact Our Team
+                (548) 333-1419
               </motion.a>
             </div>
           </motion.div>

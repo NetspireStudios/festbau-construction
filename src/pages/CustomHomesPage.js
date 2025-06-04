@@ -1,6 +1,26 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaHome, FaRuler, FaPalette, FaUsers, FaClipboardCheck, FaKey, FaLightbulb, FaDraftingCompass, FaHammer, FaEye, FaMapMarkerAlt } from 'react-icons/fa';
+import { 
+  FaHome, 
+  FaRuler, 
+  FaPalette, 
+  FaUsers, 
+  FaClipboardCheck, 
+  FaKey, 
+  FaLightbulb, 
+  FaDraftingCompass, 
+  FaHammer, 
+  FaEye, 
+  FaMapMarkerAlt, 
+  FaCheckCircle,
+  FaAward,
+  FaHardHat,
+  FaBullseye,
+  FaShieldAlt,
+  FaCog,
+  FaBuilding,
+  FaLeaf
+} from 'react-icons/fa';
 import ProjectModal from '../components/ProjectModal';
 import ModernTimeline from '../components/ModernTimeline';
 import './PageStyles.css';
@@ -19,36 +39,133 @@ const CustomHomesPage = () => {
     setSelectedProject(null);
   };
 
+  // Enhanced services with detailed descriptions
+  const customHomeServices = [
+    {
+      icon: FaDraftingCompass,
+      title: "Custom Architecture",
+      description: "Unique architectural designs tailored to your lifestyle, lot constraints, and personal preferences with cutting-edge design technology.",
+      features: ["3D Design Visualization", "Site-Specific Planning", "Energy Efficiency Integration", "Unique Style Development"]
+    },
+    {
+      icon: FaPalette,
+      title: "Luxury Finishes",
+      description: "Premium materials and high-end finishes throughout your home, from imported stones to custom millwork and designer fixtures.",
+      features: ["Premium Material Selection", "Custom Millwork", "Designer Fixtures", "Luxury Hardware"]
+    },
+    {
+      icon: FaCog,
+      title: "Smart Home Integration",
+      description: "Cutting-edge smart home technology seamlessly integrated throughout, providing convenience, security, and energy efficiency.",
+      features: ["Home Automation Systems", "Security Integration", "Energy Management", "Climate Control"]
+    },
+    {
+      icon: FaLeaf,
+      title: "Sustainable Building",
+      description: "Environmentally conscious construction using sustainable materials and energy-efficient systems for reduced environmental impact.",
+      features: ["Energy Star Certification", "Sustainable Materials", "Solar Ready Installation", "Water Conservation Systems"]
+    },
+    {
+      icon: FaBuilding,
+      title: "Structural Excellence",
+      description: "Superior structural engineering and construction techniques ensuring your home stands the test of time with uncompromising quality.",
+      features: ["Engineering Precision", "Quality Assurance", "Code Compliance", "Structural Warranties"]
+    },
+    {
+      icon: FaUsers,
+      title: "Turnkey Solution",
+      description: "Complete build management from initial concept through move-in ready, handling every detail so you don't have to worry about anything.",
+      features: ["Project Management", "Permit Coordination", "Trade Scheduling", "Quality Control"]
+    }
+  ];
 
-
-  const features = [
-    { icon: FaRuler, title: "Custom Architecture", description: "Unique designs tailored to your lot and lifestyle" },
-    { icon: FaPalette, title: "Luxury Finishes", description: "Premium materials and high-end finishes throughout" },
-    { icon: FaUsers, title: "Expert Team", description: "Skilled craftsmen and experienced project managers" },
-    { icon: FaHome, title: "Turnkey Solution", description: "Complete build from foundation to move-in ready" }
+  // Process steps with detailed explanations
+  const constructionProcess = [
+    {
+      step: "01",
+      title: "Initial Consultation",
+      mobileTitle: "Consultation",
+      description: "Understanding your vision, lifestyle needs, and design preferences to create the foundation of your dream home.",
+      mobileDescription: "Understanding your vision and design preferences for your dream home.",
+      icon: FaLightbulb
+    },
+    {
+      step: "02", 
+      title: "Design & Planning",
+      mobileTitle: "Planning",
+      description: "Collaborative design process with architects and engineers to develop detailed plans and 3D visualizations.",
+      mobileDescription: "Collaborative design process to develop detailed plans and specifications.",
+      icon: FaDraftingCompass
+    },
+    {
+      step: "03",
+      title: "Permits & Approvals",
+      mobileTitle: "Permits",
+      description: "Handling all municipal permits, inspections, and regulatory approvals for a seamless construction process.",
+      mobileDescription: "Handling permits, inspections, and regulatory approvals.",
+      icon: FaClipboardCheck
+    },
+    {
+      step: "04",
+      title: "Foundation & Framing",
+      mobileTitle: "Foundation",
+      description: "Expert foundation work and structural framing using the highest quality materials and construction techniques.",
+      mobileDescription: "Expert foundation work and structural framing with quality materials.",
+      icon: FaHardHat
+    },
+    {
+      step: "05",
+      title: "Construction & Systems",
+      mobileTitle: "Construction",
+      description: "Complete home construction including electrical, plumbing, HVAC, and all major systems installation.",
+      mobileDescription: "Complete construction including all major systems installation.",
+      icon: FaHammer
+    },
+    {
+      step: "06",
+      title: "Finishing & Inspection",
+      mobileTitle: "Finishing",
+      description: "Interior and exterior finishing work, final inspections, and quality assurance before handover.",
+      mobileDescription: "Finishing work, inspections, and quality assurance.",
+      icon: FaBullseye
+    },
+    {
+      step: "07",
+      title: "Final Walkthrough",
+      mobileTitle: "Completion",
+      description: "Comprehensive inspection and handover of your completed custom home, ready for move-in with all warranties.",
+      mobileDescription: "Inspection and handover of your completed custom home.",
+      icon: FaKey
+    }
   ];
 
   const customHomes = [
     {
       title: "Modern Luxury Estate",
+      folderName: "Modern Luxury Estate",
       image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       location: "Cambridge, ON",
+      category: "Luxury Custom Home",
       description: "Contemporary design with open-concept living spaces, featuring floor-to-ceiling windows, premium finishes, and smart home technology throughout.",
       features: ["Open Concept Design", "Smart Home Technology", "Premium Finishes", "Floor-to-Ceiling Windows", "Modern Kitchen", "Luxury Master Suite"],
       specs: ["4,500 sq ft", "5 Bedrooms", "4.5 Bathrooms", "3-Car Garage"]
     },
     {
       title: "Traditional Family Home", 
+      folderName: "Traditional Family Home",
       image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       location: "Waterloo, ON",
+      category: "Traditional Custom Home",
       description: "Classic architecture with modern amenities, featuring traditional exterior charm combined with contemporary interior comforts and energy-efficient systems.",
       features: ["Traditional Design", "Modern Amenities", "Energy Efficient", "Family-Friendly Layout", "Gourmet Kitchen", "Finished Basement"],
       specs: ["3,800 sq ft", "4 Bedrooms", "3.5 Bathrooms", "2-Car Garage"]
     },
     {
       title: "Contemporary Waterfront",
+      folderName: "Contemporary Waterfront",
       image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
       location: "Muskoka, ON",
+      category: "Waterfront Custom Home",
       description: "Stunning lakefront property with panoramic views, featuring floor-to-ceiling windows, private dock access, and seamless indoor-outdoor living spaces.",
       features: ["Waterfront Location", "Panoramic Views", "Private Dock", "Indoor-Outdoor Living", "Floor-to-Ceiling Windows", "Entertainment Deck"],
       specs: ["5,200 sq ft", "6 Bedrooms", "5 Bathrooms", "3-Car Garage"]
@@ -61,6 +178,12 @@ const CustomHomesPage = () => {
     out: { opacity: 0, y: -20 }
   };
 
+  const pageTransition = {
+    type: "tween",
+    ease: "anticipate",
+    duration: 0.5
+  };
+
   return (
     <motion.div
       className="page-container custom-homes-page"
@@ -68,7 +191,7 @@ const CustomHomesPage = () => {
       animate="in"
       exit="out"
       variants={pageVariants}
-      transition={{ duration: 0.5 }}
+      transition={pageTransition}
     >
       {/* Hero Section */}
       <section className="page-hero custom-homes-hero">
@@ -83,10 +206,44 @@ const CustomHomesPage = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <FaHome className="page-icon" />
-            <h1 className="page-title">Custom <span className="gold-text">Homes</span></h1>
-            <p className="page-subtitle">
-              From concept to completion—luxury homes designed to reflect your vision and exceed your expectations.
-            </p>
+            
+            <motion.h1 
+              className="page-title"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              Custom <span className="gold-text">Homes</span>
+            </motion.h1>
+            
+            <motion.p 
+              className="page-subtitle"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              From concept to completion—luxury homes designed to reflect your vision and exceed your expectations with uncompromising quality and craftsmanship.
+            </motion.p>
+
+            <motion.div
+              className="hero-stats"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
+            >
+              <div className="stat">
+                <span className="stat-number">50+</span>
+                <span className="stat-label">Custom Homes Built</span>
+              </div>
+              <div className="stat">
+                <span className="stat-number">15+</span>
+                <span className="stat-label">Years Experience</span>
+              </div>
+              <div className="stat">
+                <span className="stat-number">100%</span>
+                <span className="stat-label">Client Satisfaction</span>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -108,24 +265,54 @@ const CustomHomesPage = () => {
               At FESTBAU, we specialize in creating custom homes that reflect your unique style and meet your family's needs. 
               Our comprehensive approach combines architectural excellence, superior craftsmanship, and personalized service 
               to deliver homes that stand the test of time. From initial concept through final walkthrough, we're committed 
-              to making your dream home a reality.
+              to making your dream home a reality with attention to every detail.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="section-padding services-detail-section">
+        <div className="container">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="section-title">
+              Our Custom Home <span className="gold-text">Services</span>
+            </h2>
+            <p className="section-description">
+              We offer a complete range of custom home construction services, from initial architectural design through final completion and beyond.
             </p>
           </motion.div>
 
-          <div className="features-grid">
-            {features.map((feature, index) => (
+          <div className="services-grid">
+            {customHomeServices.map((service, index) => (
               <motion.div
                 key={index}
-                className="feature-card"
+                className="service-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
               >
-                <feature.icon className="feature-icon" />
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-description">{feature.description}</p>
+                <div className="service-icon">
+                  <service.icon />
+                </div>
+                <h3 className="service-title">{service.title}</h3>
+                <p className="service-description">{service.description}</p>
+                <ul className="service-features">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex}>
+                      <FaCheckCircle className="feature-icon" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
@@ -134,48 +321,7 @@ const CustomHomesPage = () => {
 
       {/* Process Section */}
       <ModernTimeline 
-        steps={[
-          {
-            step: "01",
-            title: "Initial Consultation",
-            mobileTitle: "Consultation",
-            description: "Understanding your vision, lifestyle needs, and design preferences to create the foundation of your dream home.",
-            mobileDescription: "Understanding your vision and design preferences for your dream home.",
-            icon: FaLightbulb
-          },
-          {
-            step: "02",
-            title: "Design & Planning",
-            mobileTitle: "Planning",
-            description: "Collaborative design process with architects and engineers to develop detailed plans and specifications.",
-            mobileDescription: "Collaborative design process to develop detailed plans and specifications.",
-            icon: FaDraftingCompass
-          },
-          {
-            step: "03",
-            title: "Permits & Approvals",
-            mobileTitle: "Permits",
-            description: "Handling all municipal permits, inspections, and regulatory approvals for a seamless process.",
-            mobileDescription: "Handling permits, inspections, and regulatory approvals.",
-            icon: FaClipboardCheck
-          },
-          {
-            step: "04",
-            title: "Construction",
-            mobileTitle: "Building",
-            description: "Expert craftsmanship and quality materials brought together with meticulous attention to detail.",
-            mobileDescription: "Expert craftsmanship with meticulous attention to detail.",
-            icon: FaHammer
-          },
-          {
-            step: "05",
-            title: "Final Walkthrough",
-            mobileTitle: "Completion",
-            description: "Comprehensive inspection and handover of your completed custom home, ready for move-in.",
-            mobileDescription: "Inspection and handover of your completed custom home.",
-            icon: FaKey
-          }
-        ]}
+        steps={constructionProcess}
         title={
           <>
             Our Custom Home <span className="gold-text">Process</span>
@@ -184,7 +330,7 @@ const CustomHomesPage = () => {
         subtitle="We follow a proven methodology that ensures every custom home project is delivered on time, within budget, and to the highest quality standards."
       />
 
-      {/* Portfolio Section */}
+      {/* Featured Projects */}
       <section className="section-padding">
         <div className="container">
           <motion.div
@@ -198,65 +344,130 @@ const CustomHomesPage = () => {
               Featured Custom <span className="gold-text">Homes</span>
             </h2>
             <p className="section-description">
-              Explore some of our recent custom home projects that showcase our commitment to quality and design excellence.
+              Explore our portfolio of custom home projects, showcasing our commitment to quality and innovation in luxury home construction.
             </p>
           </motion.div>
 
-          <div className="projects-grid">
-            {customHomes.map((home, index) => (
+          <motion.div
+            className="projects-grid"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            {customHomes.map((project, index) => (
               <motion.div
                 key={index}
-                className="featured-project"
+                className="project-card featured-project"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10 }}
-                onClick={() => handleProjectClick(home)}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                onClick={() => handleProjectClick(project)}
                 style={{ cursor: 'pointer' }}
               >
                 <div className="project-image">
-                  <img src={home.image} alt={home.title} />
+                  <img src={project.image} alt={project.title} />
                   <div className="project-overlay">
                     <motion.button
                       className="view-project-btn"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleProjectClick(home);
-                      }}
+                      onClick={() => handleProjectClick(project)}
                     >
                       <FaEye />
-                      <span>View Details</span>
+                      <span className="btn-text">View Project</span>
                     </motion.button>
                   </div>
                 </div>
                 <div className="project-content">
                   <div className="project-header">
-                    <h3 className="project-title">{home.title}</h3>
+                    <h3 className="project-title">{project.title}</h3>
                     <div className="project-location">
                       <FaMapMarkerAlt />
-                      <span>{home.location}</span>
+                      <span>{project.location}</span>
                     </div>
                   </div>
-                  <p className="project-description">{home.description}</p>
+                  <div className="project-category">
+                    <span className="category-badge">{project.category}</span>
+                  </div>
+                  <p className="project-description">{project.description}</p>
                   <div className="project-features">
-                    {home.features.slice(0, 3).map((feature, featureIndex) => (
+                    {project.features.map((feature, featureIndex) => (
                       <span key={featureIndex} className="feature-tag">
                         {feature}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="project-specs">
+                    {project.specs.map((spec, specIndex) => (
+                      <span key={specIndex} className="spec-item">
+                        {spec}
                       </span>
                     ))}
                   </div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="section-padding bg-gradient">
+        <div className="container">
+          <motion.div
+            className="why-choose-content"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="section-title">
+              Why Choose FESTBAU for Your <span className="gold-text">Custom Home</span>?
+            </h2>
+            <p className="section-description">
+              With years of experience in luxury home construction and a commitment to excellence, we deliver custom homes 
+              that exceed expectations. Our engineering background ensures precision, while our design expertise creates homes 
+              that are both beautiful and functional.
+            </p>
+            
+            <div className="features-grid">
+              <motion.div
+                className="feature-item"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <FaAward className="feature-icon" />
+                <h3>Award-Winning Design</h3>
+                <p>Recognized for excellence in custom home design and construction</p>
+              </motion.div>
+              <motion.div
+                className="feature-item"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <FaShieldAlt className="feature-icon" />
+                <h3>Quality Guarantee</h3>
+                <p>Comprehensive warranties and quality assurance on all work</p>
+              </motion.div>
+              <motion.div
+                className="feature-item"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <FaUsers className="feature-icon" />
+                <h3>Expert Team</h3>
+                <p>Skilled craftsmen and experienced project managers</p>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient">
+      <section className="section-padding">
         <div className="container">
           <motion.div
             className="cta-content text-center"
@@ -269,7 +480,7 @@ const CustomHomesPage = () => {
               Ready to Build Your <span className="gold-text">Dream Home</span>?
             </h2>
             <p className="cta-description">
-              Let's discuss your vision and start planning your custom home today. Our team is ready to guide you through every step of the process.
+              Contact us today to schedule a consultation and begin the journey to creating your perfect custom home.
             </p>
             <div className="cta-buttons">
               <motion.a
@@ -278,15 +489,15 @@ const CustomHomesPage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Get Custom Quote
+                Get Free Consultation
               </motion.a>
               <motion.a
-                href="/contact"
+                href="tel:+15483331419"
                 className="btn btn-secondary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Schedule Consultation
+                (548) 333-1419
               </motion.a>
             </div>
           </motion.div>
@@ -304,4 +515,4 @@ const CustomHomesPage = () => {
   );
 };
 
-export default CustomHomesPage; 
+export default CustomHomesPage;

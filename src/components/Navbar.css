@@ -432,11 +432,19 @@
     box-shadow: none;
     min-width: auto;
     width: 100%;
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
     border-top: 1px solid rgba(221, 171, 77, 0.2);
+    
+    /* Animation for mobile dropdown */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
   }
 
   .dropdown-content.show {
+    max-height: 300px; /* Adjust based on number of menu items */
     display: block;
   }
 
@@ -466,7 +474,15 @@
 
   /* Remove desktop hover effects on mobile */
   .dropdown:hover .dropdown-content {
-    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  /* Ensure mobile dropdown only responds to clicks */
+  .dropdown-content:not(.show) {
+    max-height: 0;
+    overflow: hidden;
   }
 
   .dropdown-trigger:hover {

@@ -119,6 +119,51 @@ const Projects = () => {
       description: "Comprehensive fencing solution providing security and aesthetic appeal for commercial properties throughout the region.",
       image: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='Arial, sans-serif' font-size='14' fill='%236c757d'%3EFence Niagara%3C/text%3E%3C/svg%3E`,
       features: ["Commercial Fencing", "Security Solutions", "Regional Coverage", "Durable Materials"]
+    },
+    // Additional projects to ensure scrolling
+    {
+      id: 9,
+      title: "Kitchen Renovation in Hamilton",
+      folderName: "Kitchen Renovation Hamilton",
+      location: "Hamilton, ON",
+      category: "Residential Projects",
+      type: "Kitchen Renovation",
+      description: "Complete kitchen transformation with custom cabinetry, granite countertops, and high-end appliance installation.",
+      image: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='Arial, sans-serif' font-size='14' fill='%236c757d'%3EKitchen Hamilton%3C/text%3E%3C/svg%3E`,
+      features: ["Custom Cabinetry", "Granite Countertops", "High-End Appliances", "Modern Design"]
+    },
+    {
+      id: 10,
+      title: "Office Space in Toronto",
+      folderName: "Office Space Toronto",
+      location: "Toronto, ON",
+      category: "Commercial Construction",
+      type: "Office Renovation",
+      description: "Modern office space design with open concept layout, collaboration areas, and technology integration.",
+      image: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='Arial, sans-serif' font-size='14' fill='%236c757d'%3EOffice Toronto%3C/text%3E%3C/svg%3E`,
+      features: ["Open Concept", "Collaboration Areas", "Tech Integration", "Modern Workspace"]
+    },
+    {
+      id: 11,
+      title: "Bathroom Remodel in Ottawa",
+      folderName: "Bathroom Remodel Ottawa",
+      location: "Ottawa, ON",
+      category: "Residential Projects",
+      type: "Bathroom Renovation",
+      description: "Luxury bathroom renovation featuring spa-like amenities, premium fixtures, and elegant tile work.",
+      image: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='Arial, sans-serif' font-size='14' fill='%236c757d'%3EBathroom Ottawa%3C/text%3E%3C/svg%3E`,
+      features: ["Spa Amenities", "Premium Fixtures", "Elegant Tile Work", "Luxury Design"]
+    },
+    {
+      id: 12,
+      title: "Patio Construction in Mississauga",
+      folderName: "Patio Construction Mississauga",
+      location: "Mississauga, ON",
+      category: "Additional Services",
+      type: "Patio Construction",
+      description: "Custom outdoor patio with fire pit, seating area, and premium stone materials for year-round enjoyment.",
+      image: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='Arial, sans-serif' font-size='14' fill='%236c757d'%3EPatio Mississauga%3C/text%3E%3C/svg%3E`,
+      features: ["Fire Pit", "Seating Area", "Premium Stone", "Year-Round Design"]
     }
   ];
 

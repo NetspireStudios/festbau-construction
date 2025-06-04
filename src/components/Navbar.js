@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
@@ -7,7 +7,20 @@ import './Navbar.css';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const location = useLocation();
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 920);
+    };
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -22,10 +35,23 @@ const Navbar = () => {
   };
 
   const handleServicesClick = () => {
-    setIsServicesOpen(!isServicesOpen);
+    if (isMobile) {
+      setIsServicesOpen(!isServicesOpen);
+    }
   };
 
+  // Add hover handlers for desktop only
+  const handleServicesHover = () => {
+    if (!isMobile) {
+      setIsServicesOpen(true);
+    }
+  };
 
+  const handleServicesLeave = () => {
+    if (!isMobile) {
+      setIsServicesOpen(false);
+    }
+  };
 
   const serviceLinks = [
     { path: '/commercial', label: 'Commercial Construction' },
@@ -80,7 +106,11 @@ const Navbar = () => {
           </div>
 
           {/* Services Dropdown */}
-          <div className="navbar-item dropdown">
+          <div 
+            className="navbar-item dropdown"
+            onMouseEnter={handleServicesHover}
+            onMouseLeave={handleServicesLeave}
+          >
             <button
               className={`dropdown-trigger ${isServiceActive ? 'active' : ''}`}
               onClick={handleServicesClick}
@@ -89,20 +119,18 @@ const Navbar = () => {
               SERVICES
               <FaChevronDown className={`dropdown-arrow ${isServicesOpen ? 'open' : ''}`} />
             </button>
-            {isServicesOpen && (
-              <div className="dropdown-content show">
-                {serviceLinks.map((service, index) => (
-                  <Link
-                    key={index}
-                    to={service.path}
-                    className={`dropdown-link ${location.pathname === service.path ? 'active' : ''}`}
-                    onClick={handleLinkClick}
-                  >
-                    <span className="dropdown-link-title">{service.label}</span>
-                  </Link>
-                ))}
-              </div>
-            )}
+            <div className={`dropdown-content ${isServicesOpen ? 'show' : ''}`}>
+              {serviceLinks.map((service, index) => (
+                <Link
+                  key={index}
+                  to={service.path}
+                  className={`dropdown-link ${location.pathname === service.path ? 'active' : ''}`}
+                  onClick={handleLinkClick}
+                >
+                  <span className="dropdown-link-title">{service.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Blog Link */}

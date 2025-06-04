@@ -12,7 +12,6 @@ import {
   FaClipboardCheck,
   FaBullseye,
   FaShieldAlt,
-  FaCalendarAlt,
   FaPhone,
   FaStore,
   FaUtensils,
@@ -362,13 +361,12 @@ const CommercialPage = () => {
             </p>
             <div className="cta-buttons">
               <motion.a
-                href="/quote"
+                href="/contact"
                 className="btn btn-primary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FaCalendarAlt />
-                Schedule Consultation
+                Contact Us
               </motion.a>
               <motion.button
                 className="btn btn-secondary"

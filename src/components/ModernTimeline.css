@@ -1,4 +1,4 @@
-/* Modern Timeline Component Styles - ANIMATED CURVES */
+/* Modern Timeline Component Styles - STRAIGHT CONNECTED TIMELINE */
 .modern-timeline-section {
   background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
   position: relative;
@@ -26,7 +26,7 @@
   padding: 3rem 2rem;
 }
 
-/* Animated SVG Timeline */
+/* Straight Timeline SVG */
 .timeline-svg {
   position: absolute;
   left: 50%;
@@ -39,13 +39,14 @@
   pointer-events: none;
 }
 
-/* Timeline Steps - ANIMATED LAYOUT */
+/* Timeline Steps - ICON ABOVE CONTENT LAYOUT */
 .timeline-step {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 8rem;
-  min-height: 160px;
+  margin-bottom: 6rem;
+  min-height: 200px;
   width: 100%;
 }
 
@@ -53,44 +54,20 @@
   margin-bottom: 0;
 }
 
-/* Left Steps */
-.timeline-step.left {
-  justify-content: flex-start;
-}
-
-.timeline-step.left .step-content {
-  width: calc(50% - 100px);
-  margin-right: 100px;
-  text-align: right;
-}
-
-/* Right Steps */
-.timeline-step.right {
-  justify-content: flex-end;
-}
-
-.timeline-step.right .step-content {
-  width: calc(50% - 100px);
-  margin-left: 100px;
-  text-align: left;
-}
-
-/* Step Icon - ENHANCED POSITIONING */
+/* Step Icon - POSITIONED ABOVE CONTENT */
 .step-icon {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
+  position: relative;
+  width: 80px;
+  height: 80px;
   background: linear-gradient(135deg, rgba(221, 171, 77, 0.95) 0%, rgba(221, 171, 77, 1) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-black);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   z-index: 10;
+  margin-bottom: 2rem;
   box-shadow: 
     0 0 0 8px rgba(10, 10, 10, 1),
     0 0 0 12px rgba(221, 171, 77, 0.2),
@@ -100,7 +77,7 @@
 }
 
 .step-icon:hover {
-  transform: translate(-50%, -50%) scale(1.15);
+  transform: scale(1.15);
   background: linear-gradient(135deg, rgba(242, 233, 145, 1) 0%, rgba(221, 171, 77, 1) 100%);
   box-shadow: 
     0 0 0 8px rgba(10, 10, 10, 1),
@@ -111,24 +88,24 @@
 /* Step Number Badge */
 .step-number {
   position: absolute;
-  top: -12px;
-  right: -12px;
-  width: 28px;
-  height: 28px;
+  top: -15px;
+  right: -15px;
+  width: 32px;
+  height: 32px;
   background: rgba(10, 10, 10, 0.95);
   color: var(--gold);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 800;
   border: 2px solid var(--gold);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   z-index: 11;
 }
 
-/* Content Boxes */
+/* Content Boxes - FULL WIDTH, CENTERED BELOW ICON */
 .step-content {
   background: rgba(25, 25, 25, 0.9);
   backdrop-filter: blur(25px);
@@ -138,9 +115,12 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
   transition: all 0.4s ease;
   position: relative;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
 }
 
-/* Content Arrows - Simplified for SVG curves */
+/* Content Arrow pointing UP to icon */
 .step-content::before {
   content: '';
   position: absolute;
@@ -149,22 +129,12 @@
   background: rgba(25, 25, 25, 0.9);
   border: 1px solid rgba(221, 171, 77, 0.25);
   transform: rotate(45deg);
-  top: 50%;
-  z-index: -1;
-}
-
-.timeline-step.left .step-content::before {
-  right: -10px;
-  transform: translateY(-50%) rotate(45deg);
-  border-left: none;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
   border-bottom: none;
-}
-
-.timeline-step.right .step-content::before {
-  left: -10px;
-  transform: translateY(-50%) rotate(45deg);
   border-right: none;
-  border-top: none;
+  z-index: -1;
 }
 
 /* Hover Effects */
@@ -218,9 +188,9 @@
     padding: 2rem 1.5rem;
   }
 
-  /* Mobile SVG Timeline */
+  /* Mobile SVG Timeline - Straight down the middle */
   .timeline-svg {
-    left: 2.5rem;
+    left: 50%;
     top: 2rem;
     bottom: 2rem;
     width: 60px;
@@ -228,35 +198,22 @@
     transform: translateX(-50%);
   }
 
-  /* Mobile Steps - Left Aligned with SVG curves */
+  /* Mobile Steps - Maintain centered layout */
   .timeline-step {
-    justify-content: flex-start;
     margin-bottom: 4rem;
     min-height: auto;
-    align-items: flex-start;
   }
 
   .timeline-step:last-child {
     margin-bottom: 2rem;
   }
 
-  .timeline-step.left .step-content,
-  .timeline-step.right .step-content {
-    width: calc(100% - 6.5rem);
-    margin-left: 6rem;
-    margin-right: 1rem;
-    text-align: left;
-  }
-
-  /* Mobile Icons - Better Positioning */
+  /* Mobile Icons - Smaller but still above content */
   .step-icon {
-    left: 2.5rem;
-    top: 1rem;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-    position: absolute;
+    width: 60px;
+    height: 60px;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
     box-shadow: 
       0 0 0 4px rgba(10, 10, 10, 1),
       0 0 0 8px rgba(221, 171, 77, 0.2),
@@ -264,34 +221,27 @@
   }
 
   .step-icon:hover {
-    transform: translateX(-50%) scale(1.1);
+    transform: scale(1.1);
   }
 
   .step-number {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     font-size: 0.75rem;
-    top: -10px;
-    right: -10px;
+    top: -12px;
+    right: -12px;
   }
 
-  /* Mobile Content with Better Spacing */
+  /* Mobile Content - Smaller but still centered */
   .step-content {
     padding: 2rem 1.5rem;
-    margin-top: 0;
-    position: relative;
+    max-width: 400px;
   }
 
   .step-content::before {
-    left: -10px !important;
-    top: 1rem !important;
-    transform: rotate(45deg) !important;
-    border-right: none !important;
-    border-top: none !important;
-    border-left: 1px solid rgba(221, 171, 77, 0.25) !important;
-    border-bottom: 1px solid rgba(221, 171, 77, 0.25) !important;
-    width: 16px;
-    height: 16px;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
   }
 
   /* Mobile Typography */
@@ -328,37 +278,27 @@
   }
 
   .timeline-svg {
-    left: 2rem;
     width: 50px;
-    transform: translateX(-50%);
-  }
-
-  .timeline-step.left .step-content,
-  .timeline-step.right .step-content {
-    width: calc(100% - 5.5rem);
-    margin-left: 5rem;
-    margin-right: 1rem;
   }
 
   .step-icon {
-    left: 2rem;
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     font-size: 1.1rem;
-    top: 0.8rem;
-    transform: translateX(-50%);
+    margin-bottom: 1rem;
   }
 
   .step-number {
     width: 20px;
     height: 20px;
     font-size: 0.7rem;
-    top: -8px;
-    right: -8px;
+    top: -10px;
+    right: -10px;
   }
 
   .step-content {
     padding: 1.5rem 1.2rem;
+    max-width: 320px;
   }
 
   .step-title {
@@ -375,8 +315,7 @@
   .step-content::before {
     width: 14px;
     height: 14px;
-    left: -8px !important;
-    top: 0.8rem !important;
+    top: -8px;
   }
 }
 
