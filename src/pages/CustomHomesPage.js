@@ -463,7 +463,7 @@ const CustomHomesPage = () => {
                   </div>
                   <p className="project-description">{project.description}</p>
                   <div className="project-features">
-                    {project.features.map((feature, featureIndex) => (
+                    {project.features.slice(0, 3).map((feature, featureIndex) => (
                       <span key={featureIndex} className="feature-tag">
                         {feature}
                       </span>
