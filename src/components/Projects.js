@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaEye, FaMapMarkerAlt } from 'react-icons/fa';
 import ProjectModal from './ProjectModal';
+import { useInfiniteCarousel } from '../hooks/useInfiniteCarousel';
 import './Projects.css';
 
 const Projects = () => {
@@ -167,6 +168,9 @@ const Projects = () => {
     }
   ];
 
+  // Initialize infinite carousel after projects array is defined
+  const carouselRef = useInfiniteCarousel(recentProjects);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -233,6 +237,7 @@ const Projects = () => {
           <motion.div 
             className="projects-grid"
             variants={containerVariants}
+            ref={carouselRef}
           >
             {recentProjects.map((project) => (
               <motion.div

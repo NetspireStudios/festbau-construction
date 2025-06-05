@@ -204,13 +204,13 @@ const ProjectManagementPage = () => {
           </motion.div>
 
           <div className="benefits-grid">
-            <motion.div
+          <motion.div
               className="benefit-item"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+            viewport={{ once: true }}
+          >
               <FaHandshake className="benefit-icon" />
               <div className="benefit-content">
                 <h3>Proven Track Record</h3>
@@ -259,7 +259,7 @@ const ProjectManagementPage = () => {
                 <p>Rigorous quality control processes and regular inspections ensure every aspect meets or exceeds industry standards.</p>
               </div>
             </motion.div>
-          </div>
+            </div>
         </div>
       </section>
 

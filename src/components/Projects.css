@@ -285,7 +285,7 @@
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     gap: 1.5rem;
-    padding: 0 1rem 2rem 1rem;
+    padding: 0 calc(50vw - 180px) 2rem calc(50vw - 180px); /* Perfect center alignment */
     margin: 0;
     width: 100vw; /* Full viewport width to ensure overflow */
     max-width: none;
@@ -317,7 +317,7 @@
     min-width: 320px;
     max-width: 320px;
     height: auto;
-    scroll-snap-align: start;
+    scroll-snap-align: center; /* Center each card when scrolling */
     margin: 0;
     
     /* Ensure cards don't interfere with scrolling */

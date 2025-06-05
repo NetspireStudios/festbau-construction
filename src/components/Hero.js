@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
-import { FaPhone, FaBuilding, FaAward, FaClock, FaUsers, FaEnvelope } from 'react-icons/fa';
+import { FaPhone, FaBuilding, FaAward, FaClock, FaUsers, FaEnvelope, FaChevronDown } from 'react-icons/fa';
 import './Hero.css';
 
 // Animated Counter Component
@@ -117,6 +117,13 @@ const Hero = () => {
               <span className="subtitle-text">Premium Construction</span>
             </motion.h1>
             
+            <motion.p 
+              className="hero-mobile-description"
+              variants={itemVariants}
+            >
+              Professional construction services with quality craftsmanship and reliable results.
+            </motion.p>
+            
             <motion.div className="hero-buttons" variants={itemVariants}>
               <motion.a
                 href="tel:548-333-1419"
@@ -178,6 +185,33 @@ const Hero = () => {
             </motion.div>
           </motion.div>
         </div>
+        
+        {/* Scroll Down Arrow - Mobile Only */}
+        <motion.div 
+          className="scroll-down-arrow"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 2 }}
+          onClick={() => {
+            const nextSection = document.querySelector('#recent-projects, .about-section, main');
+            if (nextSection) {
+              nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+        >
+          <motion.div
+            animate={{ 
+              y: [0, 10, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <FaChevronDown />
+          </motion.div>
+        </motion.div>
       </motion.div>
     </section>
   );

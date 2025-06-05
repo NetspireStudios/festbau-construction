@@ -96,15 +96,15 @@ const Navbar = () => {
         <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
           {/* Home Link */}
           <div className="navbar-item">
-            <Link
+              <Link
               to="/"
               className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`}
-              onClick={handleLinkClick}
-            >
+                onClick={handleLinkClick}
+              >
               HOME
-            </Link>
-          </div>
-
+              </Link>
+            </div>
+          
           {/* Services Dropdown */}
           <div 
             className="navbar-item dropdown"

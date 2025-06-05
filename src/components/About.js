@@ -120,14 +120,11 @@ const About = () => {
               <div className="about-intro">
                 <h3>Building Excellence Since 2021</h3>
                 <p>
-                  Founded by CEO Vugar Ismayilov, FESTBAU has quickly evolved from a local renovation company 
-                  in Waterloo into a leading commercial general contracting firm. With expertise gained as an Engineering 
-                  Project Manager at Ferrero Canada, Vugar has built a reputation for excellence in project management.
+                  Founded by CEO Vugar Ismayilov, FESTBAU has evolved into a leading commercial general contracting firm. 
+                  With project management expertise from Ferrero Canada, we deliver quality construction solutions.
                 </p>
                 <p>
-                  Specializing in turnkey construction solutions, we ensure that every project, from large-scale commercial 
-                  builds to detailed renovations, is meticulously planned, executed, and delivered on time and within budget, 
-                  meeting each client's unique needs.
+                  We specialize in turnkey construction, ensuring every project is delivered on time and within budget.
                 </p>
               </div>
             </motion.div>

@@ -112,23 +112,33 @@ const Clients = () => {
             Trusted by leading brands across Ontario for their construction and renovation needs
           </p>
           
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+          <div
             style={{ 
-              display: 'flex', 
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: 'clamp(3rem, 5vw, 4rem)',
+              width: '100%',
+              overflow: 'hidden',
               marginTop: '4rem',
-              maxWidth: '1200px',
-              margin: '4rem auto 0 auto'
+              maskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)'
             }}
-            className="clients-grid"
           >
-            {clients.map((client, index) => (
+            <motion.div
+              initial={{ x: 0 }}
+              animate={{ x: '-100%' }}
+              transition={{
+                duration: 20,
+                ease: 'linear',
+                repeat: Infinity
+              }}
+              style={{ 
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4rem',
+                width: 'fit-content'
+              }}
+              className="clients-slider"
+            >
+              {/* Duplicate the array to create seamless loop */}
+              {[...clients, ...clients].map((client, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
@@ -189,8 +199,9 @@ const Clients = () => {
                     {client.name}
                 </div>
               </motion.div>
-            ))}
-          </motion.div>
+                          ))}
+            </motion.div>
+          </div>
         </motion.div>
       </div>
       
