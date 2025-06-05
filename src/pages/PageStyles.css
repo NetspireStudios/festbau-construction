@@ -847,7 +847,7 @@
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     gap: 1.5rem;
-    padding: 0 calc(50vw - 180px) 2rem calc(50vw - 180px); /* Center first and last items properly */
+    padding: 0 calc(50vw - 190px) 2rem calc(50vw - 190px); /* Perfect center alignment for 350px cards */
     margin: 0;
     width: 100vw; /* Full viewport width to ensure overflow */
     max-width: none;
@@ -874,10 +874,10 @@
 
   .featured-project,
   .project-card {
-    flex: 0 0 320px; /* Fixed width with no shrinking */
-    width: 320px;
-    min-width: 320px;
-    max-width: 320px;
+    flex: 0 0 350px; /* Fixed width with no shrinking */
+    width: 350px;
+    min-width: 350px;
+    max-width: 350px;
     height: auto;
     scroll-snap-align: center; /* Center each card when scrolling */
     margin: 0;
@@ -1028,15 +1028,15 @@
   /* ===== SMALLER MOBILE PROJECTS CAROUSEL ===== */
   .projects-grid {
     gap: 1rem;
-    padding: 0 0.5rem 2rem 0.5rem;
+    padding: 0 calc(50vw - 170px) 2rem calc(50vw - 170px);
   }
 
   .featured-project,
   .project-card {
-    flex: 0 0 280px;
-    width: 280px;
-    max-width: 280px;
-    min-width: 280px;
+    flex: 0 0 310px;
+    width: 310px;
+    max-width: 310px;
+    min-width: 310px;
   }
 
   .project-image {
