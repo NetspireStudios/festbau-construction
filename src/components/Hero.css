@@ -380,9 +380,9 @@
   }
 
   .hero-title {
-    font-size: 8rem;
+    font-size: 9rem;
     margin-top: 120px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     line-height: 1;
     text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
     color: var(--white);
@@ -392,9 +392,9 @@
 
   .hero-title .gold-text {
     color: var(--gold);
-    font-size: 8.5rem;
+    font-size: 9.5rem;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     text-shadow: 
       4px 4px 12px rgba(0, 0, 0, 0.9),
       0 0 30px rgba(221, 171, 77, 0.9);
@@ -416,7 +416,7 @@
     display: block;
     font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.9);
-    margin-top: 1rem;
+    margin-top: 0.3rem;
     margin-bottom: 2.5rem;
     text-align: center;
     font-weight: 400;
@@ -444,7 +444,7 @@
     font-weight: 600;
     min-height: 48px;
     border-radius: 24px;
-    background: linear-gradient(135deg, var(--gold) 0%, #B8860B 100%);
+    background: linear-gradient(135deg, #F5D76E 0%, #E6C85A 100%);
     color: var(--primary-black);
     border: 2px solid transparent;
     text-decoration: none;
@@ -461,9 +461,9 @@
   }
 
   .hero-buttons .btn:hover {
-    background: linear-gradient(135deg, #B8860B 0%, var(--gold) 100%);
+    background: linear-gradient(135deg, #E6C85A 0%, #F5D76E 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(221, 171, 77, 0.4);
+    box-shadow: 0 6px 20px rgba(245, 215, 110, 0.4);
   }
 
   .hero-buttons .btn:active {
@@ -481,31 +481,9 @@
     display: none !important;
   }
 
-  /* Show and style scroll down arrow on mobile */
+  /* Hide scroll down arrow completely */
   .scroll-down-arrow {
-    display: block !important;
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--gold);
-    font-size: 1.8rem;
-    cursor: pointer;
-    z-index: 10;
-    padding: 12px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .scroll-down-arrow:hover {
-    background: rgba(221, 171, 77, 0.2);
-    transform: translateX(-50%) scale(1.1);
+    display: none !important;
   }
 
   .stat-item {
