@@ -88,7 +88,7 @@ export const commercialProjects = [
     location: "Port Elgin, ON",
     description: "Specialized retail space with secure storage, compliance features, and modern customer experience areas.",
     category: "Retail",
-    features: ["Secure Storage", "Compliance Features", "Modern Design", "Customer Experience"]
+    features: ["Retail Space", "Secure Design"]
   },
   {
     title: "BarBurrito in Stoufville",

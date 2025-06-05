@@ -62,7 +62,7 @@ const Projects = () => {
       type: "Retail",
       description: "Specialized retail space with secure storage, compliance features, and modern customer experience areas.",
       image: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='Arial, sans-serif' font-size='14' fill='%236c757d'%3ETokyo Smoke Port Elgin%3C/text%3E%3C/svg%3E`,
-      features: ["Secure Storage", "Compliance Features", "Modern Design", "Customer Experience"]
+      features: ["Retail Space", "Secure Design"]
     },
     {
       id: 4,
@@ -73,7 +73,7 @@ const Projects = () => {
       type: "Restaurant",
       description: "Unique restaurant concept featuring custom kitchen design, specialized equipment installation, and innovative dining layout.",
       image: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='Arial, sans-serif' font-size='14' fill='%236c757d'%3EEggmania Restaurant%3C/text%3E%3C/svg%3E`,
-      features: ["Custom Kitchen", "Specialized Equipment", "Innovative Layout", "Unique Concept"]
+      features: ["Custom Kitchen", "Modern Layout"]
     },
     // Residential Projects
     {

@@ -188,29 +188,29 @@ const ProjectModal = ({ project, isOpen, onClose, category }) => {
       // Store current scroll position BEFORE any body style changes
       scrollPosition.current = window.pageYOffset || document.documentElement.scrollTop;
       
+      // Set the body top position to maintain visual position
+      document.body.style.top = `-${scrollPosition.current}px`;
+      
       // Add event listener
       document.addEventListener('keydown', handleKeyPress);
       
-      // Prevent background scroll - simpler approach
-      document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = '15px'; // Prevent layout shift from scrollbar
+      // Prevent background scroll using CSS class
+      document.body.classList.add('modal-open');
       
       return () => {
         // Remove event listener
         document.removeEventListener('keydown', handleKeyPress);
         
-        // Restore body styles
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
+        // Restore body scroll
+        document.body.classList.remove('modal-open');
+        document.body.style.top = '';
         
-        // Force scroll restoration after a brief delay to ensure DOM is ready
-        setTimeout(() => {
-          window.scrollTo({
-            top: scrollPosition.current,
-            left: 0,
-            behavior: 'instant'
-          });
-        }, 0);
+        // Restore scroll position immediately
+        window.scrollTo({
+          top: scrollPosition.current,
+          left: 0,
+          behavior: 'instant'
+        });
       };
     }
   }, [isOpen, handleKeyPress]);

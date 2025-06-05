@@ -37,8 +37,6 @@ const ProjectManagementPage = () => {
     }
   ];
 
-
-
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
     in: { opacity: 1, y: 0 },
@@ -61,7 +59,7 @@ const ProjectManagementPage = () => {
       transition={pageTransition}
     >
       {/* Hero Section */}
-      <section className="page-hero">
+      <section className="page-hero project-management-hero">
         <div className="hero-background">
           <div className="hero-overlay"></div>
         </div>
@@ -72,29 +70,10 @@ const ProjectManagementPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <FaProjectDiagram className="page-icon" />
             <h1 className="page-title">Project <span className="gold-text">Management</span></h1>
             <p className="page-subtitle">
               Expert oversight from planning to completion with engineering precision and unwavering commitment to excellence.
             </p>
-            
-            {/* Service Icons */}
-            <div className="service-icons-grid">
-              {serviceIcons.map((service, index) => (
-                <motion.div
-                  key={index}
-                  className="service-icon-item"
-                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                >
-                  <service.icon className="service-icon" />
-                  <span className="service-title desktop-title">{service.title}</span>
-                  <span className="service-title mobile-title">{service.mobileTitle}</span>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
@@ -132,7 +111,9 @@ const ProjectManagementPage = () => {
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
               >
-                <service.icon className="feature-icon" />
+                <div className="feature-icon-wrapper">
+                  <service.icon className="feature-icon" />
+                </div>
                 <h3 className="feature-title">{service.title}</h3>
                 <p className="feature-description">{service.description}</p>
               </motion.div>
@@ -262,8 +243,6 @@ const ProjectManagementPage = () => {
             </div>
         </div>
       </section>
-
-
 
       {/* CTA Section */}
       <section className="section-padding">
