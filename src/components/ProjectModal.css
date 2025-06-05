@@ -416,6 +416,13 @@
   
   .modal-content {
     min-height: auto;
+    flex-direction: column;
+  }
+  
+  .modal-gallery {
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(221, 171, 77, 0.1);
   }
   
   .modal-details {
@@ -423,6 +430,8 @@
     gap: 1.5rem;
     display: flex;
     flex-direction: column;
+    overflow-y: visible;
+    max-height: none;
   }
   
   .project-title {
