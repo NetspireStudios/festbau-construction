@@ -179,7 +179,7 @@ const Hero = () => {
                     </motion.div>
                     <div className="stat-label">{stat.label}</div>
                     <div className="stat-description">{stat.description}</div>
-                  </div>
+              </div>
                 </motion.div>
               ))}
             </motion.div>

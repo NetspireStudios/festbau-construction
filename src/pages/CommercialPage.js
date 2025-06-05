@@ -6,7 +6,6 @@ import {
   FaUsers, 
   FaMapMarkerAlt, 
   FaEye,
-  FaCheckCircle,
   FaAward,
   FaHardHat,
   FaClipboardCheck,
@@ -16,11 +15,35 @@ import {
   FaStore,
   FaUtensils,
   FaIndustry,
-  FaCity
+  FaCity,
+  FaPaintBrush,
+  FaRoute,
+  FaCube,
+  FaUserTie,
+  FaCertificate,
+  FaLightbulb,
+  FaFire,
+  FaWrench,
+  FaCocktail,
+  FaDesktop,
+  FaHandsHelping,
+  FaThermometerHalf,
+  FaUniversalAccess,
+  FaWarehouse,
+  FaCogs,
+  FaExclamationTriangle,
+  FaTruck,
+  FaBolt,
+  FaLayerGroup,
+  FaGavel,
+  FaTree,
+  FaRoad,
+  FaVideo
 } from 'react-icons/fa';
 import { commercialProjects, getProjectWithImage } from '../utils/imageHelper';
 import ProjectModal from '../components/ProjectModal';
 import ModernTimeline from '../components/ModernTimeline';
+import CardStackAnimations from '../components/CardStackAnimations';
 import './PageStyles.css';
 
 const CommercialPage = () => {
@@ -43,37 +66,79 @@ const CommercialPage = () => {
       icon: FaStore,
       title: "Retail Construction",
       description: "Complete retail space build-outs from concept to completion, including storefront design, interior layouts, and customer experience optimization.",
-      features: ["Custom Storefront Design", "Interior Layout Planning", "Display Installation", "Customer Flow Optimization"]
+      features: [
+        { icon: FaPaintBrush, text: "Custom Storefront Design & Branding" },
+        { icon: FaRoute, text: "Interior Layout & Traffic Flow Planning" }, 
+        { icon: FaCube, text: "Display Installation & Merchandising Solutions" },
+        { icon: FaUserTie, text: "Customer Experience & Point-of-Sale Optimization" },
+        { icon: FaCertificate, text: "Code Compliance & Safety Standards" },
+        { icon: FaLightbulb, text: "Lighting & Electrical Systems Integration" }
+      ]
     },
     {
       icon: FaUtensils,
       title: "Restaurant Construction",
       description: "Specialized restaurant construction including commercial kitchen design, dining area optimization, and compliance with health regulations.",
-      features: ["Commercial Kitchen Design", "Dining Space Layout", "Health Code Compliance", "Equipment Installation"]
+      features: [
+        { icon: FaUtensils, text: "Commercial Kitchen Design & Equipment Layout" },
+        { icon: FaUsers, text: "Dining Space Layout & Seating Optimization" },
+        { icon: FaShieldAlt, text: "Health Code Compliance & Permit Coordination" },
+        { icon: FaFire, text: "Ventilation & Fire Safety Systems" },
+        { icon: FaWrench, text: "Equipment Installation & Testing" },
+        { icon: FaCocktail, text: "Bar & Service Area Construction" }
+      ]
     },
     {
       icon: FaBuilding,
       title: "Office Build-Outs",
       description: "Professional office construction and renovation services creating productive workspaces that enhance business operations and employee satisfaction.",
-      features: ["Open Office Concepts", "Meeting Room Design", "Technology Integration", "Ergonomic Workspaces"]
+      features: [
+        { icon: FaLayerGroup, text: "Open Office Concepts & Space Planning" },
+        { icon: FaDesktop, text: "Meeting Room & Conference Center Design" },
+        { icon: FaBolt, text: "Technology Integration & IT Infrastructure" },
+        { icon: FaHandsHelping, text: "Ergonomic Workspace Solutions" },
+        { icon: FaThermometerHalf, text: "HVAC & Climate Control Systems" },
+        { icon: FaUniversalAccess, text: "Accessibility & ADA Compliance" }
+      ]
     },
     {
       icon: FaIndustry,
       title: "Industrial Construction",
       description: "Heavy-duty industrial construction for warehouses, manufacturing facilities, and distribution centers with focus on functionality and safety.",
-      features: ["Warehouse Construction", "Manufacturing Facilities", "Safety Compliance", "Equipment Integration"]
+      features: [
+        { icon: FaWarehouse, text: "Warehouse Construction & Storage Solutions" },
+        { icon: FaCogs, text: "Manufacturing Facility Development" },
+        { icon: FaExclamationTriangle, text: "Safety Compliance & OSHA Standards" },
+        { icon: FaTools, text: "Equipment Integration & Heavy Machinery" },
+        { icon: FaTruck, text: "Loading Dock & Transportation Access" },
+        { icon: FaBolt, text: "Industrial Electrical & Utility Systems" }
+      ]
     },
     {
       icon: FaCity,
       title: "Mixed-Use Development",
       description: "Complex mixed-use projects combining residential, commercial, and office spaces in integrated development solutions.",
-      features: ["Multi-Use Design", "Zoning Compliance", "Community Integration", "Sustainable Development"]
+      features: [
+        { icon: FaLayerGroup, text: "Multi-Use Design & Space Integration" },
+        { icon: FaGavel, text: "Zoning Compliance & Municipal Approvals" },
+        { icon: FaHandsHelping, text: "Community Integration & Urban Planning" },
+        { icon: FaTree, text: "Sustainable Development Practices" },
+        { icon: FaRoad, text: "Infrastructure & Utility Coordination" },
+        { icon: FaCogs, text: "Property Management & Maintenance Planning" }
+      ]
     },
     {
       icon: FaHardHat,
       title: "Municipal Projects",
       description: "Public sector construction including government buildings, community centers, and infrastructure projects serving Ontario communities.",
-      features: ["Government Buildings", "Community Centers", "Public Infrastructure", "Accessibility Compliance"]
+      features: [
+        { icon: FaBuilding, text: "Government Buildings & Public Facilities" },
+        { icon: FaUsers, text: "Community Centers & Recreation Facilities" },
+        { icon: FaRoad, text: "Public Infrastructure & Transportation" },
+        { icon: FaUniversalAccess, text: "Accessibility & Universal Design" },
+        { icon: FaTree, text: "Environmental & Sustainability Standards" },
+        { icon: FaVideo, text: "Public Safety & Security Systems" }
+      ]
     }
   ];
 
@@ -146,8 +211,8 @@ const CommercialPage = () => {
     duration: 0.5
   };
 
-  return (
-    <motion.div
+    return (
+    <motion.div 
       className="page-container commercial-page"
       initial="initial"
       animate="in"
@@ -155,245 +220,248 @@ const CommercialPage = () => {
       variants={pageVariants}
       transition={pageTransition}
     >
-      {/* Hero Section */}
-      <section className="page-hero commercial-hero">
-        <div className="hero-background">
-          <div className="hero-overlay"></div>
-        </div>
-        <div className="container">
-          <motion.div
-            className="page-hero-content"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <FaBuilding className="page-icon" />
-            
-            <motion.h1 
-              className="page-title"
-              initial={{ opacity: 0, y: 30 }}
+      <CardStackAnimations />
+        {/* Hero Section */}
+        <section className="page-hero commercial-hero">
+          <div className="hero-background">
+            <div className="hero-overlay"></div>
+          </div>
+          <div className="container">
+            <motion.div
+              className="page-hero-content"
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Commercial <span className="gold-text">Construction</span>
-            </motion.h1>
-            
-            <motion.p 
-              className="page-subtitle"
+              <FaBuilding className="page-icon" />
+              
+              <motion.h1 
+                className="page-title"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                Commercial <span className="gold-text">Construction</span>
+              </motion.h1>
+              
+              <motion.p 
+                className="page-subtitle"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                From restaurants to retail spaces, offices to industrial facilities - we transform your commercial vision into reality with expert craftsmanship and innovative solutions.
+              </motion.p>
+
+              <motion.div
+                className="hero-stats"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.0 }}
+              >
+                <div className="stat">
+                  <span className="stat-number">500+</span>
+                  <span className="stat-label">Projects Completed</span>
+                </div>
+                <div className="stat">
+                  <span className="stat-number">15+</span>
+                  <span className="stat-label">Years Experience</span>
+                </div>
+                <div className="stat">
+                  <span className="stat-number">98%</span>
+                  <span className="stat-label">Client Satisfaction</span>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section className="section-padding services-detail-section">
+          <div className="container">
+            <motion.div
+              className="section-header"
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
             >
-              From restaurants to retail spaces, offices to industrial facilities - we transform your commercial vision into reality with expert craftsmanship and innovative solutions.
-            </motion.p>
+              <h2 className="section-title">
+                Our Commercial <span className="gold-text">Services</span>
+              </h2>
+              <p className="section-description">
+                We offer a complete range of commercial construction services, from initial concept and design through final completion and beyond.
+              </p>
+            </motion.div>
+
+            <div className="services-grid">
+              {commercialServices.map((service, index) => (
+                <motion.div
+                  key={index}
+                  className="service-card"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                >
+                  <div className="service-icon">
+                    <service.icon />
+                  </div>
+                  <h3 className="service-title">{service.title}</h3>
+                  <p className="service-description">{service.description}</p>
+                  <ul className="service-features">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex}>
+                        <div className="feature-icon">
+                          <feature.icon />
+                        </div>
+                        <span className="feature-text">{feature.text}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Process Section */}
+        <ModernTimeline 
+          steps={constructionProcess}
+          title={
+            <>
+              Our Construction <span className="gold-text">Process</span>
+            </>
+          }
+          subtitle="Our proven 6-step process ensures your commercial construction project is completed on time, within budget, and to the highest quality standards."
+        />
+
+        {/* Featured Projects */}
+        <section className="section-padding projects-section">
+          <div className="container">
+            <motion.div
+              className="section-header"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="section-title">
+                Featured Commercial <span className="gold-text">Projects</span>
+              </h2>
+              <p className="section-description">
+                Discover our recent commercial construction projects that showcase our commitment to quality, innovation, and client satisfaction.
+              </p>
+            </motion.div>
 
             <motion.div
-              className="hero-stats"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
+              className="projects-grid"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
             >
-              <div className="stat">
-                <span className="stat-number">500+</span>
-                <span className="stat-label">Projects Completed</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">15+</span>
-                <span className="stat-label">Years Experience</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">98%</span>
-                <span className="stat-label">Client Satisfaction</span>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="section-padding services-detail-section">
-        <div className="container">
-          <motion.div
-            className="section-header"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">
-              Our Commercial <span className="gold-text">Services</span>
-            </h2>
-            <p className="section-description">
-              We offer a complete range of commercial construction services, from initial concept and design through final completion and beyond.
-            </p>
-          </motion.div>
-
-          <div className="services-grid">
-            {commercialServices.map((service, index) => (
-              <motion.div
-                key={index}
-                className="service-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              >
-                <div className="service-icon">
-                  <service.icon />
-                </div>
-                <h3 className="service-title">{service.title}</h3>
-                <p className="service-description">{service.description}</p>
-                <ul className="service-features">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex}>
-                      <FaCheckCircle className="feature-icon" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <ModernTimeline 
-        steps={constructionProcess}
-        title={
-          <>
-            Our Construction <span className="gold-text">Process</span>
-          </>
-        }
-        subtitle="Our proven 6-step process ensures your commercial construction project is completed on time, within budget, and to the highest quality standards."
-      />
-
-      {/* Featured Projects */}
-      <section className="section-padding projects-section">
-        <div className="container">
-          <motion.div
-            className="section-header"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="section-title">
-              Featured Commercial <span className="gold-text">Projects</span>
-            </h2>
-            <p className="section-description">
-              Discover our recent commercial construction projects that showcase our commitment to quality, innovation, and client satisfaction.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="projects-grid"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            {featuredProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                className="featured-project"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                onClick={() => handleProjectClick(project)}
-                style={{ cursor: 'pointer' }}
-              >
-                <div className="project-image">
-                  <img src={project.image} alt={project.title} />
-                  <div className="project-overlay">
-                    <motion.button
-                      className="view-project-btn"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handleProjectClick(project)}
-                    >
-                      <FaEye />
-                      <span>View Details</span>
-                    </motion.button>
-                  </div>
-                </div>
-                <div className="project-content">
-                  <div className="project-header">
-                    <h3 className="project-title">{project.title}</h3>
-                    <div className="project-location">
-                      <FaMapMarkerAlt />
-                      <span>{project.location}</span>
+              {featuredProjects.map((project, index) => (
+                <motion.div
+                  key={index}
+                  className="featured-project"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                  onClick={() => handleProjectClick(project)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <div className="project-image">
+                    <img src={project.image} alt={project.title} />
+                    <div className="project-overlay">
+                      <motion.button
+                        className="view-project-btn"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => handleProjectClick(project)}
+                      >
+                        <FaEye />
+                        <span>View Details</span>
+                      </motion.button>
                     </div>
                   </div>
-                  <p className="project-description">{project.description}</p>
-                  <div className="project-features">
-                    {project.features.slice(0, 3).map((feature, featureIndex) => (
-                      <span key={featureIndex} className="feature-tag">
-                        {feature}
-                      </span>
-                    ))}
+                  <div className="project-content">
+                    <div className="project-header">
+                      <h3 className="project-title">{project.title}</h3>
+                      <div className="project-location">
+                        <FaMapMarkerAlt />
+                        <span>{project.location}</span>
+                      </div>
+                    </div>
+                    <p className="project-description">{project.description}</p>
+                    <div className="project-features">
+                      {project.features.slice(0, 3).map((feature, featureIndex) => (
+                        <span key={featureIndex} className="feature-tag">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
 
-      {/* CTA Section */}
-      <section className="section-padding cta-section">
-        <div className="container">
-          <motion.div
-            className="cta-content"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="cta-title">
-              Ready to Transform Your <span className="gold-text">Business Space</span>?
-            </h2>
-            <p className="cta-description">
-              Let's discuss your commercial construction project and create a space that drives your business success.
-            </p>
-            <div className="cta-buttons">
-              <motion.a
-                href="/contact"
-                className="btn btn-primary"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Contact Us
-              </motion.a>
-              <motion.button
-                className="btn btn-secondary"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const footer = document.getElementById('contact');
-                  if (footer) footer.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                <FaPhone />
-                (548) 333-1419
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+        {/* CTA Section */}
+        <section className="section-padding cta-section">
+          <div className="container">
+            <motion.div
+              className="cta-content"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="cta-title">
+                Ready to Transform Your <span className="gold-text">Business Space</span>?
+              </h2>
+              <p className="cta-description">
+                Let's discuss your commercial construction project and create a space that drives your business success.
+              </p>
+              <div className="cta-buttons">
+                <motion.a
+                  href="/contact"
+                  className="btn btn-primary"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Contact Us
+                </motion.a>
+                <motion.button
+                  className="btn btn-secondary"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    const footer = document.getElementById('contact');
+                    if (footer) footer.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  <FaPhone />
+                  (548) 333-1419
+                </motion.button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
-      {/* Project Modal */}
-      <ProjectModal
-          project={selectedProject}
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          category="Commercial Construction"
-        />
-    </motion.div>
-  );
+        {/* Project Modal */}
+        <ProjectModal
+            project={selectedProject}
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            category="Commercial Construction"
+          />
+      </motion.div>
+    );
 };
 
 export default CommercialPage; 

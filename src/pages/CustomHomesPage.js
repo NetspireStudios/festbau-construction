@@ -19,10 +19,34 @@ import {
   FaShieldAlt,
   FaCog,
   FaBuilding,
-  FaLeaf
+  FaLeaf,
+  FaCube,
+  FaRoute,
+  FaCertificate,
+  FaTools,
+  FaGem,
+  FaCouch,
+  FaTree,
+  FaBolt,
+  FaThermometerHalf,
+  FaWifi,
+  FaVideo,
+  FaMicrophone,
+  FaStar,
+  FaRecycle,
+  FaSolarPanel,
+  FaWater,
+  FaWind,
+  FaCalculator,
+  FaMicroscope,
+  FaCalendarAlt,
+  FaClipboard,
+  FaDollarSign,
+  FaHandshake
 } from 'react-icons/fa';
 import ProjectModal from '../components/ProjectModal';
 import ModernTimeline from '../components/ModernTimeline';
+import CardStackAnimations from '../components/CardStackAnimations';
 import './PageStyles.css';
 
 const CustomHomesPage = () => {
@@ -45,37 +69,79 @@ const CustomHomesPage = () => {
       icon: FaDraftingCompass,
       title: "Custom Architecture",
       description: "Unique architectural designs tailored to your lifestyle, lot constraints, and personal preferences with cutting-edge design technology.",
-      features: ["3D Design Visualization", "Site-Specific Planning", "Energy Efficiency Integration", "Unique Style Development"]
+      features: [
+        { icon: FaCube, text: "3D Design Visualization & Virtual Walkthroughs" },
+        { icon: FaRoute, text: "Site-Specific Planning & Lot Optimization" }, 
+        { icon: FaLeaf, text: "Energy Efficiency Integration & Green Building" },
+        { icon: FaStar, text: "Unique Style Development & Personal Branding" },
+        { icon: FaBuilding, text: "Structural Engineering & Foundation Design" },
+        { icon: FaCertificate, text: "Building Code Compliance & Municipal Approvals" }
+      ]
     },
     {
       icon: FaPalette,
       title: "Luxury Finishes",
       description: "Premium materials and high-end finishes throughout your home, from imported stones to custom millwork and designer fixtures.",
-      features: ["Premium Material Selection", "Custom Millwork", "Designer Fixtures", "Luxury Hardware"]
+      features: [
+        { icon: FaGem, text: "Premium Material Selection & Sourcing" },
+        { icon: FaTools, text: "Custom Millwork & Cabinetry Design" },
+        { icon: FaLightbulb, text: "Designer Fixtures & Lighting Solutions" },
+        { icon: FaGem, text: "Luxury Hardware & Finishing Touches" },
+        { icon: FaTree, text: "Natural Stone & Tile Installation" },
+        { icon: FaCouch, text: "Hardwood Flooring & Custom Carpentry" }
+      ]
     },
     {
       icon: FaCog,
       title: "Smart Home Integration",
       description: "Cutting-edge smart home technology seamlessly integrated throughout, providing convenience, security, and energy efficiency.",
-      features: ["Home Automation Systems", "Security Integration", "Energy Management", "Climate Control"]
+      features: [
+        { icon: FaWifi, text: "Home Automation Systems & Voice Control" },
+        { icon: FaVideo, text: "Security Integration & Surveillance Systems" },
+        { icon: FaBolt, text: "Energy Management & Smart Thermostats" },
+        { icon: FaThermometerHalf, text: "Climate Control & HVAC Automation" },
+        { icon: FaLightbulb, text: "Smart Lighting & Motorized Window Treatments" },
+        { icon: FaMicrophone, text: "Entertainment Systems & Audio/Visual Integration" }
+      ]
     },
     {
       icon: FaLeaf,
       title: "Sustainable Building",
       description: "Environmentally conscious construction using sustainable materials and energy-efficient systems for reduced environmental impact.",
-      features: ["Energy Star Certification", "Sustainable Materials", "Solar Ready Installation", "Water Conservation Systems"]
+      features: [
+        { icon: FaStar, text: "Energy Star Certification & LEED Standards" },
+        { icon: FaRecycle, text: "Sustainable Materials & Eco-Friendly Options" },
+        { icon: FaSolarPanel, text: "Solar Ready Installation & Renewable Energy" },
+        { icon: FaWater, text: "Water Conservation Systems & Rainwater Harvesting" },
+        { icon: FaWind, text: "High-Performance Insulation & Windows" },
+        { icon: FaLeaf, text: "Indoor Air Quality & Ventilation Systems" }
+      ]
     },
     {
       icon: FaBuilding,
       title: "Structural Excellence",
       description: "Superior structural engineering and construction techniques ensuring your home stands the test of time with uncompromising quality.",
-      features: ["Engineering Precision", "Quality Assurance", "Code Compliance", "Structural Warranties"]
+      features: [
+        { icon: FaCalculator, text: "Engineering Precision & Structural Analysis" },
+        { icon: FaMicroscope, text: "Quality Assurance & Inspection Protocols" },
+        { icon: FaCertificate, text: "Building Code Compliance & Safety Standards" },
+        { icon: FaShieldAlt, text: "Structural Warranties & Long-Term Support" },
+        { icon: FaBuilding, text: "Foundation Systems & Waterproofing" },
+        { icon: FaHardHat, text: "Seismic & Wind Load Engineering" }
+      ]
     },
     {
       icon: FaUsers,
       title: "Turnkey Solution",
       description: "Complete build management from initial concept through move-in ready, handling every detail so you don't have to worry about anything.",
-      features: ["Project Management", "Permit Coordination", "Trade Scheduling", "Quality Control"]
+      features: [
+        { icon: FaCalendarAlt, text: "Project Management & Timeline Coordination" },
+        { icon: FaClipboard, text: "Permit Coordination & Regulatory Approvals" },
+        { icon: FaUsers, text: "Trade Scheduling & Contractor Management" },
+        { icon: FaEye, text: "Quality Control & Progress Monitoring" },
+        { icon: FaDollarSign, text: "Budget Management & Cost Control" },
+        { icon: FaHandshake, text: "Final Walkthrough & Client Handover" }
+      ]
     }
   ];
 
@@ -193,6 +259,7 @@ const CustomHomesPage = () => {
       variants={pageVariants}
       transition={pageTransition}
     >
+      <CardStackAnimations />
       {/* Hero Section */}
       <section className="page-hero custom-homes-hero">
         <div className="hero-background">
@@ -308,8 +375,10 @@ const CustomHomesPage = () => {
                 <ul className="service-features">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex}>
-                      <FaCheckCircle className="feature-icon" />
-                      {feature}
+                      <div className="feature-icon">
+                        <feature.icon />
+                      </div>
+                      <span className="feature-text">{feature.text}</span>
                     </li>
                   ))}
                 </ul>

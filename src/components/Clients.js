@@ -50,17 +50,6 @@ const Clients = () => {
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3
-      }
-    }
-  };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 30, scale: 0.8 },
     visible: {
@@ -73,6 +62,9 @@ const Clients = () => {
       }
     }
   };
+
+  // Create extended client array for seamless looping
+  const extendedClients = [...clients, ...clients, ...clients];
 
   return (
     <section id="clients" style={{ 
@@ -122,12 +114,14 @@ const Clients = () => {
             }}
           >
             <motion.div
-              initial={{ x: 0 }}
-              animate={{ x: '-100%' }}
+              animate={{ 
+                x: [0, -1440] // Move exactly one set of 6 logos (6 * 240px = 1440px)
+              }}
               transition={{
-                duration: 20,
+                duration: 25,
                 ease: 'linear',
-                repeat: Infinity
+                repeat: Infinity,
+                repeatType: 'loop'
               }}
               style={{ 
                 display: 'flex',
@@ -137,45 +131,45 @@ const Clients = () => {
               }}
               className="clients-slider"
             >
-              {/* Duplicate the array to create seamless loop */}
-              {[...clients, ...clients].map((client, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="client-card"
-                style={{
-                  background: 'transparent',
-                  padding: '1.5rem',
-                  borderRadius: '15px',
-                  textAlign: 'center',
-                  transition: 'all 0.4s ease',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  cursor: 'pointer',
-                  width: '200px',
-                  height: '140px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '2px solid transparent'
-                }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -8,
-                  transition: { duration: 0.3 }
-                }}
-                onHoverStart={() => {}}
-                onHoverEnd={() => {}}
-              >
-                {/* Logo Container */}
+              {extendedClients.map((client, index) => (
+                <motion.div
+                  key={`${client.name}-${index}`}
+                  variants={itemVariants}
+                  className="client-card"
+                  style={{
+                    background: 'transparent',
+                    padding: '1.5rem',
+                    borderRadius: '15px',
+                    textAlign: 'center',
+                    transition: 'all 0.4s ease',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    width: '200px',
+                    height: '140px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '2px solid transparent',
+                    flex: '0 0 200px' // Fixed flex-basis for consistent spacing
+                  }}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    y: -8,
+                    transition: { duration: 0.3 }
+                  }}
+                  onHoverStart={() => {}}
+                  onHoverEnd={() => {}}
+                >
+                  {/* Logo Container */}
                   <img
                     src={client.logo}
                     alt={client.alt}
                     style={{
                       maxWidth: '100%',
-                    maxHeight: '120px',
+                      maxHeight: '120px',
                       objectFit: 'contain',
-                    filter: 'brightness(1.0) contrast(1.1)',
+                      filter: 'brightness(1.0) contrast(1.1)',
                       transition: 'all 0.3s ease'
                     }}
                     className="client-logo"
@@ -193,13 +187,13 @@ const Clients = () => {
                   <div style={{
                     display: 'none',
                     color: 'var(--gold)',
-                  fontSize: '1.1rem',
+                    fontSize: '1.1rem',
                     fontWeight: '600'
                   }}>
                     {client.name}
-                </div>
-              </motion.div>
-                          ))}
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </motion.div>

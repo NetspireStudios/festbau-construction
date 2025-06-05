@@ -12,9 +12,6 @@ export const useInfiniteCarousel = (items) => {
       if (isScrollingRef.current) return;
       
       const { scrollLeft, scrollWidth, clientWidth } = carousel;
-      const cardWidth = 320; // Match the mobile card width
-      const gap = 24; // 1.5rem = 24px gap
-      const itemWidth = cardWidth + gap;
       
       // Check if we're at the end (with small tolerance for floating point issues)
       if (scrollLeft >= scrollWidth - clientWidth - 10) {

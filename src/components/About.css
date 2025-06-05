@@ -61,8 +61,8 @@
 
 .about-intro h3 {
   font-family: var(--font-accent);
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 1.8rem;
+  font-weight: 600;
   color: var(--white);
   margin-bottom: 1.5rem;
   position: relative;
@@ -333,7 +333,7 @@
   }
 
   .about-intro h3 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   .about-intro p {
@@ -417,7 +417,7 @@
   }
 
   .about-intro h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .about-intro p {
