@@ -147,7 +147,7 @@ const Hero = () => {
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="stat-item"
+                  className={`stat-item ${index >= 2 ? 'stat-item-hidden-mobile' : ''}`}
                   initial={{ opacity: 0, y: 30 }}
                   animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                   transition={{ duration: 0.6, delay: 0.8 + (index * 0.15) }}
@@ -172,7 +172,7 @@ const Hero = () => {
                     </motion.div>
                     <div className="stat-label">{stat.label}</div>
                     <div className="stat-description">{stat.description}</div>
-              </div>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>

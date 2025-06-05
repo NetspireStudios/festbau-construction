@@ -309,14 +309,14 @@
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
   .hero {
-    height: 100vh; /* Full viewport height */
-    min-height: 100vh; /* Ensure full height */
-    margin-top: 0; /* Remove margin that was causing issues */
-    padding-top: 20px; /* Reduced padding to show title higher */
+    height: 100vh;
+    min-height: 100vh;
+    margin-top: 0;
+    padding-top: 0;
     padding-bottom: 20px;
     position: relative;
     display: flex;
-    align-items: flex-start; /* Align to top to ensure title is visible immediately */
+    align-items: center; /* Center everything vertically */
     justify-content: center;
   }
 
@@ -327,11 +327,11 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Start from top */
+    justify-content: center; /* Center content */
     align-items: center;
     text-align: center;
-    transform: none; /* Remove any scaling */
-    margin-top: 60px; /* Add top margin to position below navbar but visible */
+    transform: none;
+    margin-top: 0; /* Remove top margin to truly center */
     min-height: auto;
   }
 
@@ -343,7 +343,7 @@
   }
 
   .hero-title {
-    font-size: 4rem; /* Much bigger header for mobile */
+    font-size: 4rem;
     margin-bottom: 1.8rem;
     line-height: 1.05;
     text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
@@ -354,7 +354,7 @@
 
   .hero-title .gold-text {
     color: var(--gold);
-    font-size: 4.5rem; /* Even bigger for "FESTBAU" on mobile */
+    font-size: 4.5rem;
     display: block;
     text-shadow: 
       4px 4px 12px rgba(0, 0, 0, 0.9),
@@ -362,13 +362,9 @@
     filter: drop-shadow(0 0 20px rgba(221, 171, 77, 0.8));
   }
 
+  /* HIDE "PREMIUM CONSTRUCTION" ON MOBILE */
   .hero-title .subtitle-text {
-    font-size: 2.2rem; /* Bigger subtitle for mobile */
-    display: block;
-    margin-top: 1rem;
-    font-weight: 700;
-    color: var(--gray-light);
-    letter-spacing: 0.8px;
+    display: none !important;
   }
 
   /* REMOVE THE PARAGRAPH TEXT COMPLETELY */
@@ -398,6 +394,11 @@
     gap: 1.5rem;
     margin-top: 2.5rem;
     max-width: 400px;
+  }
+
+  /* Hide last 2 stats on mobile - only show first 2 */
+  .stat-item-hidden-mobile {
+    display: none !important;
   }
 
   .stat-item {
@@ -432,28 +433,29 @@
   .hero {
     height: 100vh;
     min-height: 100vh;
-    padding-top: 15px; /* Even less padding for smaller screens */
+    padding-top: 0;
     padding-bottom: 15px;
-    align-items: flex-start; /* Keep aligned to top */
+    align-items: center; /* Center content */
   }
 
   .hero-content {
     padding: 0.8rem 0.8rem;
-    margin-top: 50px; /* Smaller top margin for tiny screens */
+    margin-top: 0; /* Remove top margin */
   }
 
   .hero-title {
-    font-size: 3.2rem; /* Still big but slightly smaller for tiny screens */
+    font-size: 3.2rem;
     margin-bottom: 1.5rem;
     letter-spacing: 1px;
   }
 
   .hero-title .gold-text {
-    font-size: 3.6rem; /* Proportionally bigger */
+    font-size: 3.6rem;
   }
 
+  /* Keep subtitle hidden on small mobile too */
   .hero-title .subtitle-text {
-    font-size: 1.8rem; /* Proportional sizing */
+    display: none !important;
   }
 
   .hero-buttons {
