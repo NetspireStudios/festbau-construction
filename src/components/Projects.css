@@ -284,8 +284,8 @@
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
-    gap: 1.5rem;
-    padding: 0 calc(50vw - 190px) 2rem calc(50vw - 190px); /* Perfect center alignment for 350px cards */
+    gap: 1.2rem;
+    padding: 0 calc(50vw - 185px) 2rem calc(50vw - 185px); /* Slightly left-centered with next card peek */
     margin: 0;
     width: 100vw; /* Full viewport width to ensure overflow */
     max-width: none;

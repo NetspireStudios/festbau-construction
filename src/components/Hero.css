@@ -380,7 +380,7 @@
   }
 
   .hero-title {
-    font-size: 7rem;
+    font-size: 8rem;
     margin-top: 120px;
     margin-bottom: 0.5rem;
     line-height: 1;
@@ -392,7 +392,7 @@
 
   .hero-title .gold-text {
     color: var(--gold);
-    font-size: 7.5rem;
+    font-size: 8.5rem;
     display: block;
     margin-bottom: 0.5rem;
     text-shadow: 
