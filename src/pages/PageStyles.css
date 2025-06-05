@@ -980,12 +980,19 @@
   }
 
   .feature-tag {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.8rem;
-    background: rgba(221, 171, 77, 0.1);
-    border: 1px solid rgba(221, 171, 77, 0.2);
-    border-radius: 15px;
+    font-size: 0.6rem;
+    padding: 0.25rem 0.45rem;
+    background: rgba(221, 171, 77, 0.15);
+    border: 1px solid rgba(221, 171, 77, 0.25);
+    border-radius: 10px;
     color: var(--gold);
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+    max-width: 95px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.1;
   }
 
   /* Add fade effect to indicate more cards */
@@ -1176,6 +1183,19 @@
     border-radius: 25px;
   }
 
+  /* Match main page project tags exactly for very small screens */
+  .feature-tag {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.4rem;
+    max-width: 85px;
+  }
+
+  .project-spec {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.4rem;
+    max-width: 85px;
+  }
+
   /* Enhanced projects grid for mobile */
   .projects-grid {
     display: flex;
@@ -1266,19 +1286,19 @@
   }
 
   .feature-tag {
-    font-size: 0.55rem;
-    padding: 0.2rem 0.4rem;
+    font-size: 0.6rem;
+    padding: 0.25rem 0.45rem;
     background: rgba(221, 171, 77, 0.15);
     border: 1px solid rgba(221, 171, 77, 0.25);
-    border-radius: 8px;
+    border-radius: 10px;
     color: var(--gold);
     font-weight: 500;
     white-space: nowrap;
     flex-shrink: 0;
-    max-width: 85px;
+    max-width: 95px;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: 1.0;
+    line-height: 1.1;
   }
 
   .project-specs {
