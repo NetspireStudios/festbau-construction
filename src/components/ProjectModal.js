@@ -33,7 +33,7 @@ const ProjectModal = ({ project, isOpen, onClose, category }) => {
   const [isLoading, setIsLoading] = useState(true);
   const scrollPosition = useRef(0);
 
-  console.log('ProjectModal render - isOpen:', isOpen, 'project:', project, 'category:', category);
+
 
   // Function to get appropriate icon based on feature content
   const getFeatureIcon = (feature) => {
@@ -114,7 +114,7 @@ const ProjectModal = ({ project, isOpen, onClose, category }) => {
 
   useEffect(() => {
     if (project && isOpen) {
-      console.log('Loading project images for:', project.title);
+
       const loadProjectImages = async () => {
         setIsLoading(true);
         
@@ -216,7 +216,6 @@ const ProjectModal = ({ project, isOpen, onClose, category }) => {
   }, [isOpen, handleKeyPress]);
 
   if (!isOpen || !project) {
-    console.log('ProjectModal returning null - isOpen:', isOpen, 'project:', project);
     return null;
   }
 
