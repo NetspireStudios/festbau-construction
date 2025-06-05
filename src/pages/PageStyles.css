@@ -794,6 +794,18 @@
     width: 100%;
   }
 
+  .service-features li {
+    padding: 0.8rem 0;
+    font-size: 0.9rem;
+    gap: 1rem;
+  }
+
+  .feature-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
+
   .projects-section {
     padding: 4rem 0;
   }
@@ -1023,6 +1035,26 @@
     padding: 1.2rem;
     min-height: 200px;
     max-width: 100%;
+  }
+
+  .service-features li {
+    padding: 0.7rem 0;
+    font-size: 0.85rem;
+    gap: 0.8rem;
+  }
+
+  .service-features li:hover {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+    margin-left: -0.8rem;
+    margin-right: -0.8rem;
+  }
+
+  .feature-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    margin-top: 1px;
   }
 
   /* ===== SMALLER MOBILE PROJECTS CAROUSEL ===== */
@@ -1568,31 +1600,51 @@
 
 .service-features li {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 0;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
-  border-bottom: 1px solid rgba(221, 171, 77, 0.1);
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(221, 171, 77, 0.15);
+  line-height: 1.5;
+  transition: all 0.3s ease;
 }
 
 .service-features li:last-child {
   border-bottom: none;
 }
 
+.service-features li:hover {
+  color: var(--white);
+  background: rgba(221, 171, 77, 0.05);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-radius: 8px;
+}
+
 .feature-icon {
   color: var(--gold);
-  font-size: 1rem;
+  font-size: 0.9rem;
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(221, 171, 77, 0.2);
+  background: linear-gradient(135deg, var(--gold), #E6C85A);
   border-radius: 50%;
-  padding: 4px;
+  margin-top: 2px;
+  box-shadow: 0 2px 8px rgba(221, 171, 77, 0.3);
   transition: all 0.3s ease;
+  border: 2px solid rgba(221, 171, 77, 0.2);
+}
+
+.service-features li:hover .feature-icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(221, 171, 77, 0.5);
+  background: linear-gradient(135deg, #F5D76E, var(--gold));
 }
 
 /* Process Timeline */
